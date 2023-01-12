@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teksto formatavimas</title>
+    <style>
+        .strong {
+            /* srifto storis gali buti matuojamas skaiciais nuo 100-900 */
+            font-weight: bold;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .mark {
+            background-color: pink;
+        }
+        .small {
+            font-size: smaller;
+        }
+        .delete {
+            text-decoration: line-through;
+        }
+        .ins {
+            text-decoration: underline;
+        }
+
+        .sub {
+            font-size: smaller;
+            vertical-align: sub;
+        }
+        .sup {
+            font-size: smaller;
+            vertical-align: super;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Lorem.</h1>
+    <p><span class="strong">Lorem, ipsum dolor sit amet</span> consectetur adipisicing elit. Fuga, soluta!</p>
+    <p><span class="italic">Lorem ipsum dolor sit amet</span> consectetur adipisicing elit. Nulla, cum fugiat perferendis ab maiores aut in voluptatibus dolorem labore eum!</p>
+    <p><span class="mark">Lorem ipsum dolor sit</span> amet <span class="ins">consectetur adipisicing</span> elit. Nulla, cum fugiat perferendis ab maiores aut in voluptatibus dolorem labore eum!</p>
+    <p><span class="small">Lorem ipsum dolor</span> sit amet consectetur adipisicing elit. Nulla, cum fugiat perferendis ab maiores aut in voluptatibus dolorem labore eum!</p>
+    <p><span class="delete">Lorem ipsum dolor sit</span> amet consectetur adipisicing elit. Nulla, cum fugiat perferendis ab maiores aut in voluptatibus dolorem labore eum!</p>
+    <p>2<span class="sub">2</span></p>
+    <p>2<span class="sup">2</span></p>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuotrauku lygiavimas</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        img {
+            width: 150px;
+        }
+        .alignment {
+            margin-bottom: 3rem;
+            /* display: flex nurodo, kad viduje esantys elementai bus ispoziciuonuoti vienoje eileje arba pagal flex savybes */
+            display: flex;
+            /* (veikia tik su flex savybe) justify-content lygiuoja elementus i kaire (start), viduri (center), end (desine), dar space-between, space-around, space-evenly */
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .box {
+            display: flex;
+            justify-content: center;
+            background-color: red;
+            width: 33.3%;
+            height: 300px;
+            align-items: center;
+        }
+        .box img {
+            width: 200px;
+            object-fit: contain;
+        
+        }
+        .image-text img {
+            width: 300px;
+            float: right;
+            margin-left: 2rem;
+        }
+
+    </style>
+</head>
+<body>
+    <img src="nuotraukos/field.jpg" alt="Field">
+    <img src="nuotraukos/lake.jpg" alt="Lake">
+    <img src="nuotraukos/mountain.jpg" alt="Mountain">
+
+    <div class="alignment">
+        <div class="box">
+            <img src="nuotraukos/field.jpg" alt="Field">
+        </div>
+        <div class="box">
+            <img src="nuotraukos/lake.jpg" alt="Lake">
+        </div>
+        <div class="box">
+            <img src="nuotraukos/mountain.jpg" alt="Mountain">
+        </div>
+    </div>
+    <div class="image-text">
+        <img src="nuotraukos/field.jpg" alt="Field">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odio magni explicabo architecto laborum expedita natus amet veniam est similique! Veritatis ratione ullam dolore praesentium minima incidunt perferendis a modi odio. Facilis, tempore? Mollitia delectus accusamus magni laboriosam non voluptatum sed nulla est, voluptas corporis unde! Ex quasi aliquid aspernatur impedit asperiores numquam molestiae, quia repellat ut eveniet sequi at quos, voluptatibus beatae animi? Consequatur placeat qui nostrum aperiam totam laboriosam quibusdam error dignissimos ut quas! Minus, nemo dolores distinctio atque asperiores magnam voluptatum necessitatibus. Eum, quas at cum voluptate voluptatibus aperiam architecto quia eligendi, veniam ipsa reiciendis nihil sit.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odio magni explicabo architecto laborum expedita natus amet veniam est similique! Veritatis ratione ullam dolore praesentium minima incidunt perferendis a modi odio. Facilis, tempore? Mollitia delectus accusamus magni laboriosam non voluptatum sed nulla est, voluptas corporis unde! Ex quasi aliquid aspernatur impedit asperiores numquam molestiae, quia repellat ut eveniet sequi at quos, voluptatibus beatae animi? Consequatur placeat qui nostrum aperiam totam laboriosam quibusdam error dignissimos ut quas! Minus, nemo dolores distinctio atque asperiores magnam voluptatum necessitatibus. Eum, quas at cum voluptate voluptatibus aperiam architecto quia eligendi, veniam ipsa reiciendis nihil sit.
+        </p>  
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus odio magni explicabo architecto laborum expedita natus amet veniam est similique! Veritatis ratione ullam dolore praesentium minima incidunt perferendis a modi odio. Facilis, tempore? Mollitia delectus accusamus magni laboriosam non voluptatum sed nulla est, voluptas corporis unde! Ex quasi aliquid aspernatur impedit asperiores numquam molestiae, quia repellat ut eveniet sequi at quos, voluptatibus beatae animi? Consequatur placeat qui nostrum aperiam totam laboriosam quibusdam error dignissimos ut quas! Minus, nemo dolores distinctio atque asperiores magnam voluptatum necessitatibus. Eum, quas at cum voluptate voluptatibus aperiam architecto quia eligendi, veniam ipsa reiciendis nihil sit.
+        </p>
+    </div>
+</body>
+</html>
