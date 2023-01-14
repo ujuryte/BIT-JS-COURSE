@@ -9,22 +9,20 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
             background-color: rgb(253, 251, 247);
-            
         }
         .pirmas {
             display:flex;
-            justify-content: center;
+            justify-content:center;
+            flex-direction: row;
+            align-items: center;
             gap: 1rem;
-            background-color: rgb(245, 233, 210);
-            margin:auto;        
-            
+            background-color: rgb(249, 243, 231);
+            margin:auto;
+            max-width: 770px;  
+            height: 320px;         
         }
         .men {
-            background-color: white;
-            width: fit-content
-
-                       
-                                                                       
+            width:fit-content;                                                                       
         }
         .menesis {
             text-align: center;
@@ -32,21 +30,25 @@
             color: white;
             font-weight: 500;
             margin: 0;
-            
+            padding-top: 7px;
+            box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.1);
         }
         .savDienos {
             background: rgb(61,181,68);
             margin: 0;
-            color: white; 
-                                           
+            color: rgb(249, 241, 216);                              
         }
         th, td {
             padding: 10px;
             font-weight: normal;
         }
+        th {
+            font-size:x-small; 
+        }
         .dienos {
             text-align: right;
             margin-bottom: 0;
+            background-color: white;
         }
         .Sunday{
             color:red
@@ -55,11 +57,29 @@
             background-color:rgb(255, 219, 225);
         }
         .random {
-            background-color: rgb(209, 207, 207);
+            background-color: rgb(241, 237, 237);
         }
         p {
             margin: 0;
             padding: 0;
+        }
+        .kokiaSvente {
+            display:flexbox;
+            background-color: rgb(249, 243, 231);
+        }
+        .dienosFonas {
+            background-color:rgb(255, 219, 225);
+            color:red;
+        }
+        .fonas {
+            background-color:rgb(255, 219, 225);
+        }
+        .pirmaP {
+            font-size: 11px; 
+            padding-top: 10px;
+        }
+        .antraP{
+            font-size: 11px;
         }
     </style>
 </head>
@@ -72,13 +92,13 @@
             
             <thead class="savDienos">
                 <tr>
-                    <th style="font-size:x-small">Pr</th>
-                    <th style="font-size:x-small">An</th>
-                    <th style="font-size:x-small">Tr</th>
-                    <th style="font-size:x-small">Ke</th>
-                    <th style="font-size:x-small">Pe</th>
-                    <th style="font-size:x-small">Še</th>
-                    <th style="font-size:x-small">Se</th>
+                    <th>Pr</th>
+                    <th>An</th>
+                    <th>Tr</th>
+                    <th>Ke</th>
+                    <th>Pe</th>
+                    <th>Še</th>
+                    <th>Se</th>
                 </tr>
             </thead>
             <tbody class="dienos">
@@ -89,7 +109,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="Sunday" style="background-color:rgb(255, 219, 225)">1</td>
+                    <td class="Sunday fonas">1</td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -138,7 +158,11 @@
                 </tr>
                 </tbody>
         </table>
-        <p style="font-size: 11px; padding-top: 10px; background-color:rgb(245, 233, 210)"><mark class="sventes">&nbsp;&nbsp;</mark>01-01 <b style="color:green">Naujieji metai</b></p>
+        <div class="kokiaSvente">
+        <p class="pirmaP"><mark class="sventes">&nbsp;&nbsp;</mark>01-01 <b style="color:green">Naujieji metai</b></p>
+        <p>&nbsp</p>
+        <p>&nbsp</p>
+        </div>   
     </div>
 
     <div class="men">        
@@ -147,13 +171,13 @@
             
             <thead class="savDienos">
                 <tr>
-                    <th style="font-size:x-small">Pr</th>
-                    <th style="font-size:x-small">An</th>
-                    <th style="font-size:x-small">Tr</th>
-                    <th style="font-size:x-small">Ke</th>
-                    <th style="font-size:x-small">Pe</th>
-                    <th style="font-size:x-small">Še</th>
-                    <th style="font-size:x-small">Se</th>
+                    <th>Pr</th>
+                    <th>An</th>
+                    <th>Tr</th>
+                    <th>Ke</th>
+                    <th>Pe</th>
+                    <th>Še</th>
+                    <th>Se</th>
                 </tr>
             </thead>
             <tbody class="dienos">
@@ -179,14 +203,14 @@
                     <td>13</td>
                     <td>14</td>
                     <td>15</td>
-                    <td style="background-color:rgb(255, 219, 225); color:red">16</td>
+                    <td class="dienosFonas">16</td>
                     <td>17</td>
                     <td>18</td>
                     <td class="Sunday">19</td>
                 </tr>
                 <tr>
                     <td>20</td>
-                    <td style="background-color:rgb(209, 207, 207)">21</td>
+                    <td style="background-color:rgb(241, 237, 237)">21</td>
                     <td>22</td>
                     <td>23</td>
                     <td>24</td>
@@ -203,7 +227,7 @@
                     <td class="Sunday"></td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td>&nbsp</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -213,22 +237,582 @@
                 </tr>
                 </tbody>
         </table>
-        <p style="font-size: 11px; padding-top: 10px; background-color:rgb(245, 233, 210)"><mark class="sventes">&nbsp;&nbsp;</mark>02-16 <b style="color:green">Lietuvos Valstybės atkūrimo diena</b></p>
-        <p style="font-size: 11px; background-color:rgb(245, 233, 210)"><mark class="random">&nbsp;&nbsp;</mark>02-21 <b style="color:green">Užgavenės</b></p>
+       <div class="kokiaSvente">
+        <p class="pirmaP"><mark class="sventes">&nbsp;&nbsp;</mark>02-16 <b style="color:green">Lietuvos Valstybės atkūrimo diena</b></p>
+        <p class="antraP"><mark class="random">&nbsp;&nbsp;</mark>02-21 <b style="color:green">Užgavenės</b></p>
+        <p>&nbsp</p>
+        </div>
     </div>
     <div class="men">        
         <table cellspacing="0">
-            <h4 class="menesis">Vasaris</h4>
+            <h4 class="menesis">Kovas</h4>
             
             <thead class="savDienos">
                 <tr>
-                    <th style="font-size:x-small">Pr</th>
-                    <th style="font-size:x-small">An</th>
-                    <th style="font-size:x-small">Tr</th>
-                    <th style="font-size:x-small">Ke</th>
-                    <th style="font-size:x-small">Pe</th>
-                    <th style="font-size:x-small">Še</th>
-                    <th style="font-size:x-small">Se</th>
+                    <th>Pr</th>
+                    <th>An</th>
+                    <th>Tr</th>
+                    <th>Ke</th>
+                    <th>Pe</th>
+                    <th>Še</th>
+                    <th>Se</th>
+                </tr>
+            </thead>
+            <tbody class="dienos">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td class="Sunday">5</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td class="dienosFonas">11</td>
+                    <td class="Sunday">12</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td class="Sunday">19</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+                    <td>24</td>
+                    <td>25</td>
+                    <td class="Sunday">26</td>
+                </tr>
+                <tr>
+                    <td>27</td>
+                    <td>28</td>
+                    <td>29</td>
+                    <td>30</td>
+                    <td>31</td>
+                    <td></td>
+                    <td class="Sunday"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="Sunday"></td>
+                </tr>
+                </tbody>
+        </table>
+        <div class="kokiaSvente">
+            <p class="pirmaP"><mark class="sventes">&nbsp;&nbsp;</mark>03-11 <b style="color:green">Nepriklausomybės atkūrimo diena</b></p>
+            <p>&nbsp</p>
+            <p>&nbsp</p>
+        </div>
+    </div>
+</div>
+
+<div class="pirmas">
+    <div class="men">        
+        <table cellspacing="0">
+            <h4 class="menesis">Balandis</h4>
+            
+            <thead class="savDienos">
+                <tr>
+                    <th>Pr</th>
+                    <th>An</th>
+                    <th>Tr</th>
+                    <th>Ke</th>
+                    <th>Pe</th>
+                    <th>Še</th>
+                    <th>Se</th>
+                </tr>
+            </thead>
+            <tbody class="dienos">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td class="Sunday">2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td class="Sunday fonas">9</td>
+                </tr>
+                <tr>
+                    <td class="dienosFonas">10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td class="Sunday">16</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td class="Sunday">23</td>
+                </tr>
+                <tr>
+                    <td>24</td>
+                    <td>25</td>
+                    <td>26</td>
+                    <td>27</td>
+                    <td>28</td>
+                    <td>29</td>
+                    <td class="Sunday">30</td>
+                </tr>
+                <tr>
+                    <td>&nbsp</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="Sunday"></td>
+                </tr>
+                </tbody>
+        </table>
+        <div class="kokiaSvente">
+            <p class="pirmaP"><mark class="sventes">&nbsp;&nbsp;</mark>04-09 <b style="color:green">Velykos</b></p>
+            <p class="antraP"><mark class="sventes">&nbsp;&nbsp;</mark>04-10 <b style="color:green">Velykų antroji diena</b></p>
+            <p>&nbsp</p>
+        </div>   
+    </div>
+
+    <div class="men">        
+        <table cellspacing="0">
+            <h4 class="menesis">Gegužė</h4>
+            
+            <thead class="savDienos">
+                <tr>
+                    <th>Pr</th>
+                    <th>An</th>
+                    <th>Tr</th>
+                    <th>Ke</th>
+                    <th>Pe</th>
+                    <th>Še</th>
+                    <th>Se</th>
+                </tr>
+            </thead>
+            <tbody class="dienos">
+                <tr>
+                    <td class="dienosFonas">1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td class="Sunday fonas">7</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td class="Sunday">14</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td class="Sunday">21</td>
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td>23</td>
+                    <td>24</td>
+                    <td>25</td>
+                    <td>26</td>
+                    <td>27</td>
+                    <td class="Sunday">28</td>
+                </tr>
+                <tr>
+                    <td>29</td>
+                    <td>30</td>
+                    <td>31</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="Sunday"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="Sunday"></td>
+                </tr>
+                </tbody>
+        </table>
+       <div class="kokiaSvente">
+        <p class="pirmaP"><mark class="sventes">&nbsp;&nbsp;</mark>05-01 <b style="color:green">Tarptautinė darbo diena</b></p>
+        <p class="antraP"><mark class="sventes">&nbsp;&nbsp;</mark>05-07 <b style="color:green">Motinos diena</b></p>
+        <p>&nbsp</p>
+        </div>
+    </div>
+    <div class="men">        
+        <table cellspacing="0">
+            <h4 class="menesis">Birželis</h4>
+            
+            <thead class="savDienos">
+                <tr>
+                    <th>Pr</th>
+                    <th>An</th>
+                    <th>Tr</th>
+                    <th>Ke</th>
+                    <th>Pe</th>
+                    <th>Še</th>
+                    <th>Se</th>
+                </tr>
+            </thead>
+            <tbody class="dienos">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td class="Sunday fonas">4</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td class="Sunday">11</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td class="Sunday">18</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+                    <td class="dienosFonas">24</td>
+                    <td class="Sunday">25</td>
+                </tr>
+                <tr>
+                    <td>26</td>
+                    <td>27</td>
+                    <td>28</td>
+                    <td>29</td>
+                    <td>30</td>
+                    <td></td>
+                    <td class="Sunday"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="Sunday"></td>
+                </tr>
+                </tbody>
+        </table>
+        <div class="kokiaSvente">
+            <p class="pirmaP"><mark class="sventes">&nbsp;&nbsp;</mark>06-04 <b style="color:green">Tėvo diena</b></p>
+        <p class="antraP"><mark class="sventes">&nbsp;&nbsp;</mark>06-24 <b style="color:green">Joninės</b></p>
+            <p>&nbsp</p>
+        </div>
+    </div>
+</div>
+
+<div class="pirmas">
+    <div class="men">        
+        <table cellspacing="0">
+            <h4 class="menesis">Liepa</h4>
+            
+            <thead class="savDienos">
+                <tr>
+                    <th>Pr</th>
+                    <th>An</th>
+                    <th>Tr</th>
+                    <th>Ke</th>
+                    <th>Pe</th>
+                    <th>Še</th>
+                    <th>Se</th>
+                </tr>
+            </thead>
+            <tbody class="dienos">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td class="Sunday">2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td class="dienosFonas">6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td class="Sunday">9</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td class="Sunday">16</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td class="Sunday">23</td>
+                </tr>
+                <tr>
+                    <td>24</td>
+                    <td>25</td>
+                    <td>26</td>
+                    <td>27</td>
+                    <td>28</td>
+                    <td>29</td>
+                    <td class="Sunday">30</td>
+                </tr>
+                <tr>
+                    <td>31</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="Sunday"></td>
+                </tr>
+                </tbody>
+        </table>
+        <div class="kokiaSvente">
+            <p class="pirmaP"><mark class="sventes">&nbsp;&nbsp;</mark>07-06 <b style="color:green">Karaliaus Mindaugo karūnavimo</b></p>
+            <p><mark class="sventes">&nbsp;&nbsp;</mark><b style="color:green">diena</b></p>
+            <p>&nbsp</p>
+        </div>   
+    </div>
+
+    <div class="men">        
+        <table cellspacing="0">
+            <h4 class="menesis">Rugpjūtis</h4>
+            
+            <thead class="savDienos">
+                <tr>
+                    <th>Pr</th>
+                    <th>An</th>
+                    <th>Tr</th>
+                    <th>Ke</th>
+                    <th>Pe</th>
+                    <th>Še</th>
+                    <th>Se</th>
+                </tr>
+            </thead>
+            <tbody class="dienos">
+                <tr>
+                    <td></td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td class="Sunday">6</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td class="Sunday">13</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td class="dienosFonas">15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td class="Sunday">20</td>
+                </tr>
+                <tr>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+                    <td>24</td>
+                    <td>25</td>
+                    <td>26</td>
+                    <td class="Sunday">27</td>
+                </tr>
+                <tr>
+                    <td>28</td>
+                    <td>29</td>
+                    <td>30</td>
+                    <td>31</td>
+                    <td></td>
+                    <td></td>
+                    <td class="Sunday"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="Sunday"></td>
+                </tr>
+                </tbody>
+        </table>
+       <div class="kokiaSvente">
+        <p class="pirmaP"><mark class="sventes">&nbsp;&nbsp;</mark>08-15 <b style="color:green">Žolinė</b></p>
+        <p>&nbsp</p>
+        <p>&nbsp</p>
+        </div>
+    </div>
+    <div class="men">        
+        <table cellspacing="0">
+            <h4 class="menesis">Rugsėjis</h4>
+            
+            <thead class="savDienos">
+                <tr>
+                    <th>Pr</th>
+                    <th>An</th>
+                    <th>Tr</th>
+                    <th>Ke</th>
+                    <th>Pe</th>
+                    <th>Še</th>
+                    <th>Se</th>
+                </tr>
+            </thead>
+            <tbody class="dienos">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td class="Sunday">3</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td class="Sunday">10</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td class="Sunday">17</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+                    <td class="Sunday">24</td>
+                </tr>
+                <tr>
+                    <td>25</td>
+                    <td>26</td>
+                    <td>27</td>
+                    <td>28</td>
+                    <td>29</td>
+                    <td>30</td>
+                    <td class="Sunday"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="Sunday"></td>
+                </tr>
+                </tbody>
+        </table>
+        <div class="kokiaSvente">
+            <p style="padding-top: 10px">&nbsp</p>
+            <p>&nbsp</p>
+            <p>&nbsp</p>
+        </div>
+    </div>
+</div>
+
+<div class="pirmas">
+    <div class="men">        
+        <table cellspacing="0">
+            <h4 class="menesis">Spalis</h4>
+            
+            <thead class="savDienos">
+                <tr>
+                    <th>Pr</th>
+                    <th>An</th>
+                    <th>Tr</th>
+                    <th>Ke</th>
+                    <th>Pe</th>
+                    <th>Še</th>
+                    <th>Se</th>
                 </tr>
             </thead>
             <tbody class="dienos">
@@ -239,7 +823,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="Sunday" style="background-color:rgb(255, 219, 225)">1</td>
+                    <td class="Sunday">1</td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -288,7 +872,168 @@
                 </tr>
                 </tbody>
         </table>
-        <p style="font-size: 11px; padding-top: 10px; background-color:rgb(245, 233, 210)"><mark class="sventes">&nbsp;&nbsp;</mark>01-01 <b style="color:green">Naujieji metai</b></p>
+        <div class="kokiaSvente">
+            <p style="padding-top: 10px">&nbsp</p>
+            <p>&nbsp</p>
+            <p>&nbsp</p>
+        </div>   
+    </div>
+
+    <div class="men">        
+        <table cellspacing="0">
+            <h4 class="menesis">Lapkritis</h4>
+            
+            <thead class="savDienos">
+                <tr>
+                    <th>Pr</th>
+                    <th>An</th>
+                    <th>Tr</th>
+                    <th>Ke</th>
+                    <th>Pe</th>
+                    <th>Še</th>
+                    <th>Se</th>
+                </tr>
+            </thead>
+            <tbody class="dienos">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="dienosFonas">1</td>
+                    <td class="dienosFonas">2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td class="Sunday">5</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td class="Sunday">12</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td class="Sunday">19</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+                    <td>24</td>
+                    <td>25</td>
+                    <td class="Sunday">26</td>
+                </tr>
+                <tr>
+                    <td>27</td>
+                    <td>28</td>
+                    <td>29</td>
+                    <td>30</td>
+                    <td></td>
+                    <td></td>
+                    <td class="Sunday"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="Sunday"></td>
+                </tr>
+                </tbody>
+        </table>
+       <div class="kokiaSvente">
+        <p class="pirmaP"><mark class="sventes">&nbsp;&nbsp;</mark>11-01 <b style="color:green">Visų šventųjų diena</b></p>
+        <p class="antraP"><mark class="sventes">&nbsp;&nbsp;</mark>11-02 <b style="color:green">Vėlinės</b></p>
+        <p>&nbsp</p>
+        </div>
+    </div>
+    <div class="men">        
+        <table cellspacing="0">
+            <h4 class="menesis">Gruodis</h4>
+            
+            <thead class="savDienos">
+                <tr>
+                    <th>Pr</th>
+                    <th>An</th>
+                    <th>Tr</th>
+                    <th>Ke</th>
+                    <th>Pe</th>
+                    <th>Še</th>
+                    <th>Se</th>
+                </tr>
+            </thead>
+            <tbody class="dienos">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td class="Sunday">3</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td class="Sunday">10</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td class="Sunday">17</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+                    <td class="Sunday fonas">24</td>
+                </tr>
+                <tr>
+                    <td class="dienosFonas">25</td>
+                    <td class="dienosFonas">26</td>
+                    <td>27</td>
+                    <td>28</td>
+                    <td>29</td>
+                    <td>30</td>
+                    <td class="Sunday">31</td>
+                </tr>
+                <tr>
+                    <td>&nbsp</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="Sunday"></td>
+                </tr>
+                </tbody>
+        </table>
+        <div class="kokiaSvente">
+            <p class="pirmaP"><mark class="sventes">&nbsp;&nbsp;</mark>12-24 <b style="color:green">Šv. Kūčios</b></p>
+            <p class="antraP"><mark class="sventes">&nbsp;&nbsp;</mark>12-25 <b style="color:green">Šv. Kalėdos</b></p>
+            <p class="antraP"><mark class="sventes">&nbsp;&nbsp;</mark>12-26 <b style="color:green">Šv. Kalėdų antroji diena</b></p>
+        </div>
     </div>
 </div>
 
