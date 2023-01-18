@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shadow</title>
+    <style>
+        .box {
+            width:250px;
+            height: 250px;
+            margin: 50px auto 50px;
+        }
+        .blue {
+            background-color: blue;
+        }
+        .red {
+            background-color: red;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+
+        .shadow-1 {
+            /* trecia pozicija bluras, ketvirtas pozicija spread */
+            box-shadow: 0 0 10px 10px rgb(198, 194, 194);
+        }
+
+        .shadow-2 {
+            /* pirma pozicija atslenka seseli nuo kaires, antroji reiksme slenka seseli i apacia */
+            box-shadow: 10px 10px 0 0 rgb(142, 28, 28);
+        }
+
+        .shadow-3 {
+            box-shadow: 0 10px 10px 3px rgb(82, 106, 22);
+        }
+        .parent-box {
+            width:250px;
+            height: 250px;
+            margin: 50px auto 50px;
+            overflow: hidden;
+            padding: 0 30px;
+        }
+
+        .parent-box div {
+            width:250px;
+            height: 250px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box blue shadow-1"></div>
+    <div class="box red shadow-2"></div>
+    <div class="parent-box">
+        <div class="yellow shadow-3"></div>
+    </div>
+</body>
+</html>
