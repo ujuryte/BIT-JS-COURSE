@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex {
+            display:flex;
+        }
+        .headlines div {
+            width:50%;
+            position: relative;
+        }
+        .headlines div img {
+            width:100%;
+        }
+        .comment-count {
+            width:40px;
+            height: 40px;
+            color:white;
+            text-align: center;
+            line-height: 40px;
+            background-color: rgba(0, 72, 255, 0.449);
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: none;
+        }
+        .headlines div:hover .comment-count{
+            display:block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="flex headlines">
+        <div>
+            <img src="https://media.istockphoto.com/id/1145569233/photo/the-cathedral-square-main-square-of-the-vilnius-old-town-a-key-location-in-citys-public-life.jpg?s=612x612&w=0&k=20&c=e1ShkNcMNqHvNqLJczKKDY7CYA5iEYOhufsIF8g0gnA=" alt="katedra">
+            <span class="comment-count">25</span>
+        </div>
+        <div>    
+            <img src="https://media.istockphoto.com/id/1176393230/photo/old-colorful-townhouses-in-the-center-of-vilnius-old-town-lithuania.jpg?s=612x612&w=0&k=20&c=KnW9fCrnlHZiaTGuXrIHWwAlPahIcMTLHiILC8ctUtE=" alt="senamiestis">
+            <span class="comment-count">10</span>
+        </div>
+    </div>
+</body>
+</html>
