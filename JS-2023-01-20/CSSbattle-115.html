@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115</title>
+    <style>
+        body {
+          background: linear-gradient(
+            to right,
+            #F2E09F 50%,
+            #C36271 50%);
+          margin: 0;
+                    
+        }
+        .oval {
+          width:100px;
+          height:100px;
+          border-radius: 50%;
+          left: 150px;
+          top: 100px;
+          z-index: 2;
+          background: linear-gradient(
+            to top,
+            #F2E09F 50%,
+            #C36271 50%
+          );
+          
+        }
+        .shape {
+          background:#C36271;
+          border-top-left-radius: 100px 100px;
+          left: 20px;
+          top: 150px
+         
+        }
+        .shape2 {
+          background:#F2E09F;
+          border-bottom-right-radius: 100px 100px;
+          position: relative;
+          right: 20px;
+          bottom: 150px
+         
+        }
+        .size {
+          height:100%;
+          width:100%;
+        }
+        .abs {
+          position: absolute;
+        }
+      </style>
+</head>
+    <body>
+        <div class="shape2 size"></div>
+        <div class="oval abs"></div>
+        <div class="shape size abs"></div>
+    </body>
+</html>
