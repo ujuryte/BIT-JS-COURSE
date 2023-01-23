@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Mandali&display=swap');
+
+body {
+    margin:0;
+    color: #6c757d;
+}
+
+a {
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+}
+header nav ul {
+    display: flex;
+    gap: 40px;
+}
+
+header nav a {
+    font-size: 16px;
+    color:#6c757d;
+}
+header nav a:hover {
+    font-size: 16px;
+    color:blue;
+}
+header .account ul {
+    display: flex;
+}
+header .account ul {
+    font-size: 16px;
+    color:#6c757d;
+}
+header .account ul:hover {
+    font-size: 16px;
+    color:blue;
+}
+header {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+
+}
+header .account a.sign-up-link {
+    background: lightskyblue;
+    color: blue;
+    border: 1px solid blue;
+    border-radius: 3px;
+    padding:0 15px 3px;
+    display:block;
+
+}
+.container {
+    width:100%;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+#home {
+    background: url("foto/hero-3-bg.png") no-repeat top center / cover;
+    padding:100px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+}

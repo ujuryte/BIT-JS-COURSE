@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>max-min</title>
+    <style>
+        body {
+            margin:0;
+        }
+        .container {
+            display:flex;
+            width:100%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .box {
+            width:50%;
+            height: 100vh;
+        }
+        .red {
+            background-color: red;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+        .purple {
+            background-color: purple;
+        }
+        .blue {
+            background-color: blue;
+        }
+        @media (min-width: 786px) {
+            .container {
+                max-width: 800px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box red"></div>
+        <div class="box yellow"></div>
+    </div>
+    <h1>Sveiki visi</h1>
+    <div class="section">
+        <div class="container">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem, quis.
+        </div>
+    </div>
+    <div class="section purple">
+        <div class="container">
+            <div class="box red"></div>
+            <div class="box yellow"></div>
+        </div>
+    </div>
+    <div class="section blue">
+        <div class="container">
+            <div class="box red"></div>
+            <div class="box yellow"></div>
+        </div>
+    </div>
+    <div class="section black">
+        <div class="container">
+            <div class="box red"></div>
+            <div class="box yellow"></div>
+        </div>
+    </div>
+</body>
+</html>
