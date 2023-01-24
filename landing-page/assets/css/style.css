@@ -81,7 +81,7 @@ header .account a.sign-up-link {
     color: #1f61eb;
     border: 1px solid #a6c1f8;
     border-radius: 3px;
-    padding:0 15px 3px;
+    padding: 2px 15px;
     display:block;
 
 }
@@ -103,13 +103,12 @@ header .account a.sign-up-link:hover {
     padding:170px;
 }
     
-#home .left {
-    padding-top: 60px;
-    flex: 1;
-}
+#home .left,
 #home .right {
-    padding-top: 60px;
-    flex:1;
+    width:50%;
+}
+#home .left {
+    padding-top:60px;
 }
 
 .d-flex {
@@ -128,6 +127,7 @@ header .account a.sign-up-link:hover {
 
 #home .left ul {
     font-size: 15px;
+    margin-bottom: 30px;
 }
 
 img {
@@ -150,9 +150,7 @@ img {
 #home .left li {
     display: flex;
     align-items: center;
-}
-#home .left ul {
-    margin-bottom: 30px;
+    gap:13px;
 }
 
 #home .container {
