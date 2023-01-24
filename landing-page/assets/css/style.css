@@ -58,7 +58,7 @@ header nav a:hover {
 }
 header .account ul {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     margin-top:20px;
 }
 header .account a {
@@ -145,7 +145,7 @@ img {
     transition: all 0.4s ease-in-out;
 }
 #home i {
-    padding: 0 10px 0 0;
+    display: flex;
 }
 #home .left li {
     display: flex;
@@ -155,6 +155,11 @@ img {
 
 #home .container {
     gap: 20px;
+}
+#home .right img {
+    display:flex;
+    justify-content: center;
+    padding: 10px;
 }
 
 #home .left a.featured-button:hover {
@@ -171,3 +176,49 @@ img {
     content: "";
     background: yellow;
 } */
+#howitwork {
+    text-align: center !important;
+}
+#howitwork h4 {
+    font-weight: normal;
+    margin: 70px 0 20px 0;
+}
+#howitwork h2 {
+    font-size: 30px;
+    margin: 0 0 20px 0;
+}
+#howitwork p {
+    font-size: 15px;
+    padding-left: 70px;
+    padding-right: 70px;
+    margin: 0 0 60px 0;
+    
+}
+#howitwork .step{
+    flex:1;
+    width:100%;
+}
+#howitwork .icon {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    padding-bottom: 2rem;
+    font-size: 50px;
+    height: 96px;
+    width: 96px;
+}
+
+#howitwork .work-process i {
+}
+#howitwork i.fa.fa-paw {
+    background-color: rgba(31, 97, 235, 0.15);
+}
+#howitwork i.fa.fa-mortar-board {
+    background-color: rgba(28, 225, 172, 0.15);
+}
+#howitwork i.fa.fa-heart {
+    background-color: rgba(255, 194, 18, 0.15);
+}
+
