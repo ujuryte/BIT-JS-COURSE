@@ -100,7 +100,7 @@ header .account a.sign-up-link:hover {
 
 #home {
     background: url("../foto/hero-3-bg.png") no-repeat top center / cover;
-    padding:170px;
+    padding:250px;
 }
     
 #home .left,
@@ -126,6 +126,7 @@ header .account a.sign-up-link:hover {
 }
 
 #home .left ul {
+    padding-top: 20px;
     font-size: 15px;
     margin-bottom: 30px;
 }
@@ -176,23 +177,33 @@ img {
     content: "";
     background: yellow;
 } */
-#howitwork {
-    text-align: center !important;
+
+.how {
+    text-align: center;
+    line-height: 24px;
 }
-#howitwork h4 {
+.how h4 {
     font-weight: normal;
-    margin: 70px 0 20px 0;
 }
-#howitwork h2 {
+.how h2 {
     font-size: 30px;
     margin: 0 0 20px 0;
 }
-#howitwork p {
+.how p {
     font-size: 15px;
     padding-left: 70px;
     padding-right: 70px;
-    margin: 0 0 60px 0;
+    margin: 0 0 30px 0;
     
+}
+#howitwork {
+    text-align: center !important;
+    line-height: 24px;
+    padding: 70px;
+}
+#howitwork .work-process {
+    gap: 80px;
+    margin-bottom: 100px;
 }
 #howitwork .step{
     flex:1;
@@ -204,13 +215,19 @@ img {
     justify-content: center;
     margin: auto;
     align-items: center;
-    padding-bottom: 2rem;
-    font-size: 50px;
-    height: 96px;
-    width: 96px;
+    padding: 2rem;
 }
 
 #howitwork .work-process i {
+    height:96px;
+    width:96px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 60% 40%;
+    border-top-right-radius: 100% 30%;
+    border-bottom-left-radius: 100% 160%;
+    border-bottom-right-radius: 100% 160%;
 }
 #howitwork i.fa.fa-paw {
     background-color: rgba(31, 97, 235, 0.15);
@@ -222,3 +239,77 @@ img {
     background-color: rgba(255, 194, 18, 0.15);
 }
 
+#howitwork .step h3, p {
+    margin:0;
+    font-size: 14px;
+}
+#howitwork .work-process .up {
+    position:absolute;
+    left: 35.9%;
+    top: 144.3%;
+}
+#howitwork .work-process .down {
+    position:absolute;
+    left: 57.5%;
+    top: 145.3%;
+}
+#features {
+    background-color: #f8f9fa;
+    padding-top: 70px;
+}
+#features .left {
+}
+#features .right {
+    padding-top: 50px;
+    padding-bottom: 100px;
+    margin-left: 100px;
+    width: 70%;
+}
+#features .right h1 {
+    font-size: 37px;
+    margin-bottom: 15px;
+}
+#features .right p {
+    text-align: justify;
+    margin-bottom: 10px;
+}
+#features .right i {
+    font-size: 15px;
+    color: #1f61eb;
+    font-weight: normal;
+    width:40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px 1px rgb(199, 194, 194);
+    position: absolute;
+       
+}
+#features i.fa.fa-check {
+    top: 228.4%;
+    left: 53.5%;
+}
+#features i.fa.fa-clone {
+    top: 242.3%;
+    left: 53.5%;
+}
+#features i.fa.fa-lock {
+    top: 253.2%;
+    left: 53.5%;
+}
+
+
+#features .right li {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    margin-bottom: 20px;
+    margin-left: 60px
+}
+#features .right b {
+    display: contents;
+}
