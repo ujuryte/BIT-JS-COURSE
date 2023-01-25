@@ -2,7 +2,13 @@
 
 @font-face {
     font-family: 'Cerebri Sans';
-    src: url('../fonts/Cerebri-Sans-Bold.ttf')
+    src: url('../fonts/Cerebri-Sans-Bold.ttf');
+    font-weight:600;
+}
+@font-face {
+    font-family: 'Cerebri Sans';
+    src: url('../fonts/Cerebri\ Sans\ Book.ttf');
+    font-weight: 300;
 }
 
 * {
@@ -16,8 +22,9 @@ body {
 }
 
 h1,h2,h3,h4,h5,h6 {
-    font-family: "cerebri sans";
+    font-family: 'Cerebri Sans';
     color:#343a40;
+    margin: 0 0 20px;
 }
 
 a {
@@ -117,7 +124,7 @@ header .account a.sign-up-link:hover {
 
 #home .left h1 {
     font-size: 56px;
-    margin: 0 0 20px;
+    
     
 }
 #home .left p {
@@ -183,17 +190,16 @@ img {
     line-height: 24px;
 }
 .how h4 {
-    font-weight: normal;
+    font-weight: 300;
 }
 .how h2 {
     font-size: 30px;
-    margin: 0 0 20px 0;
+   
 }
 .how p {
     font-size: 15px;
-    padding-left: 70px;
-    padding-right: 70px;
-    margin: 0 0 30px 0;
+    max-width: 600px;
+    margin:0 auto;
     
 }
 #howitwork {
@@ -203,7 +209,9 @@ img {
 }
 #howitwork .work-process {
     gap: 80px;
+    margin-top: 40px;
     margin-bottom: 100px;
+    position: relative;
 }
 #howitwork .step{
     flex:1;
@@ -243,31 +251,40 @@ img {
     margin:0;
     font-size: 14px;
 }
+#howitwork .step p {
+    padding: 0 40px;
+}
 #howitwork .work-process .up {
     position:absolute;
-    left: 35.9%;
-    top: 144.3%;
+    left: 26.4%;
+    top: 53.4%;
 }
+
 #howitwork .work-process .down {
     position:absolute;
-    left: 57.5%;
-    top: 145.3%;
+    left: 62.6%;
+    top: 57.5%;
 }
 #features {
     background-color: #f8f9fa;
     padding-top: 70px;
 }
-#features .left {
-}
+
 #features .right {
-    padding-top: 50px;
+    padding-top: 90px;
     padding-bottom: 100px;
     margin-left: 100px;
     width: 70%;
 }
+#features .left {
+    padding-top: 30px;
+}
+#features .right ul {
+    position: relative;
+}
 #features .right h1 {
     font-size: 37px;
-    margin-bottom: 15px;
+    
 }
 #features .right p {
     text-align: justify;
@@ -284,21 +301,21 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 10px 1px rgb(199, 194, 194);
+    box-shadow: 0 0 10px 1px rgb(224, 227, 243);
     position: absolute;
        
 }
 #features i.fa.fa-check {
-    top: 228.4%;
-    left: 53.5%;
+    top: 10px;
+    left: 2px;
 }
 #features i.fa.fa-clone {
-    top: 242.3%;
-    left: 53.5%;
+    top: 140px;
+    left: 2px;
 }
 #features i.fa.fa-lock {
-    top: 253.2%;
-    left: 53.5%;
+    top: 240px;
+    left: 2px;
 }
 
 
