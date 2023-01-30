@@ -782,6 +782,9 @@ img {
 #contacts textarea {
     height:100px;
 }
+#contacts .divider .form-line {
+    width:50%;
+}
 #contacts .contact-form .form-line {
     margin-bottom: 10px;
 }
@@ -847,7 +850,8 @@ img {
     padding-top: 20px;
 }
 #footer .list-block{
-    padding-left: 60px
+    padding-left: 50px;
+    min-width: 210px;
 }
 #footer .footer-list a{
     color:rgba(255, 255, 255, 0.6);
