@@ -801,9 +801,6 @@ img {
 #footer .footer-info {
     padding-bottom: 50px;
 }
-#footer .footer-info h2,h3 {
-    color: white;
-}
 
 #footer .follow p{
     color: white;
@@ -811,12 +808,14 @@ img {
     font-size: 16px;
 }
 
-#footer .footer-info h3 {
+#footer .footer-info .follow h3 {
     font-size: 20px;
     padding-top: 10px;
+    color: white;
 }
-#footer .footer-info h2 {
+#footer .footer-info .list-block h2 {
     font-size: 22px;
+    color:white;
 }
 
 #footer .follow i{
