@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Homework</title>
+</head>
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        //1
+        let name = "Jennifer";
+        let surname = "Lawrence";
+
+        console.log(name, surname);
+
+        //2
+        let vardas = "Ugne";
+        let pavarde = "Juryte";
+        let gimimoMetai = 1994;
+        let dabartiniaiMetai = 2023;
+
+        console.log("Aš esu", vardas, pavarde, ". Man yra", dabartiniaiMetai - gimimoMetai, "metai.")
+
+        //3 
+        let raides = name[5] + name[6] + name[7] + " " + surname[5] + surname[6] + surname[7];
+        console.log(raides);
+
+        //4
+
+        let stringas = "Once upon a time in hollywood";
+        stringas = stringas.replaceAll('O', '*');
+        stringas = stringas.replaceAll('o', '*');
+
+        console.log(stringas);
+
+        //5
+
+        let skaicius1 = rand(0, 2);
+        let skaicius2 = rand(0, 2);
+        let skaicius3 = rand(0, 2);
+        let skaicius4 = rand(0, 2);
+
+        console.log(skaicius1);
+        console.log(skaicius2);
+        console.log(skaicius3);
+        console.log(skaicius4);
+
+        
+
+    </script>
+</body>
+</html>
