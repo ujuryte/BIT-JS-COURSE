@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS intro</title>
+    
+</head>
+<body>
+    <!-- external script -->
+    <script src="script.js"></script>
+    <!-- internal script -->
+    <script>
+        console.log("Labas, Pasauli");
+
+        // kintamuju deklaravimas
+
+        let skaicius = 10;
+
+        console.log("Kintamojo tipas: " + typeof skaicius);
+        console.log("Kintamojo tipas:", typeof skaicius);
+
+        skaicius += 22;
+
+        console.log ("Nauja skaiciaus reiksme:", skaicius);
+
+        // du lygybes zenklai nurodo tik reiksmiu lyginima, o trys nurodo ir reiksmiu ir duomenu tipu lyginima
+        if(skaicius == 32) {
+            console.log("Kintamojo reiksme yra lygi 32")
+        }
+
+        if(skaicius === '32') {
+            console.log ("Kintamojo reiksme yra lygi 32")
+        }
+        
+        if(skaicius === 32) {
+            console.log ("Kintamojo reiksme yra lygi 32")
+        }
+
+        console.log(skaicius===32);
+
+        if(skaicius === 24) {
+            console.log ("Kintamojo reiksme yra lygi 24")
+        } else {
+            console.log("skaicius nera lygus 24");
+        }
+
+        skaicius += 2
+
+        if(skaicius === 32) {
+            console.log ("Kintamojo reiksme yra lygi 32")
+        } else if(skaicius === 34) {
+            console.log("skaicius yra lygus 34")
+        } else {
+            console.log("skaicius nera lygus 24");
+        }
+
+        let pirmas = 12;
+        let antras = 11;
+
+        //kas daugiau?
+
+        if(pirmas > antras) {
+            console.log("Pirmas yra didesnis uz antra");
+        } else if(pirmas === antras) {
+            console.log("kintamieji lygus");
+        } else {
+            console.log("pirmas mazesnis uz antra");
+        }
+
+        //tikrinimas ar kintamasis nelygus 
+
+        let reiksme = "Labas";
+        //vienas lygybes zenklas tikrina tik reiksme, dvi lygybes tikrina reiksme ir duomens tipa
+        if(reiksme != "Sveiki") {
+            console.log(`Kintamojo reiksme nera stringas "Sveiki".`);
+        }
+
+        //namu darbams:
+        // let atsitiktinisSkaicius = rand(10, 50);
+
+        // console.log(atsitiktinisSkaicius);
+
+        stringas = "Labas Vakaras";
+        console.log(stringas);
+        stringas = stringas.replace ('Vakaras', 'Rytas');
+        console.log(stringas);
+
+        stringas = 'Labas vakaras Lietuva, tikiuosi sirdyse dar ne vakaras';
+
+        stringas = stringas.replaceAll('vakaras', 'rytas');
+        console.log(stringas);
+
+    </script>
+</body>
+</html>
