@@ -52,7 +52,42 @@
         console.log(skaicius3);
         console.log(skaicius4);
 
-        
+        let eile = [skaicius1, skaicius2, skaicius3, skaicius4];
+
+        console.log(eile);
+
+        let nulis = 0;
+        let atsakymas0 = 0;
+
+        for (numberZero of eile) {
+            if(numberZero == nulis) {
+                atsakymas0++;
+            }
+        }
+
+        console.log("Eilėje matomų nulių skaičius:", atsakymas0);
+
+        let vienas = 1;
+        let atsakymas1 = 0;
+
+        for (numberOne of eile) {
+            if(numberOne == vienas) {
+                atsakymas1++;
+            }
+        }
+
+        console.log("Eilėje matomų vienetų skaičius:", atsakymas1);
+
+        let dvejetas = 2;
+        let atsakymas2 = 0;
+
+        for (numberTwo of eile) {
+            if(numberTwo == dvejetas) {
+                atsakymas2++;
+            }
+        }
+
+        console.log("Eilėje matomų dvejetų skaičius:", atsakymas2);
 
     </script>
 </body>
