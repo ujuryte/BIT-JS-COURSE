@@ -15,10 +15,14 @@
         }
 
         //1
-        let name = "Jennifer";
+        let name = "Jenny";
         let surname = "Lawrence";
 
-        console.log(name, surname);
+        if (name>surname) {
+            console.log(name)
+        } else {
+            console.log(surname)
+        }
 
         //2
         let vardas = "Ugne";
@@ -29,7 +33,7 @@
         console.log("Aš esu", vardas, pavarde, ". Man yra", dabartiniaiMetai - gimimoMetai, "metai.")
 
         //3 
-        let raides = name[5] + name[6] + name[7] + " " + surname[5] + surname[6] + surname[7];
+        let raides = name[2] + name[3] + name[4] + " " + surname[5] + surname[6] + surname[7];
         console.log(raides);
 
         //4
@@ -65,8 +69,6 @@
             }
         }
 
-        console.log("Eilėje matomų nulių skaičius:", atsakymas0);
-
         let vienas = 1;
         let atsakymas1 = 0;
 
@@ -75,8 +77,6 @@
                 atsakymas1++;
             }
         }
-
-        console.log("Eilėje matomų vienetų skaičius:", atsakymas1);
 
         let dvejetas = 2;
         let atsakymas2 = 0;
@@ -87,7 +87,7 @@
             }
         }
 
-        console.log("Eilėje matomų dvejetų skaičius:", atsakymas2);
+        console.log("Eilėje matomų nulių skaičius:", atsakymas0 + ";", "Eilėje matomų vienetų skaičius:", atsakymas1 + ";", "Eilėje matomų dvejetų skaičius:", atsakymas2 + ".");
 
     </script>
 </body>
