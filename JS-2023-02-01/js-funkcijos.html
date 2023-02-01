@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funkcijos</title>
+</head>
+<body>
+    <script>
+        // Math kintamasis pateikiamas is narsykles
+        //norint rasti didziausia reiksme tarp isvardintu
+        let max = Math.max(15, 20, 11, 45, 22, 8, 88);
+
+        console.log(max)
+
+        //norint rasti maziausia reiksme
+
+        let min = Math.min(15, 20, 11, 45, 22, 8, 88);
+
+        console.log(min)
+
+        //norint skaiciu suapvalint
+
+        let skaicius = 3.1455563;
+
+        //apvalina iki sveiko sk.
+        let round = Math.round(skaicius);
+        console.log(round)
+
+        //floor suapvalina iki artimiausio zemiausio sveiko skaiciaus
+        skaicius = 3.8543413;
+        let floor = Math.floor(skaicius);
+
+        console.log(floor)
+
+        //ceil suapvalina sk iki atimiausio didziausio sveiko skaiciaus
+        skaicius = 3.1455563;
+
+        let ceil = Math.ceil(skaicius)
+        console.log(ceil)
+
+        //kiek norim skaiciu po kablelio
+        
+        skaicius = 85.51515237;
+
+        let fixed = skaicius.toFixed(4);
+        console.log(fixed)
+
+        //template literals string'u reiksmes
+
+        // '', "", ``
+
+        let vardas = 'Aloyzas';
+        let amzius = '16'
+
+
+        // su `` galima idejinet variables su doleriu ir riestiniais skliaustais
+        let hello = `As esu ${vardas} ${vardas}. Man yra ${amzius} metai`
+        console.log (hello)
+
+
+
+    </script>
+</body>
+</html>
