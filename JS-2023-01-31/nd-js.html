@@ -18,10 +18,12 @@
         let name = "Jenny";
         let surname = "Lawrence";
 
-        if (name>surname) {
-            console.log(name)
+        if (name.length>surname.length) {
+            console.log("Trumpesnė yra pavardė")
+        } else if(name.length === surname.length){
+            console.log("Vardas ir pavardė yra vienodo ilgio.")
         } else {
-            console.log(surname)
+            console.log("Trumpesnis yra vardas")
         }
 
         //2
@@ -36,13 +38,27 @@
         let raides = name[2] + name[3] + name[4] + " " + surname[5] + surname[6] + surname[7];
         console.log(raides);
 
+        result = name[name.length - 3] + 
+                name[name.length - 2] + 
+                name[name.length - 1] + 
+                " " + 
+                surname[surname.length - 3] + 
+                surname[surname.length - 2] + 
+                surname[surname.length - 1]
+
+        console.log(result);
         //4
 
         let stringas = "Once upon a time in hollywood";
-        stringas = stringas.replaceAll('O', '*');
-        stringas = stringas.replaceAll('o', '*');
+        stringas = stringas.replaceAll('O', '*').replaceAll('o', '*');
+        // stringas = stringas.replaceAll('o', '*');
 
         console.log(stringas);
+
+        //regEx (regular expression)
+        stringas = stringas.replaceAll(/[oO]/g, '*');
+
+        console.log(stringas)
 
         //5
 
@@ -50,11 +66,6 @@
         let skaicius2 = rand(0, 2);
         let skaicius3 = rand(0, 2);
         let skaicius4 = rand(0, 2);
-
-        console.log(skaicius1);
-        console.log(skaicius2);
-        console.log(skaicius3);
-        console.log(skaicius4);
 
         let eile = [skaicius1, skaicius2, skaicius3, skaicius4];
 
@@ -88,6 +99,57 @@
         }
 
         console.log("Eilėje matomų nulių skaičius:", atsakymas0 + ";", "Eilėje matomų vienetų skaičius:", atsakymas1 + ";", "Eilėje matomų dvejetų skaičius:", atsakymas2 + ".");
+
+        // paskaitoje
+
+        let pirmas = rand(0, 2);
+        let antras = rand(0, 2);
+        let trecias = rand(0, 2);
+        let ketvirtas = rand(0, 2);
+        console.log("Gautos reiksmes:", pirmas, antras, trecias, ketvirtas);
+
+        let nuliai = 0;
+        let vienetai = 0;
+        let dvejetai = 0;
+
+        if(pirmas === 0){
+            nuliai ++;
+        }
+        if(antras === 0){
+            nuliai++;
+        }
+        if(trecias === 0){
+            nuliai++;
+        }
+        if(ketvirtas === 0){
+            nuliai++;
+        }
+        if(pirmas === 1){
+            vienetai ++;
+        }
+        if(antras === 1){
+            vienetai++;
+        }
+        if(trecias === 1){
+            vienetai++;
+        }
+        if(ketvirtas === 1){
+            vienetai++;
+        }
+        if(pirmas === 2){
+            dvejetai ++;
+        }
+        if(antras === 2){
+            dvejetai++;
+        }
+        if(trecias === 2){
+            dvejetai++;
+        }
+        if(ketvirtas === 2){
+            dvejetai++;
+        }
+
+        console.log('Nuliu yra:', nuliai, 'Vienetu yra:', vienetai, 'Dvejetu yra:', dvejetai)
 
     </script>
 </body>
