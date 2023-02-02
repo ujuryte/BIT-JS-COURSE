@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS funkcijos</title>
+</head>
+<body>
+    <script>
+        let stringas = 'Once upon a time in hollywood';
+
+        //startsWith() grazina teigiama arba neigiamas atsakyma ar stringas prasided ivardinta fraze
+
+       if (stringas.startsWith('Once')) {
+            console.log('stringas prasideda zodziu once')
+        } else {
+            console.log('stringas neprasideda zodziu once')
+        }
+
+        //endsWith() grazina teigiama ar neigiama ats ar stringas baigiasi tuo zodziu
+
+        if (stringas.endsWith('hollywood')) {
+            console.log('stringas baigias zodziu hollywood');
+        } else {
+            console.log('stringas nebaigias zodziu hollywood');
+        }
+
+        // includes() grazina reiksme ar yra ivardintas zodis stringe
+
+        if (stringas.includes('time')) {
+            console.log('stringe yra zodis time');
+        } else {
+            console.log('stringe nera zodzio time');
+        }
+
+        // indexOf() grazina pirma pozicija ties kuria prasideda arba yra patalpintas ieskomas zodis ar simbolis
+
+        console.log('Pozicija ties kuria prasideda zodis "upon":', stringas.indexOf('upon'));
+        console.log('Pozicija ties kuria prasideda raide "n":', stringas.indexOf('n'));
+
+        // lastIndexOf() grazina paskutine pozicija <..>
+
+        console.log('Pozicija ties kuria baigiasi raide "o":', stringas.lastIndexOf('o'));
+
+        // repeat() pakartoja stringa nurodyta kieki kartu
+
+        stringas = 'Valio!';
+
+        console.log(stringas.repeat(10));
+
+        let i = 0;
+        let rezultatas = '';
+
+        while(i<10) {
+            rezultatas += stringas;
+            i++
+        }
+
+        console.log(rezultatas);
+
+        // slice() metodas istraukia dali teksto is norimo stringo pagal nurodytas pozicijas
+
+        stringas = 'Once upon a time in hollywood';
+
+        console.log(stringas.slice(10));
+
+        console.log(stringas.slice(10,16));
+
+        console.log(stringas.slice(-9));
+
+        // toUpperCase() raides padidina
+
+        console.log(stringas.toUpperCase());
+
+        // toLowerCase() raides mazina
+
+        console.log(stringas.toLowerCase());
+
+        //trim() pasalina tarpus is stringo prieko ir pabaigos
+        
+        stringas = '    Once upon a time in hollywood    ';
+
+        console.log(stringas);
+        console.log(stringas.trim());
+
+        //trimStart() pasalina pradzioj tarpus
+
+        console.log(stringas.trimStart());
+
+        //trimEnd() pasalina pabaigos tarpus
+
+        console.log(stringas.trimEnd());
+
+
+
+
+    </script>
+</body>
+</html>
