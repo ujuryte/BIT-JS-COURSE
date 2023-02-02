@@ -22,11 +22,22 @@
         console.log(skaicius1, skaicius2);
 
         if(skaicius1>skaicius2){
+            if(skaicius2 === 0){
+                console.log('Dalyba negalima');
+            } else {
             let atsakymas1 = skaicius1/skaicius2;
             console.log(atsakymas1.toFixed(2));
-        } else {
+            }
+        }   else if (skaicius1 === 0 && skaicius2 ===0){
+            console.log('Dalyba negalima')
+        } 
+        else {
+            if (skaicius1 === 0){
+                console.log('Dalyba negalima');
+            } else {
             let atsakymas2 = skaicius2/skaicius1;
             console.log(atsakymas2.toFixed(2));
+            }
         }
 
         //2
@@ -37,17 +48,25 @@
 
         console.log('Skaiciu eile:',pirmas,antras,trecias);
 
-        // let average = (pirmas+antras+trecias)/3;
-
-        // console.log('Skaiciu vidurkis:',average);
-
         if (pirmas > antras > trecias){
-            console.log('vidurine reiksme:',antras);
+            console.log('vidurine reiksme:', antras);
         } else if (antras > pirmas > trecias) {
             console.log ('vidurine reiksme:', pirmas);
         } else {
             console.log ('vidurine reiksme:', trecias);
         }
+
+        //sprendimas pamokos metu
+
+        let maziausias = Math.min(pirmas, antras, trecias);
+        let didziausias = Math.max(pirmas, antras, trecias);
+
+        console.log(maziausias,didziausias);
+
+        let suma = pirmas + antras + trecias;
+        let rezultatas = suma - (maziausias+didziausias);
+
+        console.log('vidurine reiksme:',rezultatas);
 
         //3
 
@@ -68,9 +87,16 @@
         let antraRaide = randomLetter();
         let treciaRaide = randomLetter();
 
-        let stringas = pirmaRaide + antraRaide + treciaRaide;
+        let letterString = pirmaRaide + antraRaide + treciaRaide;
 
-        console.log(stringas);
+        console.log(letterString);
+
+        //sprendimas pamokos metu
+
+        let abecele = "abcdefghijklmnopqrstuvwxyz"
+        let kodas = abecele[rand(0, abecele.length - 1)] + abecele[rand(0, abecele.length - 1)] + abecele[rand(0, abecele.length - 1)];
+
+        console.log(kodas)
 
     </script>
 </body>
