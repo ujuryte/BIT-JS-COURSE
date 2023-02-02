@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW 2023 02 01</title>
+</head>
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        //1
+
+        let skaicius1 = rand(0, 4);
+        let skaicius2 = rand(0, 4);
+
+        console.log(skaicius1, skaicius2);
+
+        if(skaicius1>skaicius2){
+            let atsakymas1 = skaicius1/skaicius2;
+            console.log(atsakymas1.toFixed(2));
+        } else {
+            let atsakymas2 = skaicius2/skaicius1;
+            console.log(atsakymas2.toFixed(2));
+        }
+
+        //2
+
+        let pirmas = rand(0, 25);
+        let antras = rand(0, 25);
+        let trecias = rand(0, 25);
+
+        console.log('Skaiciu ele:',pirmas,antras,trecias);
+
+        let average = (pirmas+antras+trecias)/3;
+
+        console.log('Skaiciu vidurkis:',average);
+
+        //3
+
+        let name = "Giedrius";
+        let surname = "Savickas";
+        let raides = name[0] + name[1] + name[2] + " " + surname[0] + surname[1] + surname[2];
+
+        console.log(raides)
+
+        //4
+
+        function randomLetter() {
+            let abecele = "abcdefghijklmnopqrstuvwxyz"
+            return abecele[Math.floor(Math.random() * abecele.length)];
+        }
+
+        let pirmaRaide = randomLetter();
+        let antraRaide = randomLetter();
+        let treciaRaide = randomLetter();
+
+        let stringas = pirmaRaide + antraRaide + treciaRaide;
+
+        console.log(stringas);
+
+    </script>
+</body>
+</html>
