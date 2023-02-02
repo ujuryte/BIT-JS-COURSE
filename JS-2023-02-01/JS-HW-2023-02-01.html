@@ -35,17 +35,25 @@
         let antras = rand(0, 25);
         let trecias = rand(0, 25);
 
-        console.log('Skaiciu ele:',pirmas,antras,trecias);
+        console.log('Skaiciu eile:',pirmas,antras,trecias);
 
-        let average = (pirmas+antras+trecias)/3;
+        // let average = (pirmas+antras+trecias)/3;
 
-        console.log('Skaiciu vidurkis:',average);
+        // console.log('Skaiciu vidurkis:',average);
+
+        if (pirmas > antras > trecias){
+            console.log('vidurine reiksme:',antras);
+        } else if (antras > pirmas > trecias) {
+            console.log ('vidurine reiksme:', pirmas);
+        } else {
+            console.log ('vidurine reiksme:', trecias);
+        }
 
         //3
 
         let name = "Giedrius";
         let surname = "Savickas";
-        let raides = name[0] + name[1] + name[2] + " " + surname[0] + surname[1] + surname[2];
+        let raides = name[0] + " " + surname[0];
 
         console.log(raides)
 
