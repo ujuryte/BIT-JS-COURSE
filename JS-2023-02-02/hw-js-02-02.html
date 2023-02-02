@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homework</title>
+    <style>
+        body {
+            /* color: red; */
+        }
+            
+        
+    </style>
+</head>
+<body>
+    <script>
+        //1
+        let star = '\u002A';        
+
+        i = 0;
+        result = "";
+
+        while (i<400) {
+            result += star;
+            if (i<50)
+            document.write(result.slice(''));
+            i++
+        }
+
+        //2
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        i = 0;
+        resultSk = '';
+        let daugiauUz = 0;
+        
+
+
+        while (i<300) {
+            resultSk += rand(0,300) + ' ';
+            i++
+            if (rand(0,300) >= 150) {
+                daugiauUz++;
+            }
+        }
+
+        document.write(resultSk);
+        document.write('Didesniu uz 150 sk. kiekis:', daugiauUz);
+        
+        //3
+
+        i = 0;
+        dalyba = '';
+        x = 77;
+
+        while (i<3000) {
+            if (i % x === 0){
+            dalyba += i + ', ';
+            }
+            i++
+        }
+
+        document.write('skaiciai, kurie dalinas is 77:', dalyba);
+
+        //4
+
+        //5
+
+    </script>
+</body>
+</html>
