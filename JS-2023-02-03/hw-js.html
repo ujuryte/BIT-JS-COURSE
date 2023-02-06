@@ -36,19 +36,51 @@
             i++
         }
 
-        //b tris kartus iskritus herui stabdome monetos metima
+        //b tris kartus iskritus herbui stabdome monetos metima
 
 
         console.log("B)");
-        let x = 0;
+        let x = 3;
 
-        while (true) {
+        while (i<1) {
             sk = rand(0,1);
             if (sk === 1) {
                console.log("S");
             } if (sk === 0) {
                 console.log("H");
             } 
+            if (sk === 0) break;
+            result += sk;
+            i++
+        }
+
+        // C tris kartus is eiles iskritus herbui, stabdome monetos metima
+
+        while (i<1) {
+            sk = rand(0,1);
+            if (sk === 1) {
+               console.log("S");
+            } if (sk === 0) {
+                console.log("H");
+            } 
+            if (sk === 0) break;
+            result += sk;
+            i++
+        }
+
+        //2 
+
+        let Kazys = rand(5,25);
+        let Petras = rand(10,20);
+        let p = 0;
+        let rezultatas = '';
+
+        if (Kazys>Petras) {
+            console.log("Partija laimejo: Kazys");
+        } else if (Kazys<Petras){
+            console.log("Partija laimejo: Petras")
+        } else {
+            console.log("Partija laimejo: lygiosios");
         }
 
 
