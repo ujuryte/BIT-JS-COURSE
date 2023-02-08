@@ -25,12 +25,12 @@
 
         //a iskritus herbui stabdome monetos metima
         while (true) {
-            sk = rand(0,1);
+            sk = rand(0, 1);
             if (sk === 1) {
-               console.log("S");
+                console.log("S");
             } if (sk === 0) {
                 console.log("H");
-            } 
+            }
             if (sk === 0) break;
             result += sk;
             i++
@@ -40,29 +40,38 @@
 
 
         console.log("B)");
-        let x = 3;
 
-        while (i<1) {
-            sk = rand(0,1);
+        i = 0;
+        result = "";
+        herbas = "H";
+        skaicius = "S";
+
+        while (i) {
+            sk = rand(0, 1);
+            let x = 3;
+            if (sk === 0) {
+                result += herbas;
+                if (herbas < x) {
+                    break
+                }
+            }
             if (sk === 1) {
-               console.log("S");
-            } if (sk === 0) {
-                console.log("H");
-            } 
-            if (sk === 0) break;
-            result += sk;
+                result += skaicius;
+            }
             i++
         }
 
+        console.log(result)
+
         // C tris kartus is eiles iskritus herbui, stabdome monetos metima
 
-        while (i<1) {
-            sk = rand(0,1);
+        while (i < 1) {
+            sk = rand(0, 1);
             if (sk === 1) {
-               console.log("S");
+                console.log("S");
             } if (sk === 0) {
                 console.log("H");
-            } 
+            }
             if (sk === 0) break;
             result += sk;
             i++
@@ -70,18 +79,11 @@
 
         //2 
 
-        let Kazys = rand(5,25);
-        let Petras = rand(10,20);
+        let kazys = rand(5, 25);
+        let petras = rand(10, 20);
         let p = 0;
         let rezultatas = '';
 
-        if (Kazys>Petras) {
-            console.log("Partija laimejo: Kazys");
-        } else if (Kazys<Petras){
-            console.log("Partija laimejo: Petras")
-        } else {
-            console.log("Partija laimejo: lygiosios");
-        }
 
 
     </script>
