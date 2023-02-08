@@ -17,72 +17,93 @@
             return Math.floor(Math.random() * (max - min + 1) + min);
         }
 
-        //1
-        console.log("A)");
+        document.write(`<h1>1. Metam Moneta<h1>`)
+
+        document.write(`<h2>A: iskritus herbui stabdome monetos metima<h2>`)
 
         let i = 0;
         result = '';
+        skaicius = "S";
+        herbas = "H";
 
-        //a iskritus herbui stabdome monetos metima
         while (true) {
             sk = rand(0, 1);
             if (sk === 1) {
-                console.log("S");
+                document.write(skaicius);
             } if (sk === 0) {
-                console.log("H");
+                document.write(herbas);
             }
             if (sk === 0) break;
             result += sk;
             i++
         }
 
-        //b tris kartus iskritus herbui stabdome monetos metima
 
+        document.write(`<h2>B: tris kartus iskritus herbui stabdome monetos metima<h2>`)
 
-        console.log("B)");
+       let herbasTrys = 0;
 
-        i = 0;
-        result = "";
-        herbas = "H";
-        skaicius = "S";
-
-        while (i) {
+       while (herbasTrys < 3){
             sk = rand(0, 1);
-            let x = 3;
+            if (sk) {
+                document.write(skaicius)
+            } else {
+                document.write(herbas)
+                herbasTrys++
+            }
+       }
+
+       document.write(`<h2>C: tris kartus is eiles iskritus herbui, stabdome monetos metima<h2>`)
+
+        i = 0
+        let stringas = "";
+
+        while(true) {
+            sk=rand(0,1)
+            if (sk === 1) {
+                stringas += "S";
+            } 
             if (sk === 0) {
-                result += herbas;
-                if (herbas < x) {
-                    break
-                }
+                stringas += "H";
             }
-            if (sk === 1) {
-                result += skaicius;
-            }
-            i++
+            if (stringas.includes("HHH")) break;
+        }
+        document.write(stringas)
+        
+
+        document.write(`<h1>2. Zaidziam Saskem<h1>`)
+        document.write(`<h2>Laimi pirmas surinkes 222 taskus<h2>`)
+
+        let pointsKazys = rand(5, 25);
+        let pointsPetras = rand(10, 20);
+        let sumKazys = 0;
+        let sumPetras = 0;
+        let resKazys = '';
+        let resPetras = '';
+
+        while (true){
+            resKazys = pointsKazys + sumKazys;
+                if (resKazys >= 222) break;
+            resPetras = pointsPetras + sumPetras;
+                if (resPetras >= 222) break;
+            sumKazys++;
+            sumPetras++;
+        }
+        
+        document.write("Kazio tasku suma: " + resKazys + ";" + " Petro tasku suma: " + resPetras + "." + "<br>");
+
+        if (resKazys > resPetras) {
+            document.write("Partija laimejo: Kazys")
+        } else if (resKazys < resPetras) {
+            document.write("Partija laimejo: Petras")
+        } else {
+            document.write("Partija laimejo: lygiosios")
         }
 
-        console.log(result)
+        
 
-        // C tris kartus is eiles iskritus herbui, stabdome monetos metima
 
-        while (i < 1) {
-            sk = rand(0, 1);
-            if (sk === 1) {
-                console.log("S");
-            } if (sk === 0) {
-                console.log("H");
-            }
-            if (sk === 0) break;
-            result += sk;
-            i++
-        }
 
-        //2 
-
-        let kazys = rand(5, 25);
-        let petras = rand(10, 20);
-        let p = 0;
-        let rezultatas = '';
 
 
 
