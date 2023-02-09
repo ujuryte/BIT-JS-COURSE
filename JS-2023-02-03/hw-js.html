@@ -21,7 +21,6 @@
 
         document.write(`<h2>A: iskritus herbui stabdome monetos metima<h2>`)
 
-        let i = 0;
         result = '';
         skaicius = "S";
         herbas = "H";
@@ -35,9 +34,34 @@
             }
             if (sk === 0) break;
             result += sk;
-            i++
         }
 
+        // per paskaita:
+
+        // let i = 0;
+
+        // while(true) {
+        //     console.log("Esama interacija" + i)
+        //     if (i>=10)
+        //     break;
+
+        //     i++
+        // }
+
+        let rezultatas = '';
+
+        while(true) {
+            skaicius = rand(0,1);
+            
+            if (skaicius === 1) {
+                rezultatas += "S";
+            } else {
+                rezultatas += "H";
+                break;
+            }
+        }
+
+        document.write(rezultatas)
 
         document.write(`<h2>B: tris kartus iskritus herbui stabdome monetos metima<h2>`)
 
@@ -52,6 +76,25 @@
                 herbasTrys++
             }
        }
+
+       //per paskaita
+
+       let counter = 0;
+       rezultatas = ''
+
+       while(true){
+        skaicius = rand(0,1);
+        if (skaicius === 1) {
+                rezultatas += "S";
+        } else {
+                rezultatas += "H";
+                counter++
+        }
+            if (counter > 2)
+            break
+       }
+
+       document.write(rezultatas)
 
        document.write(`<h2>C: tris kartus is eiles iskritus herbui, stabdome monetos metima<h2>`)
 
@@ -69,6 +112,27 @@
             if (stringas.includes("HHH")) break;
         }
         document.write(stringas)
+
+        //per paskaita
+
+        counter = 0;
+        rezultatas = ''
+
+       while(true){
+        skaicius = rand(0,1);
+        if (skaicius === 1) {
+                rezultatas += "S";
+                counter = 0;
+        } else {
+                rezultatas += "H";
+                counter++
+        }
+            if (counter > 2)
+            break
+       }
+
+       document.write(rezultatas)
+
         
 
         document.write(`<h1>2. Zaidziam Saskem<h1>`)
@@ -99,6 +163,41 @@
         } else {
             document.write("Partija laimejo: lygiosios")
         }
+
+        //per paskaita
+
+        let petras = 0;
+        let kazys = 0;
+
+        while(true){
+            let p_taskai = rand(10,20);
+            let k_taskai = rand(5,25);
+
+            petras += p_taskai;
+            kazys += k_taskai;
+
+            if(p_taskai > k_taskai){
+                document.write("<div>Partija laimejo Petras, surinkes", p_taskai, "taskus</div>");
+            } else if (p_taskai === k_taskai){
+                document.write(`<div>Ivyko lygiosios</div>`)
+            } else {
+                document.write("<div>Partija laimejo Kazys, surinkes", k_taskai, "taskus</div>");
+            }
+
+            if(petras >= 222 || kazys >= 222){
+                if(petras>kazys){
+                document.write(`<h4>Zaidima laimejo Petras. Jo taskai: ${petras}</h4>`);
+                } else if(petras===kazys) {
+                    document.write(`Ivyko lygiosios`)
+                } else {
+                    document.write(`<h4>Zaidima laimejo Kazys. Jo taskai: ${kazys}</h4>`)
+                }
+                break
+            }
+        }
+
+        document.write(`<h5>Kazio resultatas: ${kazys} Petro rezultatas ${petras}</h5>`)
+        
 
         
 
