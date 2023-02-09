@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masyvai(Array)</title>
+</head>
+<body>
+    <script>
+        let masyvas = ['Televizorius', 10, false, undefined, "Masyvo pabaiga"];
+
+        console.log("1", masyvas)
+
+        //masyvo ilgis grazinamas:
+        console.log("2", masyvas.length);
+
+        let i = 0;
+
+        while (i<masyvas.length){
+            console.log("3", typeof masyvas[i])
+            i++
+        }
+
+         // {} - blokine apimtis, kintamasis viduje nebus randamas kitur
+
+        if(true){
+            let x = 10;
+        }
+
+        for (let i = 0; i<10; i++){
+            console.log("4. Incremento numers: " + i)
+        }
+
+        for (let i=0; i<masyvas.length; i++){
+            console.log("5. naudojant for()", masyvas[i])
+        }
+
+        //reiksmiu pridejimas
+
+        masyvas = ['Televizorius', 10, false, undefined, "Masyvo pabaiga"];
+
+        masyvas[6] = 99.99;
+
+        console.log("6-prideti i pabaiga", masyvas);
+
+        masyvas[masyvas.length] = 150;
+
+        console.log("7-prideti i pabaiga", masyvas);
+
+        masyvas.push("pushinam", "ir", "dar vienas");
+
+        console.log("8-prideti i pabaiga", masyvas);
+
+        let tusciasMasyvas = [];
+
+        tusciasMasyvas.push(10,20,30)
+
+        console.log("9-pridedam i tuscia", tusciasMasyvas)
+
+        tusciasMasyvas = new Array()
+
+        tusciasMasyvas.push(10,20,30)
+
+        console.log("9-naujo masyvo galimybe", tusciasMasyvas)
+
+        //pridejimas elementu i prieki
+
+        tusciasMasyvas[0]= "Pirmoji reiksme";
+
+        console.log("10-pridejimas i prieki", tusciasMasyvas)
+
+        // let naujasMasyvas = ['Pirmoji reiksme'];
+
+        // for(let i = 0; i< tusciasMasyvas.length; i++) {
+        //     naujasMasyvas{naujasMasyvas.length + 1} = tusciasMasyvas[i];
+        // }
+
+        // console.log("11-pridejimas i prieki", naujasMasyvas)
+
+        tusciasMasyvas.unshift("Pirmoji reiksme")
+
+        console.log("11-pridejimas i prieki", tusciasMasyvas)
+
+        //istrynimas is masyvo
+        //komanda delete
+
+        delete tusciasMasyvas[3];
+
+        console.log("12-istrinimas su delete", tusciasMasyvas);
+
+        tusciasMasyvas.splice(2, 1)
+
+        console.log("13-istrinimas su splice()", tusciasMasyvas);
+
+        tusciasMasyvas [1] = "Paskutinis elementas";
+
+        console.log("14-pakeitimas", tusciasMasyvas);
+
+
+
+
+
+
+    </script>
+</body>
+</html>
