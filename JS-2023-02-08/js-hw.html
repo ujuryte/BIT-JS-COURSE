@@ -20,22 +20,51 @@
         document.write(`<h1>1. Vinies Kalimas<h1>`)
         document.write(`<h2>A: ikalti 5 vinis mazais smugiais. Kiek reikes smugiu?<h2>`)
 
-        // let smugis = 0;
-        // let gylis = 85
-        // let smugioGylis = rand (5,20)
-        // let vinys = 5;   
-        // let result = ""     
-
-        // while (vinys>=1){
-        //    if (gylis >= 0){
-        //     gylis = gylis - smugioGylis
-        //     smugis++
-        //    }
-        //    result += Math.max(smugis)
-        //     vinys-- 
+               
+        // for(let i=0; i<10; i++) {
+        //     console.log(`ciklas sukas ${i} karta`)
+        //     if (i > 5);
+        //     break
         // }
 
-        // document.write(result)
+        let vinis = 425;
+        let smugiai = 0;
+
+        for(let i=0; i<100;i++){
+            vinis -= rand(5,20);
+            smugiai++;
+
+            if(vinis <= 0)
+            break;
+
+        }
+
+        document.write(`<div>(naudojant for()) Smugiu viniai ikalti prireike: ` + smugiai + `</div>`)
+
+        vinis = 425;
+        smugiai= 0
+         
+        while (vinis>=0){
+            vinis -= rand(5,20)
+            smugiai++;
+        }
+
+        document.write(`<div>(naudojant while()) Smugiu viniai ikalti prireike: ` + smugiai + `</div>`)
+
+        document.write(`<h2>B: ikalti 5 vinis dideliais smugiais. Kiek reikes smugiu?<h2>`)
+
+        vinis = 425;
+        smugiai= 0
+         
+        while (vinis>=0){
+            if(rand(0,1))
+                continue;
+
+            vinis -= rand(20,30)
+            smugiai++;
+        }
+
+        document.write(`<div>(naudojant while()) Dideliu smugiu viniai ikalti prireike: ` + smugiai + `</div>`)
 
     </script>
 </body>
