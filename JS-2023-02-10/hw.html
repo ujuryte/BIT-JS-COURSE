@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 2023 02 10</title>
+</head>
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        document.write(`<h2>1: Sugeneruoti masyva is 30 elementu<h2>`)
+
+        let tuscias = []
+        counter = 0
+
+        for (let i = 0; i<30; i++){
+            tuscias.push(rand(5,25))
+                if (tuscias[i] > 10)
+                    counter++
+        }
+
+        // for (let i = 0; i<30; i++){
+        //     tuscias[tuscias.length] = rand(5,25)
+        // }
+
+        document.write(tuscias)
+
+        document.write("<div>2A: Skaiciu didesniu uz 10 yra: ",counter, "</div>")
+
+        //per paskaita
+            // for of ciklas grazina kiekviena array elemento reiksme
+        // for(let element of tuscias){
+        //     console.log(elementas)
+        // }
+            // for in ciklas grazina kiekviena array elemento indeksa
+        // for(let index in tuscias){
+        //     console.log(index)
+        // }
+
+        counter = 0
+
+        for(let element of tuscias){
+            if (element > 10)
+                counter++
+        }
+
+        document.write("<div>2A: (su for..of) Skaiciu didesniu uz 10 yra: ",counter, "</div>")
+
+        largest = 0;
+
+        for (let i = 0; i<tuscias.length; i++){
+            if (tuscias[i]>largest)
+                largest = tuscias[i]
+        }
+
+        document.write("<div>2B: Didziausias skaicius masyve yra: ", largest, ", jo indeksas: ", tuscias.indexOf(largest), "</div>")
+
+        //per paskaita
+
+        max = 0
+
+        for (let element of tuscias) {
+            if (element > max){
+                max = element
+            }
+        }
+
+        let indeksas = []
+
+        for (let index in tuscias){
+            if(tuscias[index] === max)
+                indeksas.push(index)
+        }
+
+        document.write("<div>2B: (su for of/in) Didziausias skaicius masyve yra: ", max, ", jo indeksas: ", indeksas, "</div>")
+
+        lyginiai = 0
+
+        for (let i = 0; i<tuscias.length; i++){
+            if (tuscias[i] % 2 === 0)
+                lyginiai++
+        }
+
+        document.write("<div>2C: Lyginiu skaiciu yra:", lyginiai, "</div>")
+
+        //per paskaita
+
+        suma = 0
+
+        for(let i in tuscias) {
+            if(i % 2 === 0)
+                suma+=tuscias[i]
+        }
+
+        document.write("<div>2C: (su for in) Lyginiu skaiciu indeksu suma yra:", suma, "</div>")
+
+        naujasMas = []
+
+        for(let i = 0; i<tuscias.length; i++){
+            element = tuscias[i]
+            naujasMas.push(tuscias[i]-tuscias.indexOf(element))
+        }
+
+        document.write("<div>2D: Naujas masyvas (pirmo masyvo reiksme - jos indexas): ", naujasMas, "</div>")
+
+        //per paskaita
+
+        let naujasMasyvas = []
+
+        for(let i in tuscias){
+            naujasMasyvas.push(tuscias[i] - i)
+        }
+
+        document.write("<div>2D: (su for..in) Naujas masyvas (pirmo masyvo reiksme - jos indexas): ", naujasMasyvas, "</div>")
+
+        for (let i = 0; i < 10; i++){
+            naujasMas.push(rand(5,25))
+        }
+
+        document.write("<div>2E: Masyvas + 10 nauju reiksmiu: ", naujasMas, "</div>")
+
+        //per paskaita
+
+        for(let i = 0; i < 10; i++){
+            naujasMasyvas[naujasMasyvas.length] = rand(5,25)
+        }
+
+        document.write("<div>2E: (per paskaita) Masyvas + 10 nauju reiksmiu: ", naujasMasyvas, "</div>")
+
+        neporiniai = [];
+        poriniai = [];
+
+        for (let i= 0; i < naujasMas.length; i++){
+            if (naujasMas[i] % 2 === 0){
+                poriniai.push(naujasMas[i])
+            } else {
+                neporiniai.push(naujasMas[i])
+            }
+        }
+
+        document.write("<div>2F: Porinis Masyvas: ", poriniai, "</div>")
+        document.write("<div>2F: Neporinis Masyvas: ", neporiniai, "</div>")
+
+        for (let i= 0; i < naujasMas.length; i++) {
+            if (naujasMas[i] % 2 === 0 && naujasMas[i] > 15)
+                naujasMas[i] = 0;
+        }
+
+        document.write("<div>2G: Masyvo porinius skaicius > 15 pakeisti 0: ", naujasMas, "</div>")
+
+        
+        document.write("<div>2H: pirmas indexas, kurio reiksme > 10: </div>")
+         
+        let indeksai = []
+
+        document.write("<div>2I: poriniai indeksai: </div>")
+
+        document.write(`<h2>3: Sugeneruoti masyva is 200 elementu su atsitiktinemis raidemis<h2>`)
+
+        let raides = ["A", "B", "C", "D"]
+        let naujas = []
+         
+
+        for (i=0; i<200; i++){
+            naujas.push(Math.floor(Math.random()*raides.length))
+        }
+
+        document.write(naujas)
+
+        // per paskaita
+
+        masyvas = []
+
+        for (let i = 0; i<30; i++){
+            masyvas[masyvas.length] = rand(5,25)
+        }
+
+        console.log(masyvas);
+
+        masyvas.splice(5,1)
+
+        console.log(masyvas)
+
+    </script>
+</body>
+</html>
