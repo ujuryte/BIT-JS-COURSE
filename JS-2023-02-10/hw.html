@@ -147,6 +147,22 @@
         document.write("<div>2F: Porinis Masyvas: ", poriniai, "</div>")
         document.write("<div>2F: Neporinis Masyvas: ", neporiniai, "</div>")
 
+        // per paskaita
+
+        let pirmasMasyvas = []
+        let antrasMasyvas = []
+
+        for(let i in tuscias) {
+            if(i % 2 === 0){
+                antrasMasyvas.push(tuscias[i])
+            } else {
+                pirmasMasyvas.push(tuscias[i])
+            }
+        }
+
+        document.write("<div>2F: (per paskaita) Porinis indeksu Masyvas: ", antrasMasyvas, "</div>")
+        document.write("<div>2F: (per paskaita) Neporinis indeksu Masyvas: ", pirmasMasyvas, "</div>")
+
         for (let i= 0; i < naujasMas.length; i++) {
             if (naujasMas[i] % 2 === 0 && naujasMas[i] > 15)
                 naujasMas[i] = 0;
@@ -154,12 +170,36 @@
 
         document.write("<div>2G: Masyvo porinius skaicius > 15 pakeisti 0: ", naujasMas, "</div>")
 
+        //per paskaita
+
+        for(let i in tuscias){
+            if(i % 2 === 0 && tuscias[i]>15)
+                tuscias[i] = 0
+        }
+
+        document.write("<div>2G: (per paskaita) Masyvo porinius skaicius > 15 pakeisti 0: ", naujasMas, "</div>")
         
-        document.write("<div>2H: pirmas indexas, kurio reiksme > 10: </div>")
+
+        //per paskaita
+
+        let pirmasIndeksas;
+
+        for(let i in tuscias) {
+            if(tuscias[i] > 10){
+                pirmasIndeksas = i;
+                break
+            }
+        }
+
+        document.write(`<div>2H: (per paskaita) pirmas indexas, kurio reiksme > 10: ${pirmasIndeksas}</div>`)
          
         let indeksai = []
 
-        document.write("<div>2I: poriniai indeksai: </div>")
+        for(let i = 0; i < tuscias.length; i++){
+                tuscias.splice(i,1);
+        }
+
+        document.write(`<div>2I: (per paskaita) isemus porinius indeksus: ${tuscias} </div>`)
 
         document.write(`<h2>3: Sugeneruoti masyva is 200 elementu su atsitiktinemis raidemis<h2>`)
 
@@ -187,6 +227,16 @@
 
         console.log(masyvas)
 
+
+
+        testinisMasyvas = []
+
+        testinisMasyvas[50] = 'test';
+
+        for(let i = 0; i < testiniMasyvas.length; i++){
+            console.log(testinisMasyvas[i])
+        }
+        
     </script>
 </body>
 </html>
