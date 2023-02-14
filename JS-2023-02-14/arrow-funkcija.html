@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arrow funkcija</title>
+</head>
+<body>
+    <script>
+        
+        let funkcija = function () {
+            console.log("anonimine funkcija")
+        }
+
+        funkcija();
+
+        //arrow funkcija
+        let arrowFunkcija = (parametras) => {
+            console.log(parametras)
+        }
+
+        arrowFunkcija("Sveiki")
+
+        let callback = (cb) => {
+            cb();
+        }
+
+        callback(() => {
+            console.log("Pasisveikinimas su arrow funkcija")
+        })
+
+
+        let callback2 = (cb) => {
+            cb("BMW");
+        }
+
+        callback2(automobilis => {
+            console.log("Jusu automobilis yra:" + automobilis)
+        })
+
+        let callback3 = (cb) => {
+            cb("BMW", "1998");
+        }
+
+    //    function pranasas(automobilis, metai){
+    //         console.log("Mano automobilis yra:" + automobilis + " Jo metai:" + metai)
+    //     }
+
+    //     callback3(pranasas)
+
+        callback3((automobilis, metai) => {
+            console.log("Jusu automobilis yra:" + automobilis + " Jo metai:" + metai)
+        })
+
+
+        //su grazinama reiksme
+
+        function multiply(a, b) {
+            return a * b
+        }
+
+        console.log(multiply(10,3))
+
+        //arrow funkcijos aprasymas su grazinama reiksme
+
+        const arrMultiply = (a, b) => {
+            return a * b;
+        }
+        
+        console.log(arrMultiply(5,5))
+
+        //jeigu funkcijoje atliekamas veiksmas yra vienos eilutes ilgio
+
+        const arrMult = (a, b) => a * b;
+
+        console.log(arrMult(8, 12))
+
+
+
+    </script>
+</body>
+</html>

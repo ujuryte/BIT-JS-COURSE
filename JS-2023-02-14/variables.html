@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funkcijos-scopes-kintamuju tipai</title>
+</head>
+<body>
+    <script>
+        kintamasis = "labas";
+
+        console.log(kintamasis);
+
+        const x = 10;
+
+        console.log(x);
+
+        //bandant priskirti kita reiksme is naujo const, gausime error
+        // x = 15
+        // console.log(x)
+
+        console.log("const:")
+
+        const masyvas = [];
+
+        masyvas.push(10, 20, 30, 40)
+
+        console.log(masyvas)
+
+        masyvas[1] = 'Labas'
+
+        console.log(masyvas)
+
+        delete masyvas [2]
+
+        console.log(masyvas)
+
+        const object = {
+            pirmas: "Labas",
+            antras: "Pasauli"
+
+        }
+
+        console.log(object)
+
+        object.pirmas = "Viso"
+
+        console.log(object);
+
+        console.log("var:")
+
+        var pasisveikinimas = "Labas";
+        var pasisveikinimas = "Labas dar karta";
+
+        console.log(pasisveikinimas)
+
+        if(true){
+            var pasisveikinimas = 'Labas'
+        }
+
+        console.log(pasisveikinimas);
+
+        //funkcijos apimty deklaruoti kintamieji neigalus uz jos ribu
+
+        function hello() {
+            var labas = "Labas"
+        }
+
+        hello()
+
+        function sveiki() {
+            sveikinimas = "Labukas"
+        }
+
+        sveiki()
+        console.log(sveikinimas)
+
+        
+
+    </script>
+</body>
+</html>
