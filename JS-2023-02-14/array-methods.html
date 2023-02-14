@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS array methods</title>
+</head>
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        const masyvas = [];
+
+        for(let i = 0; i < 100; i++) {
+            masyvas.push(rand(5,30))
+        }
+
+        console.log(masyvas)
+
+        //sukurkite nauja masyva, prie kiekvienos seno masyvo reiksmes pridekite skaiciu 2
+
+        const naujasMasyvas = []
+
+        for (const reiksme of masyvas){
+            naujasMasyvas[naujasMasyvas.length] = reiksme + 2
+        }
+
+        console.log("for ciklas: " + naujasMasyvas)
+
+        const mapMasyvas = masyvas.map(function(reiksme){
+            return reiksme + 2;
+        })
+
+        console.log("map masyvas: " + mapMasyvas)
+
+        const arrMasyvas = masyvas.map(reiksme => reiksme + 2)
+
+        console.log("arrow masyvas: " + arrMasyvas)
+
+        //sukurti nauja masyva pasinaudodami senuoju ir pakeisti elementu reiksmes
+        // i 0 jei si yra didesne nei 20
+
+        const map = (funkcija, masyvas) => {
+            const naujasMasyvas = []
+            for(let i = 0; i < masyvas.length; i++) {
+                naujasMasyvas.push(funkcija(masyvas[i], i));
+            }
+            return naujasMasyvas
+        }
+
+        // const customMasyvas = map((reiksme, indeksas) => {
+        //     if(reiksme > 20)
+        //         return 0
+
+        //     return reiksme
+        // }, masyvas)
+
+        const customMasyvas = map(reiksme => reiksme > 20 ? 0 : reiksme, masyvas)
+
+        console.log(customMasyvas)
+
+        // let x = 21
+
+        // x = x > 20 ? 0 : x;
+
+        // x > 20 salyga
+        // ? 0 kokia reiksme grazinti, jei salyga teisinga (if)
+        // : x kokia reiksme grazinti jei salyga neteisinga (else)
+
+        // forEach() metodas - paleidzia cikla masyvo reiksmes susigrazinti
+        // taciau negrazina reiksmiu i nauja masyva
+
+        customMasyvas.forEach(reiksme => console.log(reiksme))
+
+        //filter() metodas skirtas isfiltruoti reiksmes is masyvo,
+        // sugeneruodamas nauja masyva
+
+        //Salyga: masyve suraskite viskas reiksmes, kurios didesnes nei 20
+
+        // const filtruotasMas = masyvas.filter(reiksme => {
+        //     if(reiksme>20)
+        //         return true
+        //     return false
+        // })
+
+        // const filtruotasMas = masyvas.filter(reiksme => reiksme >20 ?true :false);
+
+        const filtruotasMas = masyvas.filter(reiksme => reiksme >20);
+
+        console.log(filtruotasMas)
+
+        //salyga: masyve suraskite viskas reiksmes, kurios didesnes nei 20 ir ju indeksai yra lyginiai
+
+        // const masyvasAntras = masyvas.filter((reiksme, index) => {
+        //     if(reiksme > 20 && index % 2 === 0)
+        //         return true;
+
+        //     return false;
+        // })
+        
+
+        const masyvasAntras = masyvas.filter((reiksme, index) => (reiksme > 20 && index % 2 === 0))  
+        
+        console.log(masyvasAntras);
+
+        //salyga: suraskite pirma elementa masyve, kurio reiksme < 10
+        // find()
+
+            const findMas = masyvas.find(reiksme => reiksme < 10)
+
+            console.log(findMas);
+
+         //salyga: suraskite pirma indeksa masyve, kurio reiksme < 10
+
+         const findInd = masyvas.findIndex(reiksme => reiksme < 10)
+
+         console.log (findInd)
+
+         //findLast() - paskutine reiksme
+         //findLastIndex() - paskutinis indeksas
+
+
+
+    </script>
+</body>
+</html>
