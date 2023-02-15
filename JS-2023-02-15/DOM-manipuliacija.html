@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM manipuliacija</title>
+</head>
+<body>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, impedit?
+    <div style="margin-top: 25px;">
+        <button onclick="changeColor()">Spalva</button>
+        <button class="eventListener">Dydis</button>
+    </div>
+    <script>
+        //elements >> properties <- turinio medis (DOM Document object model)
+    
+    const dom = {
+        value:'',
+        //objektiniam programavime funkcija yra vadinama metodu
+        setValue: function(reiksme){
+            //this raktazodis grazina objekta kuriame yra patalpintas metodas
+            // console.log(this)
+
+            this.value = reiksme
+
+            return this;
+        },
+        deleteValue: function() {
+            delete this.value
+
+            return this
+        },
+        children: {
+            style: {
+                color: ''
+            }
+        }
+    }
+
+    // dom.value = 'Test'
+    dom.setValue("Priskirtas tekstas is argumento").deleteValue().setValue("Po istrynimo grazinta reiksme")
+
+    dom.children.style.color = 'black'
+
+
+    console.log(dom)
+
+    //stiliaus modifikavimas
+    document.querySelector('body').style.color = 'red'
+    document.querySelector('body').style.backgroundColor = 'black'
+
+    function changeColor() {
+        if(document.querySelector("body").style.color === 'red'){
+        document.querySelector("body").style.backgroundColor = 'green';
+        document.querySelector("body").style.color = 'white';
+        } else {
+        document.querySelector('body').style.color = 'red'
+        document.querySelector('body').style.backgroundColor = 'black'
+        }
+    }
+
+    document.querySelector('.eventListener').addEventListener("click", function() {
+        const body = document.querySelector('body')
+        if(body.style.fontSize === ''){
+        body.style.fontSize = '18px';
+        } else {
+            const oldValue = +body.style.fontSize.replace('px', '')
+            body.style.fontSize = oldValue + 2 + 'px';
+        }
+    })
+
+
+    //stringo konvertavimas i skaiciu:
+
+    // const x = parseFloat('10.20')
+    // const y = 20
+
+    // console.log(x+y)
+
+    // const x = parseInt('10')
+    // const y = 20
+
+    // console.log(x+y)
+
+    // const x = '10.20'
+    // const y = 20
+
+    // console.log(+x+y)
+
+    // const x = +'10.20'
+    // const y = 20
+
+    // console.log(x+y)
+
+    // const x = '10'
+    // const y = '20'
+
+    // console.log(+x + +y)
+    // console.log(parseInt(x) + parseInt(y))
+    
+    
+    </script>
+</body>
+</html>
