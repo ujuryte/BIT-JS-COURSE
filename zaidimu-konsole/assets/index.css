@@ -92,7 +92,11 @@ button {
     display:none;
 }
 
+#gg-frame {
+    display:none;
+}
+
 #tbl {
     display:none;
-    margin-left: 50px;
+    width:50%;
 }

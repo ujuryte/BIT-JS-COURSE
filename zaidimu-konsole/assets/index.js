@@ -1,23 +1,24 @@
 const screen = document.querySelector('#screen')
 const power = document.querySelector('#powerOn');
 const ytFrame = document.querySelector('#yt-frame');
+const ggFrame = document.querySelector('#gg-frame');
 const gameTable = document.querySelector('#tbl');
 screen.style.background = "black";
 power.style.color = "black";
 
 const games = [
     {
-        photo_url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+        photo_url: "/zaidimu-konsole/assets/foto/hogwarts.jpg",
         pavadinimas: "Hogwarts Legacy",
         kaina:"40.99 EUR"
     },
     {
-        photo_url:"..\assets\foto\gta.jpg",
+        photo_url:"/zaidimu-konsole/assets/foto/gta.jpg",
         pavadinimas:"Grand Theft Auto IV",
         kaina: "8.99 EUR"
     },
     {
-        photo_url:"..\assets\foto\elden_ring.jpeg",
+        photo_url:"/zaidimu-konsole/assets/foto/elden_ring.jpeg",
         pavadinimas:"Elden Ring",
         kaina: "39.99 EUR"
     }
@@ -31,15 +32,14 @@ function powerBtn(){
         power.style.color = "black";
         ytFrame.style.display = "none";
         gameTable.style.display = "none";
-        console.log("veikia A")
+        ggFrame.style.display = "none";
     }else {
         screen.style.background = "black";
         power.innerHTML = `Iki pasimatymo!`;
         power.style.color = "white";
         ytFrame.style.display = "none";
         gameTable.style.display = "none";
-        console.log("veikia B")
-        
+        ggFrame.style.display = "none";        
     }
 }
 
@@ -48,6 +48,7 @@ function tvBtn(){
     ytFrame.style.display = "unset";
     power.innerHTML = '';
     gameTable.style.display = "none";
+    ggFrame.style.display = "none";
 }
 
 function backBtn(){
@@ -56,6 +57,7 @@ function backBtn(){
         power.style.color = "black";
         ytFrame.style.display = "none";
         gameTable.style.display = "none";
+        ggFrame.style.display = "none";
 }
 
 function tblBtn() {
@@ -63,18 +65,27 @@ function tblBtn() {
     gameTable.style.display = "unset";
     ytFrame.style.display = "none";
     power.innerHTML = '';
+    ggFrame.style.display = "none";
 
     document.querySelector('tbody').innerHTML = '';
 
-    games.forEach((games, indeksas) => {
+    games.forEach((games) => {
         document.querySelector('tbody').innerHTML += `
     <tr>
-        <td>${games.nuotrauka}</td>
-        <td>${games.pavadinimas}</td>
-        <td>${games.kaina}</td>
+        <td><img src="${games.photo_url}" style='height:50px'></td>
+        <td style="vertical-align:middle">${games.pavadinimas}</td>
+        <td style="vertical-align:middle">${games.kaina}</td>
     </tr>
     `;
     })
+}
+
+function ggBtn() {
+    ggFrame.style.display = "unset";
+    screen.style.background = "white";
+    ytFrame.style.display = "none";
+    power.innerHTML = '';
+    gameTable.style.display = "none";
 }
 
 
