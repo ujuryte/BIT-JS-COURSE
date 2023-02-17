@@ -27,16 +27,17 @@ const games = [
 function powerBtn(){
     
     if(screen.style.background === "black"){
-        screen.style.background = "white";
+        screen.style.background = "url('/zaidimu-konsole/assets/foto/windows.jpg')";
+        screen.style.backgroundSize = "cover";
         power.innerHTML = `Sveiki sugrįžę!`;
-        power.style.color = "black";
+        power.style.display = "unset"
         ytFrame.style.display = "none";
         gameTable.style.display = "none";
         ggFrame.style.display = "none";
     }else {
         screen.style.background = "black";
         power.innerHTML = `Iki pasimatymo!`;
-        power.style.color = "white";
+        power.style.display = "unset"
         ytFrame.style.display = "none";
         gameTable.style.display = "none";
         ggFrame.style.display = "none";        
@@ -49,12 +50,14 @@ function tvBtn(){
     power.innerHTML = '';
     gameTable.style.display = "none";
     ggFrame.style.display = "none";
+    power.style.display = "none";
 }
 
 function backBtn(){
-        screen.style.background = "white";
+        screen.style.background = "url('/zaidimu-konsole/assets/foto/windows.jpg')";
+        screen.style.backgroundSize = "cover";
         power.innerHTML = `Sveiki sugrįžę!`;
-        power.style.color = "black";
+        power.style.display = "unset";
         ytFrame.style.display = "none";
         gameTable.style.display = "none";
         ggFrame.style.display = "none";
@@ -66,6 +69,7 @@ function tblBtn() {
     ytFrame.style.display = "none";
     power.innerHTML = '';
     ggFrame.style.display = "none";
+    power.style.display = "none";
 
     document.querySelector('tbody').innerHTML = '';
 
@@ -86,6 +90,7 @@ function ggBtn() {
     ytFrame.style.display = "none";
     power.innerHTML = '';
     gameTable.style.display = "none";
+    power.style.display = "none";
 }
 
 

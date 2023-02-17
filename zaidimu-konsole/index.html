@@ -8,11 +8,11 @@
     <link href="assets/index.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
-<body>
+<body class="bg-body-secondary">
     <div class="tv">
         <img src="assets/foto/tv.png" alt="">
         <div id="screen">
-            <h1 id="powerOn"></h1>
+            <h1 id="powerOn" class="text-white bg-dark opacity-75 rounded-pill"></h1>
             <iframe id="yt-frame" width="100%" height="100%" src="https://www.youtube.com/embed/y-28CssnqEE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <table id="tbl" class="table">
                 <thead>
@@ -27,14 +27,26 @@
             <iframe id="gg-frame" width="100%" height="100%" style="visibility:visible" src="https://www.bing.com/"></iframe>
         </div>
     </div>
-    <div class="console">
-        <img src="assets/foto/pultas.jpeg" alt="">
-        <button id="btn-white" onclick="powerBtn()"></button>
-        <button id="btn-y" onclick="tvBtn()"></button>
-        <button id="btn-b" onclick="backBtn()"></button>
-        <button id="btn-x" onclick="tblBtn()"></button>
-        <button id="btn-a" onclick="ggBtn()"></button>
+    <div class="console d-flex">
+            <img src="assets/foto/pultas_low.png" alt="">
+            <button id="btn-white" onclick="powerBtn()"></button>
+            <button id="btn-y" onclick="tvBtn()"></button>
+            <button id="btn-b" onclick="backBtn()"></button>
+            <button id="btn-x" onclick="tblBtn()"></button>
+            <button id="btn-a" onclick="ggBtn()"></button>
+        <div class="card text-bg-secondary mb-3" style="max-width: 20rem;">
+            <div class="card-header">Žaidimų konsolė</div>
+            <div class="card-body">
+              <h5 class="card-title">Pultelio naudojimo instrukcija</h5>
+              <p class="card-text">Baltas mygtukas - įjungimas/išjungimas</p>
+              <p class="card-text">Y mygtukas - TV programa</p>
+              <p class="card-text">B mygtukas - pradžios ekranas</p>
+              <p class="card-text">X mygtukas - žaidimų parduotuvė</p>
+              <p class="card-text">A mygtukas - paieškos sistema</p>
+            </div>
+        </div>
     </div>
+    
     <script src="assets/index.js"></script>
 </body>
 </html>
