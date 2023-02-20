@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeOut, setInterval</title>
+</head>
+
+<body>
+    <script>
+        //kai reikia atlikti viena veiksma po uzlaikymo:
+        setTimeout(
+            () => {
+                console.log('suveike')
+            },
+            1000
+        )
+
+        //kai reikia kad veiksmas kartotusi kas nurodyta laiko tarpa:
+        // let x = 0;
+
+        // setInterval(
+        //     () => {
+        //         if (x > 5)
+        //             return;
+        //         console.log('suveike intrvalas')
+        //         x++
+        //     },
+        //     1000
+        // )
+
+
+       const intervalID = setInterval(
+            () => {
+                console.log('suveike pries isvalyma intrvalas')
+            },
+            1000
+        )
+        
+            clearInterval(intervalID);
+    </script>
+</body>
+
+</html>
