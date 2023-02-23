@@ -29,6 +29,12 @@
             <h1>Dog breeds (gallery)</h1>
             <div class="pictures"></div>
         </div>
+        <div class="dog-list mt-5">
+            <h1>Dog List</h1>
+            <select class="all-dogs form-control" onchange="changeBreed(event)">
+            </select>
+            <div class="breed-pic"></div>
+        </div>
     </div>
 
     <script>
@@ -54,22 +60,18 @@
                 });
         })
 
-        let dogArray
+        let dogArray = []
 
         fetch('https://dog.ceo/api/breeds/list/all')
             .then((result) => result.json())
             .then((result) => {
                
                 const breedString = JSON.stringify(result.message)
-                console.log(breedString)
-                //     dogArray.push(breedString)
-                
-                // console.log(do)
-                // for (let dogs of dogArray) {
-                //     console.log(dogs)
-                // }
+                dogArray.push(breedString)
 
             })
+
+            console.log(dogArray)
 
 
 
@@ -89,6 +91,25 @@
                     // }
                 });
         }
+
+        const select = document.querySelector('all-dogs')
+
+        fetch('https://dog.ceo/api/breeds/list/all')
+            .then((result) => result.json())
+            .then((result) => {
+                console.log(result)
+            //    select.innerHTML = `<option>${result.message}</option>`
+
+            })
+
+        const changeBreed = (e) => {
+                console.log(e.target.value)
+                fetch(`https://dog.ceo/api/breed/${e.target.value}/images/random`)
+                .then((atsakymas) => atsakymas.json())
+                .then((atsakymas) => {
+                document.querySelector('.rezultatas').innerHTML = `<img src="${atsakymas.message[0]}" alt="">`
+            });
+            }
 
     </script>
 </body>
