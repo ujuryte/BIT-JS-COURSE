@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async-await</title>
+</head>
+
+<body>
+    <script>
+
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        // await komanda galima tik:
+        // asinchronineje funkcijoje
+        // modulyje
+
+        async function palaukimas() {
+
+            const rezultatas = await new Promise((gauta, negauta) => {
+                setTimeout(() => {
+                    if (rand(0, 1)) {
+                        gauta('pavyko')
+                    } else {
+                        negautas('nepavyko')
+                    }
+                }, 3000)
+            })
+
+            
+            return rezultatas
+            
+        }
+
+        async function palaukimoIssaukimas(){
+            // console.log('uzklausa paleista')
+
+            // console.log(await palaukimas())
+
+            // console.log('kodas baigtas')
+
+            try {
+                // tikriname ar ivyks klaida
+                console.log(await palaukimas());
+
+                console.log('klaida neivyko')
+            } catch(klaida) {
+                //atliekame veiksmus jei ivyko klaida
+                console.log(klaida)
+            }
+        }
+
+        palaukimoIssaukimas()
+
+        
+
+        // async function kurtiUzklausas(){
+        //     const google = await fetch('https://google.com')
+        //     const googleResult = await google.text()
+
+        //     const yahoo = await fetch('https://yahoo.com')
+        //     const yahooResult = await yahoo.text()
+
+        //     const apple = await fetch('https://apple.com')
+        //     const appleResult = await apple.text()
+
+        //     const delfi = await fetch('https://delfi.lt')
+        //     const delfiResult = await delfi.text()
+        // }
+
+        
+
+    </script>
+</body>
+
+</html>
