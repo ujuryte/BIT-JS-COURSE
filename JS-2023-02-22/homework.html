@@ -44,16 +44,15 @@
         const emptyInput = 'No route found for "GET http://dog.ceo/api/breed//images/random" (from "http://127.0.0.1:5500/") with code: 0'
 
         searchInput.addEventListener('search', (event) => {
-            console.log(event.target.value)
+            if(event.target.value === '')
+            return console.log('Neivestas joks tekstas');
             fetch(`https://dog.ceo/api/breed/${event.target.value}/images/random`)
                 .then((atsakymas) => atsakymas.json())
                 .then((atsakymas) => {
-                    console.log(atsakymas.message)
+                    console.log(atsakymas)
 
-                    if (atsakymas.message === notFound) {
+                    if (atsakymas.status === 'error') {
                         document.querySelector('.result').innerHTML = `<h3>Nuotrauka nerasta</h3>`
-                    } else if (atsakymas.message === emptyInput) {
-                        document.querySelector('.result').innerHTML = `<h3>Iveskite paieskos zodzius</h3>`
                     } else {
                         document.querySelector('.result').innerHTML = `<img src="${atsakymas.message}" alt="">`
                     }
