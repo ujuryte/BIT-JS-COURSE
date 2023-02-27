@@ -14,7 +14,9 @@
     <div class="card text-bg-dark mb-3" style="max-width: 30rem;">
         <div class="card-header">Timer</div>
         <div class="card-body">
-            <h5 class="card-title"></h5>
+            <div><input class="form-control" type="number" oninput="setTime(this.value)"></div>
+            <div class="card-title">
+            </div>
             <div class="d-flex">
                 <button class="btn btn-primary me-3" onclick="stop()">Stop</button>
                 <button class="btn btn-primary me-3" onclick="resume()">Resume</button>
@@ -50,16 +52,22 @@
 
         // timer()
 
+        let timerID = 0;
+        let currentTime = 0;
+        let time = 75; 
+
         function startTimer(duration, display) {
             let timer = duration, minutes, seconds;
-            const timerID = setInterval(function () {
-                minutes = parseInt(timer / 60, 10)
-                seconds = parseInt(timer % 60, 10);
+            timerID = setInterval(function () {
+                minutes = parseInt(timer / 60)
+                seconds = parseInt(timer % 60);
 
                 minutes = minutes < 10 ? "0" + minutes : minutes;
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
                 display.textContent = minutes + ":" + seconds;
+
+                currentTime = timer;
 
                 if (--timer < 0) {
                     timer = 0;
@@ -69,12 +77,29 @@
         }
 
         window.onload = function () {
-            let time = 150 / 2, // your time in seconds here
                 display = document.querySelector('.card-title');
             startTimer(time, display);
         };
 
+        function reset() {
+            clearInterval(timerID);
+                display = document.querySelector('.card-title');
+            startTimer(time, display);
+        }
+
+        function stop() {
+            clearInterval(timerID);
+        }
         
+        function resume() {
+                display = document.querySelector('.card-title');
+            startTimer(currentTime, display);
+        }  
+
+        function setTime(val){
+            time = val
+            reset()
+        }
 
 
 
