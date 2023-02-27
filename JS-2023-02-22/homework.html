@@ -9,31 +9,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <style>
-        img {
-            max-height: 200px;
-        }
-
-        .search-engine {
-            height: 300px;
-        }
     </style>
 </head>
 
 <body>
     <div class="container mt-5">
-        <div class="search-engine border border-secondary-subtle">
+        <div class="col border border-secondary-subtle">
             <input type="search" class="form-control" placeholder="Search for breeds..">
-            <div class="result mt-5"></div>
+            <div class="result mt-5 card"></div>
         </div>
-        <div class="gallery border border-secondary-subtle mt-5">
+        <div class="col gallery border border-secondary-subtle mt-5">
             <h1>Dog breeds (gallery)</h1>
-            <div class="pictures"></div>
+            <div class="row row-cols-1 row-cols-md-3 g-4 pictures">
+                
+            </div>
         </div>
-        <div class="dog-list mt-5">
+        <div class="col dog-list mt-5">
             <h1>Dog List</h1>
-            <select class="all-dogs form-control" onchange="changeBreed(event)">
+            <select class="all-dogs form-control" oninput="changeBreed(event)">
             </select>
-            <div class="breed-pic"></div>
+            <div class="breed-pic card"></div>
         </div>
     </div>
 
@@ -54,61 +49,114 @@
                     if (atsakymas.status === 'error') {
                         document.querySelector('.result').innerHTML = `<h3>Nuotrauka nerasta</h3>`
                     } else {
-                        document.querySelector('.result').innerHTML = `<img src="${atsakymas.message}" alt="">`
+                        document.querySelector('.result').innerHTML = `<img class="img-thumbnail" src="${atsakymas.message}" alt="">`
                     }
                 });
         })
 
-        let dogArray = []
-
-        fetch('https://dog.ceo/api/breeds/list/all')
-            .then((result) => result.json())
-            .then((result) => {
-               
-                const breedString = JSON.stringify(result.message)
-                dogArray.push(breedString)
-
-            })
-
-            console.log(dogArray)
-
-
-
-        const picGallery = (event) => {
-
-            fetch(`https://dog.ceo/api/breed/${dogArray[0]}/images/random`)
+        searchInput.addEventListener('search', (event) => {
+            if(event.target.value === '')
+            return console.log('Neivestas joks tekstas');
+            fetch(`https://dog.ceo/api/breed/${event.target.value}/images`)
                 .then((atsakymas) => atsakymas.json())
                 .then((atsakymas) => {
-                    console.log(atsakymas.message)
+                    console.log(atsakymas)
 
-                    // if (atsakymas.message === notFound) {
-                    //     document.querySelector('.result').innerHTML = `<h3>Nuotrauka nerasta</h3>`
-                    // } else if (atsakymas.message === emptyInput) {
-                    //     document.querySelector('.result').innerHTML = `<h3>Iveskite paieskos zodzius</h3>`
-                    // } else {
-                    //     document.querySelector('.result').innerHTML = `<img src="${atsakymas.message}" alt="">`
-                    // }
+                    if (atsakymas.status === 'success') {
+                        atsakymas.message.forEach( (img) => {
+                            document.querySelector('.pictures').innerHTML += 
+                            `<div class="col">
+                                <div class="card">
+                                <img src="${img}" class="card-img-top">
+                                </div>
+                            </div>`
+                        })
+                    }
+                });
+        })
+
+        window.onload = () => {
+            fetch(`https://dog.ceo/api/breeds/list/all`)
+                .then((atsakymas) => atsakymas.json())
+                .then((atsakymas) => {
+                    
+                    if (atsakymas.status === 'success') {
+                        console.log(Object.entries(atsakymas.message))
+                        Object.entries(atsakymas.message).forEach((breed) => {
+                            if(!breed[1].length){
+                                document.querySelector('.all-dogs').innerHTML += `<option value="${breed[0]}">${breed[0]}</option>`
+                            } else {
+                                breed[1].forEach((sub) => {
+                                    document.querySelector('.all-dogs').innerHTML += `<option value="${breed[0]}/${sub}">${sub} ${breed[0]}</option>`
+                                })
+                            }
+                        })
+                    }
                 });
         }
 
-        const select = document.querySelector('all-dogs')
-
-        fetch('https://dog.ceo/api/breeds/list/all')
-            .then((result) => result.json())
-            .then((result) => {
-                console.log(result)
-            //    select.innerHTML = `<option>${result.message}</option>`
-
-            })
-
-        const changeBreed = (e) => {
-                console.log(e.target.value)
-                fetch(`https://dog.ceo/api/breed/${e.target.value}/images/random`)
+        function changeBreed(event) {
+            
+            fetch(`https://dog.ceo/api/breed/${event.target.value}/images/random`)
                 .then((atsakymas) => atsakymas.json())
                 .then((atsakymas) => {
-                document.querySelector('.rezultatas').innerHTML = `<img src="${atsakymas.message[0]}" alt="">`
-            });
-            }
+                    console.log(atsakymas)
+
+                    document.querySelector('.breed-pic').innerHTML = `<img class="img-thumbnail" src="${atsakymas.message}" alt="">`
+                });
+        }
+        
+
+        // let dogArray = []
+
+        // fetch('https://dog.ceo/api/breeds/list/all')
+        //     .then((result) => result.json())
+        //     .then((result) => {
+               
+        //         const breedString = JSON.stringify(result.message)
+        //         dogArray.push(breedString)
+
+        //     })
+
+        //     console.log(dogArray)
+
+
+
+        // const picGallery = (event) => {
+
+        //     fetch(`https://dog.ceo/api/breed/${dogArray[0]}/images/random`)
+        //         .then((atsakymas) => atsakymas.json())
+        //         .then((atsakymas) => {
+        //             console.log(atsakymas.message)
+
+        //             // if (atsakymas.message === notFound) {
+        //             //     document.querySelector('.result').innerHTML = `<h3>Nuotrauka nerasta</h3>`
+        //             // } else if (atsakymas.message === emptyInput) {
+        //             //     document.querySelector('.result').innerHTML = `<h3>Iveskite paieskos zodzius</h3>`
+        //             // } else {
+        //             //     document.querySelector('.result').innerHTML = `<img src="${atsakymas.message}" alt="">`
+        //             // }
+        //         });
+        // }
+
+        // const select = document.querySelector('all-dogs')
+
+        // fetch('https://dog.ceo/api/breeds/list/all')
+        //     .then((result) => result.json())
+        //     .then((result) => {
+        //         console.log(result)
+        //     //    select.innerHTML = `<option>${result.message}</option>`
+
+        //     })
+
+        // const changeBreed = (e) => {
+        //         console.log(e.target.value)
+        //         fetch(`https://dog.ceo/api/breed/${e.target.value}/images/random`)
+        //         .then((atsakymas) => atsakymas.json())
+        //         .then((atsakymas) => {
+        //         document.querySelector('.rezultatas').innerHTML = `<img src="${atsakymas.message[0]}" alt="">`
+        //     });
+        //     }
 
     </script>
 </body>
