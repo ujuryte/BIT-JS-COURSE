@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <style>
+            .car {
+                position:relative;
+            }
+            .image {
+                width:155px;
+                height: 155px;
+                border: 1px solid rgba(0, 0, 0, 0.175);
+                position:absolute;
+                border-radius: 50%;
+                top: 14px;
+                left: 295px;
+                background-color: white;
+
+            }
+
+            .image img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                padding: 5px;
+
+            }
+
+            .d-flex {
+                list-style: none;
+                justify-content: space-evenly;
+            }
+
+            .d-flex i {
+                font-size: 22px;
+                color: rgba(33, 37, 41, 0.267);
+            }
+
+            .icon {
+                position: relative;
+            }
+
+            .bi.bi-chevron-bar-up {
+                position:absolute;
+                top: -20px;
+                left: 1px;
+                display: none;
+                
+            }
+
+            .d-flex li:hover i{
+                color: #83ba43;
+                display:block;
+                transition: all 0.5s ease-in-out;
+            }
+
+        </style>
+</head>
+
+<body>
+    
+        <div class="card text-center mt-5" style="width:750px; margin: 0 auto;">
+            <div class="image"></div>
+            <div class="card-header" style="height:120px;"></div>
+            <div class="card-body" style="padding-top: 70px;">
+                <h5 class="card-title"></h5>
+                <h2 class="card-text mt-4"></h2>
+                    <ul class="d-flex mt-5">
+                        <li class="name">
+                            <i class="icon bi bi-person"><i class="arrow bi bi-chevron-bar-up"></i></i>
+                        </li>
+                        <li class="email">
+                            <i class="icon bi bi-envelope"><i class="bi bi-chevron-bar-up"></i></i>
+                        </li>
+                        <li class="birthday">
+                            <i class="icon bi bi-calendar4-week"><i class="bi bi-chevron-bar-up"></i></i>
+                        </li>
+                        <li class="address">
+                            <i class="icon bi bi-map"><i class="bi bi-chevron-bar-up"></i></i>
+                        </li>
+                        <li class="phone">
+                            <i class="icon bi bi-telephone"><i class="bi bi-chevron-bar-up"></i></i>
+                        </li>
+                        <li class="password">
+                            <i class="icon bi bi-lock"><i class="bi bi-chevron-bar-up"></i></i>
+                        </li>
+                    </ul>
+            </div>
+            <div class="card-footer text-muted" style="height:70px">
+                <button class="btn btn-primary mt-3">Generate User</button>
+            </div>
+        </div>
+    
+        <script>
+            //https://randomuser.me/api/
+            const nameItem = document.querySelector('.name');
+            const image = document.querySelector('.image');
+            const cardText = document.querySelector('.card-text');
+            const cardTitle = document.querySelector('.card-title');
+            const emailItem = document.querySelector('.email');
+            const birthdayItem = document.querySelector('.birthday');
+            const addressItem = document.querySelector('.address');
+            const phoneItem = document.querySelector('.phone');
+            const passwordItem = document.querySelector('.password')
+
+            fetch('https://randomuser.me/api/')
+            .then(resp => resp.json())
+            .then(data => {
+                const pictureUrl = data.results[0].picture.large;
+                image.innerHTML = `<img src="${pictureUrl}">`
+
+                const firstName = data.results[0].name.first;
+                const lastName = data.results[0].name.last;
+                
+                cardText.innerHTML = firstName + ' ' + lastName;
+                cardTitle.innerHTML = "Hi, my name is"
+
+
+                nameItem.addEventListener('mouseover', () => {
+                    const firstName = data.results[0].name.first;
+                    const lastName = data.results[0].name.last;
+                
+                cardText.innerHTML = firstName + ' ' + lastName;
+                cardTitle.innerHTML = "Hi, my name is"
+                })
+                
+                emailItem.addEventListener('mouseover', () => {
+                    const email = data.results[0].email
+
+                cardText.innerHTML = email;
+                cardTitle.innerHTML = "My email address is"
+                })
+
+                birthdayItem.addEventListener('mouseover', () => {
+                    const birthday = data.results[0].dob.date
+                    birthday.slice(0,11)
+                    
+                    cardText.innerHTML = birthday;
+                    cardTitle.innerHTML = "My birthday is"
+                })
+
+                addressItem.addEventListener('mouseover', () => {
+                    const addressNo = data.results[0].location.street.number
+                    const addressName = data.results[0].location.street.name
+
+                    cardText.innerHTML = addressNo + " " + addressName
+                    cardTitle.innerHTML = "My address is"
+                })
+
+                phoneItem.addEventListener('mouseover', () => {
+                    const phoneNo = data.results[0].cell
+
+                    cardText.innerHTML = phoneNo;
+                    cardTitle.innerHTML = 'My phone number is'
+                })
+
+                passwordItem.addEventListener('mouseover', () => {
+                    const password = data.results[0].login.password
+
+                    cardText.innerHTML = password;
+                    cardTitle.innerHTML = "My password is"
+                })
+            })
+        </script>
+</body>
+
+</html>
