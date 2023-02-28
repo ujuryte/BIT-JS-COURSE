@@ -21,70 +21,135 @@
 </head>
 <body>
     <div class="rezultatas"></div>
-    <div class="puslapiavimas">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-              <li class="page-item disabled">
-                <a class="page-link previous-page">Previous</a>
-              </li>
-              <li class="page-item current-page">
-                <span></span>
-              </li>
-              <li class="page-item">
-                <a class="page-link next-page">Next</a>
-              </li>
-            </ul>
-          </nav>
+    <div class="puslapiavimas"></div>
+
+    <div class="container mt-5">
+        <select class="form-control" name="breed" onchange="changePhoto(event)">
+            <option>Pasirinkite veisle</option>
+        </select>
+        <div class="result"></div>
     </div>
     <script>
     const limit = 9;
     const rezultatas = document.querySelector('.rezultatas')
     let page = 1;
+    let data = false;
+    let totalPages = 0;
 
 
     fetch('https://dog.ceo/api/breed/hound/images')
     .then(resp => resp.json())
     .then(resp => {
-        for(let i=(limit*page) - limit; i < limit * page; i++){
-            rezultatas.innerHTML += `<img src="${resp.message[i]}">`;
-        }
-
-        document.querySelector('.current-page span').textContent = page;
-
-        document.querySelector('.next-page').addEventListener('click', () => {
         
-            page++;
-            if(page > 1)
-                document.querySelector('.disabled').classList.remove('disabled');
 
-            rezultatas.innerHTML = '';
+        data = resp.message.slice(0,30);
+        totalPages = Math.ceil(data.length / limit);
 
-            for(let i=(limit*page) - limit; i < limit * page; i++){
-            rezultatas.innerHTML += `<img src="${resp.message[i]}">`;
-        }
-        })
+        listImages();
+        pagination();
 
-        document.querySelector('.previous-page').addEventListener('click', (event) => {
-            page--;
+        // document.querySelector('.current-page span').textContent = page;
+
+        // document.querySelector('.next-page').addEventListener('click', () => {
+        
+        //     page++;
+        //     if(page > 1)
+        //         document.querySelector('.disabled').classList.remove('disabled');
+
+        //     rezultatas.innerHTML = '';
+
+        //     for(let i=(limit*page) - limit; i < limit * page; i++){
+        //     rezultatas.innerHTML += `<img src="${resp.message[i]}">`;
+        // }
+        // })
+
+        // document.querySelector('.previous-page').addEventListener('click', (event) => {
+        //     page--;
             
             
 
-            rezultatas.innerHTML = '';
+        //     rezultatas.innerHTML = '';
 
 
-            for(let i=(limit*page) - limit; i < limit * page; i++){
-            rezultatas.innerHTML += `<img src="${resp.message[i]}">`;
-        }
+        //     for(let i=(limit*page) - limit; i < limit * page; i++){
+        //     rezultatas.innerHTML += `<img src="${resp.message[i]}">`;
+        // }
 
-        if(page === 1)
-                return event.target.parentElement.classList.add('disabled')
-        })
+        // if(page === 1)
+        //         return event.target.parentElement.classList.add('disabled')
+        // })
     });
 
-    function listImages(data){
-        for(let i=(limit*page) - limit; i < limit * page; i++){
-            rezultatas.innerHTML += `<img src="${resp.message[i]}">`;
+    function listImages(){
+        rezultatas.innerHTML = '';
+        
+        let resultsLimit = limit*page;
+        let condition = resultsLimit > data.length ? data.length : resultsLimit;
+
+        for(let i=(limit*page) - limit; i < condition; i++){
+            rezultatas.innerHTML += `<img src="${data[i]}">`;
         }
+    }
+
+    function pagination() {
+        
+
+        document.querySelector('.puslapiavimas').innerHTML = `<nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item ${page === 1 ? 'disabled' : ''}">
+                <a class="page-link previous-page" onclick="goToPage(${page - 1})">Previous</a>
+              </li>
+              <li class="page-item current-page">
+                <span>${page} / ${totalPages}</span>
+              </li>
+              <li class="page-item">
+                <a class="page-link next-page ${page === totalPages ? 'disabled' : ''}" onclick="goToPage(${page + 1})">Next</a>
+              </li>
+            </ul>
+          </nav>
+          `
+    }
+
+    function goToPage(target){
+
+        page = target;
+
+        pagination();
+
+        listImages(data);
+    }
+
+    //https://dog.ceo/api/breed/Affenpinscher/images/random
+
+    fetch('https://dog.ceo/api/breeds/list/all')
+    .then(resp => resp.json())
+    .then(resp => {
+        let result = '';
+        for(const key in resp.message){
+            //console.log(key, resp.message[key]);
+            let breed = capitalize(key);
+            result += `<option value="${key}">${breed}</option>`;
+
+            for(const sub of resp.message[key]){
+                
+                result += `<option value="${key}/${sub}">${capitalize(sub)} ${breed}</option>`
+            }
+        }
+
+        document.querySelector('[name="breed"]').innerHTML += result;
+    });
+
+    function capitalize(string) {
+        return string[0].toUpperCase() + string.slice(1);
+    }
+
+    function changePhoto(event) {
+        const selectedBreed = event.target.value;
+        fetch(`https://dog.ceo/api/breed/${selectedBreed}/images/random`)
+        .then(resp => resp.json())
+        .then(resp => {
+            document.querySelector('.result').innerHTML = `<img src='${resp.message}'>`
+        })
     }
     
     </script>
