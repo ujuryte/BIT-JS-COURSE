@@ -141,8 +141,9 @@
                 })
 
                 birthdayItem.addEventListener('mouseover', () => {
-                    const birthday = data.results[0].dob.date
+                    const birthday = data.results[0].dob.date.split('T')[0];
                     
+
                     cardText.innerHTML = birthday;
                     cardTitle.innerHTML = "My birthday is"
                 })

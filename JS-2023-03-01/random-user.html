@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random User (lecture)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f9f9f9;
+        }
+
+        .bg {
+            background-color: #7c7979;
+            height: 400px;
+        }
+
+        .business-card {
+            background-color: white;
+            border-radius: 5px;
+            max-width: 730px;
+            margin: -250px auto;
+            text-align: center;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .business-card::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 130px;
+            top: 0;
+            left: 0;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid grey;
+        }
+
+        .contents {
+            position: relative;
+            z-index: 1;
+        }
+
+        .photo img {
+            border: 1px solid grey;
+            border-radius: 50%;
+            padding: 5px;
+            width: 150px;
+        }
+
+        .type {
+            font-size: 18px;
+            font-weight: 400;
+            color: rgb(186, 186, 186);
+            padding: 35px 0 0;
+        }
+
+        .value {
+            font-size: 34px;
+            font-weight: 600;
+            line-height: 40px;
+        }
+
+        .icons {
+            box-sizing: border-box;
+            margin: 10px 0 0;
+            padding: 20px 0 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            font-size: 30px;
+            color: rgba(210, 209, 209, 0.927);
+            gap:40px;
+            height: 70px;
+            overflow: hidden;
+            
+        }
+
+        .icons li {
+            width: 40px;
+            transition: all 300ms ease-in-out;
+        }
+
+        .icons li.active {
+            margin-top: -61px;
+        }
+
+        .icons i {
+            display: block;
+
+        }
+
+        .icons i.active {
+            color: green;
+        }
+
+        .icons span {
+            display: block;
+            background-color: green;
+            height: 2px;
+            position: relative;
+            margin: 10px 0 5px;
+        }
+
+        .icons span::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            /* left: calc(50% - 3px)*/
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 3px 4px 3px;
+            border-color: transparent transparent green transparent;
+        }
+        .photo {
+            position:relative;
+        }
+
+        .photo button {
+            background-color: grey;
+            border:none;
+            padding: 7px 18px;
+            transition: all 300ms ease-in-out;
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            opacity: 0; 
+        }
+
+        .photo:hover button {
+            bottom:-20px;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg"></div>
+    <div class="business-card">
+        <div class="contents">
+            <div class="photo">
+                <div class="photo-holder"></div>
+                <button class="btn btn-primary" onclick="naujasZmogus()">New</button>
+            </div>
+            <div class="type"></div>
+            <div class="value"></div>
+            <ul class="icons">
+                <li data-type="My name is">
+                    <i class="bi bi-person"></i>
+                    <span></span>
+                    <i class="bi bi-person active"></i>
+                </li>
+                <li data-type="My email is">
+                    <i class="bi bi-envelope"></i>
+                    <span></span>
+                    <i class="bi bi-envelope active"></i>
+                </li>
+                <li data-type="My bday is">
+                    <i class="bi bi-calendar-check"></i>
+                    <span></span>
+                    <i class="bi bi-calendar-check active"></i>
+                </li>
+                <li data-type="My address is">
+                    <i class="bi bi-map"></i>
+                    <span></span>
+                    <i class="bi bi-map active"></i>
+                </li>
+                <li data-type="My phone is">
+                    <i class="bi bi-telephone"></i>
+                    <span></span>
+                    <i class="bi bi-telephone active"></i>
+                </li>
+                <li data-type="My password is">
+                    <i class="bi bi-lock"></i>
+                    <span></span>
+                    <i class="bi bi-lock active"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function naujasZmogus() {
+        fetch('https://randomuser.me/api/')
+            .then(resp => resp.json())
+            .then(resp => {
+                const person = resp.results[0];
+                document.querySelector('.photo-holder').innerHTML = `<img src='${person.picture.large}'>`;
+
+                document.querySelector('.type').textContent = 'Hi, my name is';
+                document.querySelector('.value').innerHTML = person.name.first + ' ' + person.name.last;
+            
+                // document.querySelector('.li:nth-child(1)').setAttribute('data-text', person.name.first + ' ' + person.name.last);
+                // document.querySelector('.li:nth-child(2)').setAttribute('data-text', person.email);
+                // document.querySelector('.li:nth-child(3)').setAttribute('data-text', person.dob.date);
+                // document.querySelector('.li:nth-child(4)').setAttribute('data-text', person.location.street.number + ' ' + person.location.street.name);
+                // document.querySelector('.li:nth-child(5)').setAttribute('data-text', person.cell);
+                // document.querySelector('.li:nth-child(6)').setAttribute('data-text', person.login.password);
+
+                document.querySelector('li:nth-child(1)').dataset.text = person.name.first + ' ' + person.name.last;
+                document.querySelector('li:nth-child(2)').dataset.text = person.email;
+                document.querySelector('li:nth-child(3)').dataset.text = person.dob.date.split('T')[0];
+                document.querySelector('li:nth-child(4)').dataset.text = person.location.street.number + ' ' + person.location.street.name;
+                document.querySelector('li:nth-child(5)').dataset.text = person.cell;
+                document.querySelector('li:nth-child(6)').dataset.text = person.login.password;
+
+            })
+        }
+
+            function keistiTeksta(e) {
+                document.querySelectorAll('.icons li').forEach(el => {
+                el.classList.remove('active');
+            })
+
+                e.target.classList.add('active');
+
+                document.querySelector('.value').textContent = e.target.dataset.text;
+                document.querySelector('.type').textContent = e.target.dataset.type;
+
+            }
+
+            document.querySelectorAll('.icons li').forEach(el => {
+                el.addEventListener('mouseenter', keistiTeksta)
+            })
+            
+            naujasZmogus();
+            
+    </script>
+</body>
+
+</html>
