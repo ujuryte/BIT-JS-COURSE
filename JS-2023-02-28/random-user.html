@@ -94,7 +94,7 @@
                     </ul>
             </div>
             <div class="card-footer text-muted" style="height:70px">
-                <button class="btn btn-primary mt-3">Generate User</button>
+                <button class="btn btn-primary mt-3" onclick="generateUser()">Generate User</button>
             </div>
         </div>
     
@@ -110,9 +110,11 @@
             const phoneItem = document.querySelector('.phone');
             const passwordItem = document.querySelector('.password')
 
+            function generateData() {
             fetch('https://randomuser.me/api/')
             .then(resp => resp.json())
             .then(data => {
+                
                 const pictureUrl = data.results[0].picture.large;
                 image.innerHTML = `<img src="${pictureUrl}">`
 
@@ -140,7 +142,6 @@
 
                 birthdayItem.addEventListener('mouseover', () => {
                     const birthday = data.results[0].dob.date
-                    birthday.slice(0,11)
                     
                     cardText.innerHTML = birthday;
                     cardTitle.innerHTML = "My birthday is"
@@ -168,6 +169,15 @@
                     cardTitle.innerHTML = "My password is"
                 })
             })
+        }
+
+        generateData()
+
+        function generateUser() {
+            generateData()
+        }
+
+
         </script>
 </body>
 
