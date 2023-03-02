@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail list</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #230312;
+        }
+
+        .container {
+            background-color: rgb(199, 131, 131);
+            border-radius: 25px;
+            max-width: 1100px
+        }
+
+        h1 {
+            color: rgb(244, 208, 48);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5 p-5">
+        <h1>Choose Your Drink</h1>
+        <div class="result row row-cols-4 gap-5 justify-content-center mt-5"></div>
+        <div class="ingredients mt-5 row">
+            <div class="col name">
+            </div>
+            <div class="col ingredients">
+                <h2>Ingredients</h2>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <script>
+        const limit = 12;
+
+        function listCocktails() {
+            const result = document.querySelector('.result')
+            result.innerHTML = '';
+
+            for (let i = 0; i < limit; i++) {
+                fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+                    .then(resp => resp.json())
+                    .then(data => {
+                        const cocktail = data.drinks[0];
+                        const img = cocktail.strDrinkThumb;
+                        const name = cocktail.strDrink;
+
+
+
+                        result.innerHTML += `
+                    <div class="card" style="width: 18rem;">
+                        <img src="${img}" class="card-img-top" alt="..." onclick="moreInfo()">
+                        <div class="card-body">
+                            <p class="card-text">${name}</p>
+                        </div>
+                    </div>
+                    `
+                    })
+            }
+        }
+
+        fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+            .then(resp => resp.json())
+            .then(data => {
+                console.log(data)
+                const cocktailData = data.drinks[0]
+                const nameDrink = document.querySelector('.name');
+                const imgDrink = document.querySelector('.img');
+                const ingredients = document.querySelector('.ingredients');
+
+                nameDrink.innerHTML = `<h2>${cocktailData.strDrink}</h2>
+                <img src="${cocktailData.strDrinkThumb}" alt="" style="max-width:400px">`
+
+                const ingredientsList = document.createElement('ul');
+
+                // Loop through the ingredients and add them to the list
+                for (let i = 1; i <= 15; i++) {
+                    const ingredient = cocktailData[`strIngredient${i}`];
+
+                    if (ingredient) {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = ingredient;
+                        ingredientsList.appendChild(listItem);
+                    }
+                }
+
+                // Append the list of ingredients to the ingredients div
+                ingredients.appendChild(ingredientsList);
+
+            })
+
+        listCocktails()
+
+        function moreInfo() {
+            console.log('veikia')
+        }
+
+    </script>
+</body>
+
+</html>
