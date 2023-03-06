@@ -58,7 +58,7 @@
                     if(drink['strIngredient' + i] || drink['strMeasure' + i])
                     ingredients += `<li>
                         ${drink['strIngredient' + i]}
-                        ${drink['strMeasure' + i] === 'null' ? '' : drink['strMeasure' + i]}
+                        ${drink['strMeasure' + i] === null ? '' : drink['strMeasure' + i]}
                         </li>`;
                 }
 
