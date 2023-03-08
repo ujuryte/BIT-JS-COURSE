@@ -1,0 +1,17 @@
+{
+  "name": "js-2023-03-07",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "chalk": "^5.2.0"
+  },
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "leisk": "node ."
+  },
+  "author": "",
+  "license": "ISC"
+}
+
