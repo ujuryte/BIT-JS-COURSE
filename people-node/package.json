@@ -12,5 +12,8 @@
   "type": "module",
   "devDependencies": {
     "@faker-js/faker": "^7.6.0"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0"
   }
 }
