@@ -39,6 +39,21 @@ app.get('/new-entry', (req,res) =>{
     res.render('new')
 })
 
+app.get('/single-post/:id', async (req,res) =>{
+    try {
+        let database = await fs.readFile('./database.json', 'utf-8');
+        database = JSON.parse(database);
+
+        const post = database[req.params.id];
+
+        res.render('single-post', { post })
+    } catch {
+        res.render('single-post', {
+            message: 'Atsiprasome, ivyko klaida'
+        })
+    }
+})
+
 //norint priimti duomenis post metodu, kreipiames i .post() funkcija
 
 app.post('/save-post', async (req,res) => {
@@ -57,4 +72,6 @@ app.post('/save-post', async (req,res) => {
     res.redirect('/')
 })
 
-app.listen(8000)
+
+
+app.listen(3000)

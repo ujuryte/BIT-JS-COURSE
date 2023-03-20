@@ -6,7 +6,9 @@
 <div class="row">
     {{#each posts}}
         <div class="col-4">
-            <img src="{{photo}}" alt="{{title}}">
+            <a href="/single-post/{{@key}}">
+                <img src="{{photo}}" alt="{{title}}">
+            </a>
             <h3>{{title}}</h3>
             <p>{{excerpt}}</p>
         </div>
