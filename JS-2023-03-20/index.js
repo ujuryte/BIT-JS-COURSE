@@ -13,17 +13,44 @@ app.use(express.urlencoded({
     extended: true
 }))
 
-app.get('/', (req,res) =>{
-    const data = {
+let data = {
         products: [
             {name: 'Skalbimo masina', price: '500 EUR'},
             {name: 'Televizorius', price: '1,000 EUR'},
             {name: 'Siurblys', price: '50 EUR'}
         ]
     }
+
+app.get('/', (req,res) =>{
+    
     res.render('home', data)
 })
 
+app.get('/checkout/:id', async (req,res) =>{
+    try {
+        const produktas = data[req.params.id];
+        res.render('single-prod', {produktas})
+    } catch {
+        res.render('single-prod', {
+            message: 'Atsiprasome, ivyko klaida'
+        })
+    }
+})
 
+app.post('/save-info', async (req,res) => {
+    try {
+        let database = await fs.readFile('./database.json', 'utf-8');
+    
+        database = JSON.parse(database);
+    
+        database.push(req.body);
+    
+        await fs.writeFile('./database.json', JSON.stringify(database));
+    } catch {
+        await fs.writeFile('./database.json', JSON.stringify([req.body]));
+    }
+
+    res.send(`Prekes bus pristatytos per 3 d.d.`)
+})
 
 app.listen(3000)

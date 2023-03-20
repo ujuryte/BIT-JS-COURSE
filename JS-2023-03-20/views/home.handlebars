@@ -20,9 +20,9 @@
     <tbody>
         {{#each products}}
         <tr>
-            <td>{{this.name}}</td>
+            <td name="produktas">{{this.name}}</td>
             <td>{{this.price}}</td>
-            <td><button class="btn btn-primary">Pirkti</button></td>
+            <td><a href="/checkout/{{@key}}" class="btn btn-primary">Pirkti</a></td>
         </tr>
         {{/each}}
     </tbody>
