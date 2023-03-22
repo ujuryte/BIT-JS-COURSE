@@ -47,54 +47,23 @@ app.post('/login', async (req,res) => {
     res.redirect('/login')
 })
 
-
-app.get('/new-user', auth, async(req,res) => {
-    res.render('new-user', {
-        user: req.session.user,
-        message: req.session.message
-    });
-
-    delete req.session.message;
-})
-
-
-app.get('/new-user', auth, async (req,res) => {
-    const data = JSON.parse(await fs.readFile(file, 'utf-8'));
-
-    res.render('newuser', {
-        user: req.session.user,
-        data
+app.get('/', auth, (req,res) => {
+    res.render('admin', {
+        user: req.session.user
     })
 })
 
-
-
-app.post('/new-user', auth,  async (req,res) => {
+app.post('/', auth,  async (req,res) => {
     // if(!req.session.loggedIn)
     //     return res.redirect('/login')
 
     try {
         let data = JSON.parse(await fs.readFile(file, 'utf-8'));
-        if(data.find(user => user.pastas === req.body.pastas)) {
-            req.session.message = 'Toks el. pasto adresas jau egzistuoja';
-            return res.redirect('/new-user')
-        }
-            
-        data.push(req.body);
+        data.push(req.body)
         await fs.writeFile(file, JSON.stringify(data));
-        
-            
     } catch {
         await fs.writeFile(file, JSON.stringify([req.body]));
     }
-
-    res.redirect('/')
-})
-
-app.get('/delete-user/:id', async (req,res) => {
-    const data = JSON.parse(await fs.readFile(file, 'utf-8'));
-    data.splice(req.params.id, 1);
-    await fs.writeFile(file, JSON.stringify(data))
 
     res.redirect('/')
 })
