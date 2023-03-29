@@ -1,7 +1,30 @@
 <main class="text-center" style="max-width: 600px; margin: 0 auto">
     <h1 class="py-5">Paieskos sistema</h1>
 <form method="POST" class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
-    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+    <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="search">
     <button class="btn btn-primary my-5">Ieskoti</button>
 </form>
+    {{#if searchData.name}}
+        <table class="table mt-4">
+    <thead>
+        <tr>
+            <th>Tinklapio adresas</th>
+            <th>Tinklapio pavadinimas</th>
+            <th>Tinklapio aprasymas</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>{{searchData.address}}</td>
+                <td>{{searchData.name}}</td>
+                <td>{{searchData.description}}</td>
+                {{!-- <td>
+                    <a href="/delete-user/{{@key}}" class="btn btn-danger">Istrinti</a>
+                </td> --}}
+            </tr>
+    </tbody>
+</table>
+        {{else}}
+        <p>No results found.</p>
+    {{/if}}
 </main>

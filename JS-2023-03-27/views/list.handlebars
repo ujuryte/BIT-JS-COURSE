@@ -1,0 +1,22 @@
+<h1>Tinklapiu sarasas</h1>
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>Tinklapio adresas</th>
+            <th>Tinklapio pavadinimas</th>
+            <th>Tinklapio aprasymas</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data}}
+            <tr>
+                <td>{{this.address}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.description}}</td>
+                {{!-- <td>
+                    <a href="/delete-user/{{@key}}" class="btn btn-danger">Istrinti</a>
+                </td> --}}
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

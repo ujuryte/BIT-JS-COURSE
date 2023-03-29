@@ -6,7 +6,7 @@ import { auth } from './middleware/auth.js';
 import multer from 'multer';
 
 const app = express();
-// const file = './database.json';
+const file = './database.json';
 const uploadsDir = './uploads';
 const storage = multer.diskStorage({
     destination: async (req, file, next) => {
@@ -103,7 +103,45 @@ app.get('/logout', (req, res) => {
   });
 
 
+app.post('/admin', auth, async (req,res) => {
+    try {
+        let data = JSON.parse(await fs.readFile(file, 'utf-8'));
+        if(data.find(url => url.address === req.body.address)) {
+            req.session.message = 'Toks tinklapis jau egzistuoja';
+            return res.redirect('/admin')
+        }
+            
+        data.push(req.body);
+        await fs.writeFile(file, JSON.stringify(data));
+        
+            
+    } catch {
+        await fs.writeFile(file, JSON.stringify([req.body]));
+    }
 
+    res.redirect('/admin')
+})
 
+app.get('/list', auth, async (req, res) => {
+    const data = JSON.parse(await fs.readFile(file, 'utf8'));
+    
+    res.render('list', {
+        data: data
+    });
+        
+});
+
+app.post('/', async (req,res) => {
+    const data = JSON.parse(await fs.readFile(file, 'utf8'));
+    const searchTerm = req.body.search.toLowerCase();
+    const searchData = data.find(search => {
+        const lowerName = search.name.toLowerCase();
+        const lowerAddress = search.address.toLowerCase();
+        return lowerName.includes(searchTerm) || lowerAddress.includes(searchTerm);
+    })
+    
+    res.render('home', { searchData });
+
+})
 
 app.listen(3000)

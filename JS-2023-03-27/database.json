@@ -1,0 +1,22 @@
+[
+    {
+        "address": "https://www.google.com/",
+        "name": "Google",
+        "description": "paieskos sistema"
+    },
+    {
+        "address": "https://www.facebook.com/",
+        "name": "Facebook",
+        "description": "Socialinis tinklas"
+    },
+    {
+        "address": "https://www.lrt.lt/",
+        "name": "LRT",
+        "description": "Naujienu portalas"
+    },
+    {
+        "address": "https://www.youtube.com/",
+        "name": "Youtube",
+        "description": "Video turinys"
+    }
+]

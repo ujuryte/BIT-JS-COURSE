@@ -1,1 +1,19 @@
-<h1>sveiki</h1>
+<h1>Naujo tinklapio pridejimas</h1>
+{{#if message}}
+    <div class="alert alert-danger">{{message}}</div>
+{{/if}}
+<form method = "POST" class="mt-4">
+    <div class="mb-3">
+        <label>Tinklapio adresas</label>
+        <input type="url" class="form-control" name="address">
+    </div>
+    <div class="mb-3">
+        <label>Tinklapio pavadinimas</label>
+        <input type="text" class="form-control" name="name">
+    </div>
+    <div class="mb-3">
+        <label>Tinklapio aprasymas</label>
+        <textarea type="text" class="form-control" name="description"></textarea>
+    </div>
+    <button class="btn btn-primary">Prideti</button>
+</form>
