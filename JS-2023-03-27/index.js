@@ -139,8 +139,14 @@ app.post('/', async (req,res) => {
         const lowerAddress = search.address.toLowerCase();
         return lowerName.includes(searchTerm) || lowerAddress.includes(searchTerm);
     })
+
+    let notFound = false;
+
+    if(!searchData){
+        notFound = true;
+    }
     
-    res.render('home', { searchData });
+    res.render('home', { searchData,notFound });
 
 })
 
