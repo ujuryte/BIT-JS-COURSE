@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        function randPr(min, max) {
+            return (Math.random() * (max - min) + min).toFixed(2);
+        }
+
+        const products = ['Dviratis', 'Triratis', 'Žvakidė', 'Stalas', 'Kėdė', 'Knygų lentyna', 'Paveikslas su rėmu', 'Veidrodis', 'Keturių vietų palapinė', 'Pripučiama valtis', 'Meškerė karosams gaudyti', 'Planšetė', 'Pastatoma lempa', 'Vazonas', 'Baterijų pakrovėjas', 'Pagalvių komplektas', 'Oro drėkintuvas', 'Oro sausintuvas', 'Kavinukas elektrinis', 'Kilimas 2 X 3 metrų', 'Kilimėlis kojoms valyti', 'Užuolaidos', 'Vėjo malūnas', 'Dažai sienoms', 'Dažai luboms', 'Medinė dėžė'];
+
+        let invoices = [];
+
+        let inv = 'INV';
+        let pad = '000'
+
+        for (let i = 1; i < 101; i++) {
+            let mystr = (pad + i).slice(-pad.length);
+            let invNum = inv + mystr;
+
+
+            let productsArr = [];
+            let newProductsArr = [];
+
+            let numProducts = rand(1, 10)
+
+            for (let i = 1; i <= numProducts; i++) {
+
+                let product = {
+                    title: products[rand(0, products.length)],
+                    price: randPr(1, 100),
+                    amount: rand(1, 20),
+                    total: 0
+                };
+
+                product.total = (product.price * product.amount).toFixed(2);
+
+                newProductsArr.push(product);
+            }
+
+            productsArr.push(...newProductsArr);
+
+            let total = 0;
+            newProductsArr.forEach(product => {
+                total += parseFloat(product.total);
+            });
+
+            let vat = (total * 0.21).toFixed(2);
+            let grandTotal = (parseFloat(total) + parseFloat(vat)).toFixed(2);
+
+            let newInvoice = {
+                number: invNum,
+                products: [...productsArr],
+                total: total.toFixed(2),
+                vat: vat,
+                grandTotal: grandTotal
+            };
+
+            invoices.push(newInvoice);
+
+        }
+
+        console.log(invoices)
+
+        let invoicesGrandTotal = 0;
+
+        invoices.forEach(gt => {
+            invoicesGrandTotal += parseFloat(gt.grandTotal);
+        })
+
+        console.log('Grand total: ' + invoicesGrandTotal.toFixed(2))
+
+        let productsSummary = {};
+
+        invoices.forEach((invoice) => {
+            invoice.products.forEach((product) => {
+                let { title, amount, total } = product;
+                if (!productsSummary[title]) {
+                    productsSummary[title] = { quantity: 0, totalValue: 0 };
+                }
+                productsSummary[title].quantity += amount;
+                productsSummary[title].totalValue += parseFloat(total);
+                
+            });
+        });
+
+        console.log(productsSummary);
+
+    </script>
+</body>
+
+</html>
