@@ -93,11 +93,135 @@
                 }
                 productsSummary[title].quantity += amount;
                 productsSummary[title].totalValue += parseFloat(total);
-                
+
             });
         });
 
-        console.log(productsSummary);
+        console.log("Viso prekiu sarasas: " + productsSummary);
+
+        console.log("-------------")
+
+        // 1. Sukurti masyvą (piniginę), kurio ilgis yra atsitiktinis nuo 10 iki 30, 
+        // o reikšmės atsitiktiniai skaičiai nuo 0 iki 10 (pinigai);
+
+        let pinigine = [];
+        let ilgis = rand(10, 30)
+
+        for (let i = 0; i <= ilgis; i++) {
+            pinigine.push(rand(0, 10))
+        }
+
+        console.log("pinigine: " + pinigine);
+
+        // 2. Naudojant ciklą apskaičiuoti masyvo, 
+        // iš 1 uždavinio reikšmių (pinigų esančių piniginėje), sumą;
+
+        let sum = 0;
+
+        for (let i = 0; i < pinigine.length; i++) {
+            sum += pinigine[i];
+        }
+
+        console.log("pinigu suma: " + sum);
+
+        // 3. Naudojant ciklą apskaičiuoti masyvo, iš 1 uždavinio, 
+        // popierinių pinigų (skaičių didesnių už 2 ) reikšmių sumą;
+
+        let cashSum = 0;
+
+        for (let i = 0; i < pinigine.length; i++) {
+            if (pinigine[i] > 2)
+                cashSum += pinigine[i];
+        }
+
+        console.log("popieriniu suma: " + cashSum);
+
+        // 4. Išleisti visus metalinius pinigus (reikšmes, kurios yra 
+        // mažesnės arba lygios 2 padaryti lygias 0) iš 1 uždavinio;
+
+        let pinigineBeMetalo = pinigine.map(p => p <= 2 ? 0 : p)
+
+        console.log("isleisti metaliniai: " + pinigineBeMetalo);
+
+        // 5. Surasti didžiausią reikšmę 1 uždavinio masyve ir 
+        // paskaičiuoti kiek tokių didžiausių reikšmių masyve yra;
+
+
+        let maxNum = Math.max(...pinigine)
+
+        let countMaxNum = pinigine.filter(p => p === maxNum).length;
+
+        console.log("Didziausia reiksme: " + maxNum);
+        console.log("Didziausios reiksmes kiekis: " + countMaxNum);
+
+        // 6. Visus masyvo elementus, kurie yra lygūs 0, 
+        // pakeisti į tų elementų indeksų (vietų, numerių) reikšmes;
+
+        let zeroIndex = pinigine.map((p, i) => p === 0 ? i : p)
+
+        console.log("Vietoj nulio, jo indexas: " + zeroIndex)
+
+        // 7. Į 1 uždavinio masyvą pridėti tiek naujų reikšmių 
+        // (pinigų, atsitiktinių skaičių nuo 0 iki 10), kad masyvo ilgis būtų lygiai 30;
+
+        while (pinigine.length < 30) {
+            pinigine.push(rand(0, 10));
+        }
+
+        console.log("30 ilgumo Pinigine:", pinigine);
+
+        // 8. Naudojant 1 uždavinio masyvą iš jo reikšmių sukurti dar du papildomus masyvus. 
+        // Į vieną iš 1 uždavinio masyvo pridėti reikšmes mažesnes arba 
+        // lygias 2 (monetas), o į kitą didesnes nei 2 (popierinius pinigus);
+
+        let monetos = [];
+        let popieriniai = [];
+
+        for (let i = 0; i < pinigine.length; i++) {
+            if (pinigine[i] <= 2) {
+                monetos.push(pinigine[i])
+            } else {
+                popieriniai.push(pinigine[i])
+            }
+        }
+
+        console.log("monetu masyvas:" + monetos);
+        console.log("popieriniu masyvas:" + popieriniai)
+
+        // 9. Sukurti masyvą (piniginę su dviem skyreliais) iš dviejų elementų, 
+        // kurio pirmas elementas būtų masyvas iš 8 uždavinio su monetom, o 
+        // antras elementas masyvas iš 8 uždavinio su popieriniais pinigais;
+
+        let mergedArray = [
+            { monetos: monetos },
+            { popieriniai: popieriniai }
+        ];
+
+        console.log("Dvieju skyriu pinigine: ", mergedArray);
+
+        // 10. Į 9 uždavinio masyvą, piniginę su dviem skyreliais, 
+        // pridėti trečią skyrelį- masyvą su kortelėm: ['KIKA', 'Euro Vaistinė', 
+        // 'Drogas', 'Ačiū', 'Lietuvos Geležinkeliai', 'Mano RIMI'];
+
+        let korteles = ['KIKA', 'Euro Vaistinė', 'Drogas', 'Ačiū', 'Lietuvos Geležinkeliai', 'Mano RIMI'];
+
+        mergedArray = [
+            { monetos: monetos },
+            { popieriniai: popieriniai },
+            { korteles: korteles }
+        ];
+
+        console.log('triju skyriu pinigine: ', mergedArray);
+
+        // 11. Korteles skyrelyje sudėlioti (išrūšiuoti) pagal abėcėlę;
+
+        let sortedArray = mergedArray.slice().sort((a, b) => {
+            if (a.korteles > b.korteles) return 1;
+            if (a.korteles < b.korteles) return -1;
+            return 0;
+        })
+
+        console.log('isrusiuotos korteles: ', sortedArray)
 
     </script>
 </body>
