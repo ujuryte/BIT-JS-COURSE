@@ -223,6 +223,27 @@
 
         console.log('isrusiuotos korteles: ', sortedArray)
 
+        // Į kortelių skyrelį pridėti mokėjimo kortelių 'MasterCard', 
+        // 'Visa' (su rand generuokite atsitiktines reikšmes 'MasterCard' 
+        // arba 'Visa' ir rašykite į masyvą) iš skirtingų bankų tiek, 
+        // kad skyrelis (masyvo ilgis) pasidarytų lygus 20;
+
+
+
+        let creditCard = ['Visa', 'MasterCard'];
+
+        let moreKorteles = mergedArray.forEach(p => {
+            while (p.korteles.length < 20) {
+                let randomCard = creditCard[Math.floor(Math.random() * creditCard.length)];
+                p.korteles.push(randomCard);
+            }
+        });
+
+        console.log(moreKorteles);
+
+
+
+
     </script>
 </body>
 
