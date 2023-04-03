@@ -152,10 +152,14 @@ class Div {
 
     }
 
-    rand(min, max) {
+    rand(min = 1000, max = 9999) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    changeDigit(digit){
+        this.div.innerText = digit;
     }
 
     randColor() {
@@ -170,7 +174,7 @@ class Div {
 
 const divs = [...Array(200)].map(_ => new Div());
 
-setInterval(_=> divs.forEach(d => d.changeColor(d.randColor())), 1000)
+setInterval(_=> divs.forEach(d => d.changeColor(d.randColor()) || d.changeDigit(d.rand())), 500)
 
 
 
