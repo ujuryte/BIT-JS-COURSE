@@ -10,6 +10,11 @@ const data = [
 ];
 
 function App() {
+
+    const print = color => {
+        console.log('%c ' + color, `background:${color}; padding: 5px`)
+    }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -38,6 +43,18 @@ function App() {
                 [...data].sort((a,b) => b.letter - a.letter).map((d,index) => <Square key={index} niceColor={d.color} letter={d.letter} />)
             }
         </div>
+
+        <div className="squares">
+           
+           <button onClick={_ => print('gray')}>GREY</button>
+           <button className='red' onClick={_ => print('crimson')}>RED</button>
+           <button className='pink' onClick={_ => print('pink')}>PINK</button>
+           <button className='blue' onClick={_ => print('skyblue')}>BLUE</button>
+           <button className='green' onClick={_ => print('greenyellow')}>GREEN</button>
+           <button className='yellow' onClick={_ => print('darkorange')}>YELLOW</button>
+
+       </div>
+        
 
       </header>
     </div>
