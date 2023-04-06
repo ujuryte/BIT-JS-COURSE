@@ -12,8 +12,8 @@ function App() {
     const dogs = ['šuo', 'šunius', 'Bobikas', 'kudlius', 'Šarikas', 'avigalvis'];
 
     const dogElements = dogs
-    .filter(dog => /^[A-Z]/.test(dog))
-    .map((dog, index) => <Dogs4 key={index} doggo={dog} />);
+        .filter(dog => /^[A-Z + Š]/.test(dog) - 1)
+        .map((dog, index) => <Dogs4 key={index} doggo={dog} />);
 
     return (
         <div className="App">
