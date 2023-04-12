@@ -235,6 +235,7 @@ button {
   border: 1px solid #008000;
   height: 75vh;
   align-items: center;
+  display: flex;
 
 
 
@@ -254,5 +255,23 @@ button {
       border: 1px solid#a91717;
       justify-content: space-around;
   }
+  }
+
+  .side {
+    width: 50%;
+    height: 75vh;
+    border-right: 2px solid black;
+  }
+}
+
+.animals {
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+  &.avys{
+    background-color: white;
+  }
+  &.karves{
+    background-color: brown;
   }
 }
