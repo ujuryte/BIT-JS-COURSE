@@ -83,6 +83,11 @@ code {
       height: 250px;
     }
 
+    &.small {
+      width: 50px;
+      height: 50px;
+    }
+
     &.zana {
       span {
         font-family: $zana;
@@ -158,6 +163,7 @@ button {
   border: 2px solid $gray;
   outline: none;
   cursor: pointer;
+  
   &:after {
     content: '';
     position: absolute;
