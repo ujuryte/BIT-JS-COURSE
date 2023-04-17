@@ -26,9 +26,9 @@ export default function Clients({data,setClients}) {
                         <td>{data.surname}</td>
                         <td>{data.balance}</td>
                         <td>
-                            <div class="input-group">
-                                <span class="input-group-text">$</span>
-                                <input type="text" class="form-control"/>
+                            <div className="input-group">
+                                <span className="input-group-text">$</span>
+                                <input type="text" className="form-control"/>
                             </div>
                         </td>
                         <td>

@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.scss';
 import Clients from './Components/Clients';
 import Create from './Components/Create';
@@ -11,7 +11,27 @@ const clients = [
 
 function App() {
 
-  const [cl, setClients] = useState(clients)
+  const [cl, setClients] = useState(clients);
+  const [text2, setText2] = useState({name:'', surname:''});
+
+
+
+  useEffect(() => {
+    if(null !== localStorage.getItem('text2')){
+        setText2(JSON.parse(localStorage.getItem('text2')))
+    } else {
+        setText2([])
+    }
+}, [])
+
+useEffect(() => {
+    if(null === text2){
+        return;
+    } 
+    localStorage.setItem('text2', JSON.stringify(text2))
+
+}, [text2]);
+
 
   return (
     <div className="App">
@@ -23,7 +43,7 @@ function App() {
             cl.map(c => <Clients key={c.id} data={c} setClients={setClients}/>)
           }
           
-          <Create />
+          <Create setText={setText2} text={text2} setClients={setClients}/>
         
       </header>
     </div>
