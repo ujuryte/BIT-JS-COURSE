@@ -1,52 +1,95 @@
 import { useState } from 'react';
 import './App.scss';
-// import Ganykla from './components/010/Ganykla';
+import ContentEditable from 'react-contenteditable'
 
+const list = [
+    { id: 123, name: 'Beaver' },
+    { id: 124, name: 'Fox' },
+    { id: 125, name: 'Rabbit' },
+    { id: 126, name: 'Wolf' }
+]
 
 
 function App() {
 
-    const [text1, setText1] = useState('');
-    const [text2, setText2] = useState({A:'', B:''});
-    const [input1, setInput1] = useState({range: 0, color:'#00ff00'});
+    const [text, setText] = useState({
+        t1: 'Labas',
+        t2: 'Ate'
+    })
 
-    const handleChange1 = e => {
-        setText1(e.target.value)
+    const [checkbox, setCheckbox] = useState({
+        A: true,
+        B: false,
+        C: false,
+        D: true
+    })
+
+    const [radio, setRadio] = useState('C');
+
+    const [select, setSelect] = useState(124);
+
+    const handleChange1 = (e, t) => {
+        setText(texts => ({ ...texts, [t]: e.target.value }))
     }
 
-    const handleChange2 = (e,input) => {
-        setText2(t => ({...t, [input]:e.target.value}));
+    const handleChange2 = (cb) => {
+        setCheckbox(checkboxes => ({ ...checkboxes, [cb]: !checkboxes[cb] }))
     }
 
-    const handleChange3 = (e,input) => {
-        setInput1(t => ({...t, [input]:e.target.value}));
+    const handleChange3 = r => {
+        setRadio(r)
+    }
+
+    const handleChange4 = id => {
+        setSelect(parseInt(id))
     }
 
     return (
         <div className="App">
             <header className="App-header">
-                {/* <Ganykla/> */}
-
                 <h1>Formos</h1>
                 <fieldset>
-                    <legend>One text one state</legend>
-                    <input type='text' value={text1} onChange={handleChange1}></input>
+                    <legend>Few texts one state</legend>
+                    <div>
+                        <ContentEditable tagName='i' onChange={e => handleChange1(e, 't1')} html={text.t1} />
+                    </div>
+                    <div>
+                        <ContentEditable tagName='u' onChange={e => handleChange1(e, 't2')} html={text.t2} />
+                    </div>
                 </fieldset>
 
                 <fieldset>
-                    <legend>Two texts one state</legend>
-                    <input type='text' value={text2.A} onChange={e => handleChange2(e, 'A')}></input>
-                    <input type='text' value={text2.B} onChange={e => handleChange2(e, 'B')}></input>
+                    <legend>4 checkboxes one state</legend>
+                    <div className='field'>
+                        <span className={'checkbox' + (checkbox.A ? ' active' : '')} onClick={_ => handleChange2('A')}>A</span>
+                        <span className={'checkbox' + (checkbox.B ? ' active' : '')} onClick={_ => handleChange2('B')}>B</span>
+                        <span className={'checkbox' + (checkbox.C ? ' active' : '')} onClick={_ => handleChange2('C')}>C</span>
+                        <span className={'checkbox' + (checkbox.D ? ' active' : '')} onClick={_ => handleChange2('D')}>D</span>
+                    </div>
                 </fieldset>
 
                 <fieldset>
-                    <legend>One range one Color one state</legend>
-                    <input type='range' value={input1.range} onChange={e => handleChange3(e, 'range')}></input>
-                    <input type='color' value={input1.color} onChange={e => handleChange3(e, 'color')}></input>
+                    <legend>4 checkboxes one radio</legend>
+                    <div className='field'>
+                        <span className={'checkbox' + (radio === 'A' ? ' active' : '')} onClick={_ => handleChange3('A')}>A</span>
+                        <span className={'checkbox' + (radio === 'B' ? ' active' : '')} onClick={_ => handleChange3('B')}>B</span>
+                        <span className={'checkbox' + (radio === 'C' ? ' active' : '')} onClick={_ => handleChange3('C')}>C</span>
+                        <span className={'checkbox' + (radio === 'D' ? ' active' : '')} onClick={_ => handleChange3('D')}>D</span>
+                    </div>
                 </fieldset>
+
+                <fieldset>
+                    <legend>Select on one state</legend>
+                    <div className='select'>
+                        <div className='selected'>{list.find(l => select == l.id).name}</div>
+                        {
+                            list.map(o => <div key={o.id} style={{ color: select === o.id ? 'crimson' : null }} onClick={_ => handleChange4(o.id)}>{o.name}</div>)
+                        }
+                    </div>
+                </fieldset>
+
 
             </header>
-            {console.clear() || console.log(input1)}
         </div>
     );
 }
