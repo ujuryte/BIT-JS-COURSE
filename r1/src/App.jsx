@@ -26,7 +26,7 @@ function App() {
 
     const [radio, setRadio] = useState('C');
 
-    const [select, setSelect] = useState(124);
+    const [select, setSelect] = useState({open: false, data: 124});
 
     const handleChange1 = (e, t) => {
         setText(texts => ({ ...texts, [t]: e.target.value }))
@@ -41,7 +41,7 @@ function App() {
     }
 
     const handleChange4 = id => {
-        setSelect(parseInt(id))
+        setSelect(_ => ({open: false, data: parseInt(id)}));
     }
 
     return (
@@ -81,10 +81,12 @@ function App() {
                 <fieldset>
                     <legend>Select on one state</legend>
                     <div className='select'>
-                        <div className='selected'>{list.find(l => select == l.id).name}</div>
-                        {
-                            list.map(o => <div key={o.id} style={{ color: select === o.id ? 'crimson' : null }} onClick={_ => handleChange4(o.id)}>{o.name}</div>)
-                        }
+                        <div className='selected' onClick={_ => setSelect(s => ({...s, open: !s.open}))}>{list.find(l => select.data == l.id).name}</div>
+                        <div className='list' style={{height: select.open ? '140px' : 0}} >
+                            {
+                                list.map(o => <div key={o.id} onClick={_ => handleChange4(o.id)}>{o.name}</div>)
+                            }
+                        </div>
                     </div>
                 </fieldset>
 

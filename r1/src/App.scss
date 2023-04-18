@@ -310,9 +310,10 @@ fieldset {
   legend {
     color: white;
   }
+
   .field {
-    display:flex;
-    gap:10px;
+    display: flex;
+    gap: 10px;
   }
 }
 
@@ -369,6 +370,7 @@ label {
   user-select: none;
   transition: all 0.3s;
   margin: 5px;
+
   &.active {
     background-color: skyblue;
   }
@@ -377,15 +379,22 @@ label {
 .select {
   cursor: pointer;
   transition: all 0.3s;
-  div{
-    &:hover{
-      color:skyblue;
+
+  .list {
+    overflow: hidden;
+    transition: height 0.3s;
+
+    div {
+      &:hover {
+        color: skyblue;
+      }
     }
   }
-  
-  .selected{
+
+  .selected {
     padding: 3px;
     border: 2px solid skyblue;
     user-select: none;
+    cursor: auto;
   }
 }
