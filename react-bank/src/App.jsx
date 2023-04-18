@@ -11,26 +11,26 @@ const clients = [
 
 function App() {
 
-  const [cl, setClients] = useState(clients);
-  const [text2, setText2] = useState({name:'', surname:''});
+  const [cl, setClients] = useState([]);
+  // const [text2, setText2] = useState({name:'', surname:''});
 
 
 
   useEffect(() => {
-    if(null !== localStorage.getItem('text2')){
-        setText2(JSON.parse(localStorage.getItem('text2')))
+    if(null !== localStorage.getItem('formData')){
+        setClients(JSON.parse(localStorage.getItem('formData')))
     } else {
-        setText2([])
+      setClients([])
     }
 }, [])
 
 useEffect(() => {
-    if(null === text2){
+    if(null === cl){
         return;
     } 
-    localStorage.setItem('text2', JSON.stringify(text2))
+    localStorage.setItem('formData', JSON.stringify(cl))
 
-}, [text2]);
+}, [cl]);
 
 
   return (
@@ -43,7 +43,9 @@ useEffect(() => {
             cl.map(c => <Clients key={c.id} data={c} setClients={setClients}/>)
           }
           
-          <Create setText={setText2} text={text2} setClients={setClients}/>
+          {/* <Create setText={setText2} text={text2} setClients={setClients}/> */}
+
+          <Create />
         
       </header>
     </div>
