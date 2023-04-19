@@ -1,12 +1,17 @@
 
 import { fb, ig, tt } from "./Icons"
-export default function List({ data }) {
+export default function List({ data, setEditModalData }) {
 
     if (null === data) {
         return (
             <h2>LOADING....</h2>
         )
     }
+
+    const doEdit = client =>{
+        setEditModalData(client)
+    }
+
 
     return (
         <div className="card mt-4">
@@ -26,7 +31,8 @@ export default function List({ data }) {
                                     <div className="age">{c.age}</div>
                                 </div>
                                 <div className="buttons">
-                                    
+                                    <button className="yellow small" onClick={_ => doEdit(c)}>edit</button>
+                                    <button className="red small">delete</button>
                                 </div>
                             </div>
 
