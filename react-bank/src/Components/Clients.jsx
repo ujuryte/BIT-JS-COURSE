@@ -1,4 +1,10 @@
-export default function Clients({data}) {
+
+
+
+export default function Clients({ data}) {
+
+   
+
 
     if (null === data) {
         return (
@@ -6,19 +12,18 @@ export default function Clients({data}) {
         )
     }
 
-    // const deletion = _ => {
-    //     data(c => data.balance === 0 ? c.filter(c => data.id !== c.id) : c)
-    // }
+    
+
 
     return (
-        <div className="container mt-5">
+        <div className="container mt-5 list">
             <h2>Registruoti vartotojai</h2>
             <table className="table">
                 <thead>
                     <tr>
                         <th>Vardas</th>
-                        <th>Pavarde</th>
-                        <th>Saskaitos likutis</th>
+                        <th>Pavardė</th>
+                        <th>Sąskaitos likutis</th>
                         <th>Suma</th>
                         <th></th>
                         <th></th>
@@ -34,23 +39,20 @@ export default function Clients({data}) {
                             <td>
                                 <div className="input-group">
                                     <span className="input-group-text">$</span>
-                                    <input type="text" className="form-control"/>
+                                    <input type="number" className="form-control arrows"/>
                                 </div>
                             </td>
                             <td>
-                                <button className="btn btn-success">Prideti lesas</button>
+                                <button className="btn btn-success">Pridėti lėšas</button>
                             </td>
                             <td>
-                                <button className="btn btn-warning">Nuskaiciuoti lesas</button>
+                                <button className="btn btn-warning">Nuskaičiuoti lėšas</button>
                             </td>
                             <td>
-                                <button className="btn btn-danger" onClick={c => c.balance === 0 ? data.filter(c => c.id !== data.id) : c}>Istrinti saskaita</button>
+                                <button className="btn btn-danger">Ištrinti sąskaitą</button>
                             </td>
                         </tr>)
                     }
-
-                    
-
                 </tbody>
             </table>
         </div>

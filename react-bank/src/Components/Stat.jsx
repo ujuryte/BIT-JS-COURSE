@@ -1,4 +1,4 @@
-export default function Stat({data}) {
+export default function Stat({ data }) {
 
     if (null === data) {
         return (
@@ -7,24 +7,27 @@ export default function Stat({data}) {
     }
 
     return (
-        <div className=" mt-5">
-            <h2>Statistika</h2>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Klientu skaicius:</th>
-                        <th>Bendra suma:</th>
-                    </tr>
-                </thead>
-                <tbody>
+        <div className="stat mt-5">
+            <div className="stats">
+                <h2>Statistika</h2>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>Klientų skaičius:</th>
+                            <th>Bendra suma:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                    <tr>
-                        <td>{data.length ? data.length : null}</td>
-                        <td></td>
-                    </tr>
+                        <tr className="cl-number">
+                            <td>{data.length ? data.length : null}</td>
+                            <td>{data.reduce((acc, curr) => acc + curr.balance, 0)}</td>
+                        </tr>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     )
 }
