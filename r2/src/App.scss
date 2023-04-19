@@ -186,4 +186,55 @@ button:not(.btn) {
 .modal {
   display: block;
   background-color: rgba(0, 0, 0, 0.212);
+  z-index: 555;
+  h3{
+    text-align: center;
+  }
+}
+
+.msg-bin{
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 777;
+  .msg {
+    padding: 20px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    color: white;
+    &.ok {
+      background-color: #abe85070;
+      border-color: #abe850;
+    }
+    &.info {
+      background-color: #87ceeb70;
+      border-color: #87ceeb;
+    }
+    &.error {
+      background-color: #dc143c70;
+      border-color: #dc143c;
+    }
+  }
+}
+
+.sf-box{
+  padding: 12px;
+  background-color: skyblue;
+  color: white;
+  .sort{
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    &.up::after {
+      content:'\25B2';
+      padding: 0 5px;
+    }
+    &.down::after {
+      content:'\25BC';
+      padding: 0 5px;
+    }
+  }
 }
