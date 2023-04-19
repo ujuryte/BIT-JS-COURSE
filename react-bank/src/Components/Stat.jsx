@@ -1,4 +1,11 @@
-export default function Stat({cl}) {
+export default function Stat({data}) {
+
+    if (null === data) {
+        return (
+            <h2>LOADING....</h2>
+        )
+    }
+
     return (
         <div className=" mt-5">
             <h2>Statistika</h2>
@@ -12,7 +19,7 @@ export default function Stat({cl}) {
                 <tbody>
 
                     <tr>
-                        <td>{cl.length}</td>
+                        <td>{data.length ? data.length : null}</td>
                         <td></td>
                     </tr>
 

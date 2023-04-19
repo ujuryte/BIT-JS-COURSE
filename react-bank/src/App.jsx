@@ -4,48 +4,39 @@ import './App.scss';
 import Clients from './Components/Clients';
 import Create from './Components/Create';
 import Stat from './Components/Stat';
+import { crudCreate, crudRead } from './Utils/localStorage';
 
-const clients = [
-  {name: 'Jonas', surname: 'Jonaitis', balance: 1, id: 1}
-]
+const key = 'ClientsBase';
 
 function App() {
 
-  const [cl, setClients] = useState([]);
-  // const [text2, setText2] = useState({name:'', surname:''});
-
-
+  const [data, setData] = useState(null);
+  const [createData, setCreateData] = useState(null);
+    
+  useEffect(() => {
+    setData(crudRead(key))
+  }, []);
 
   useEffect(() => {
-    if(null !== localStorage.getItem('formData')){
-        setClients(JSON.parse(localStorage.getItem('formData')))
-    } else {
-      setClients([])
+    if(null === createData){
+      return
     }
-}, [])
+    crudCreate(key, createData)
 
-useEffect(() => {
-    if(null === cl){
-        return;
-    } 
-    localStorage.setItem('formData', JSON.stringify(cl))
-
-}, [cl]);
+  }, [createData])
 
 
   return (
     <div className="App">
       <header className="App-header">
         
-          <Stat cl={cl} />
+          <Stat data={data}/>
 
-          {
-            cl.map(c => <Clients key={c.id} data={c} setClients={setClients}/>)
-          }
           
-          {/* <Create setText={setText2} text={text2} setClients={setClients}/> */}
+           <Clients data={data}/>
+          
 
-          <Create />
+          <Create setCreateData={setCreateData}/>
         
       </header>
     </div>
