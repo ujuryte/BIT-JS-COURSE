@@ -1,9 +1,6 @@
 
 
-
-export default function Clients({ data}) {
-
-   
+export default function Clients({ data }) {
 
 
     if (null === data) {
@@ -11,8 +8,6 @@ export default function Clients({ data}) {
             <h2>LOADING....</h2>
         )
     }
-
-    
 
 
     return (
