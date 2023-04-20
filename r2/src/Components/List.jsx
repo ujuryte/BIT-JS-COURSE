@@ -40,7 +40,7 @@ export default function List({ stat, socialFilter, filterSocialValue, data, setE
                     </div>
                     {stat ?
                         <div className="stats">
-                        <span>Age average: {stat.count} </span>
+                        <span>Age average: {(stat.age / stat.count).toFixed(2)} </span>
                         <span>Facebook: {stat.fb}</span>
                         <span>Instagram: {stat.ig}</span>
                         <span>TikTok: {stat.tt}</span>
