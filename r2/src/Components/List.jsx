@@ -1,6 +1,6 @@
 
 import { fb, ig, tt } from "./Icons"
-export default function List({ data, setEditModalData, setDeleteModalData, ageSort }) {
+export default function List({ socialFilter, filterSocialValue, data, setEditModalData, setDeleteModalData, ageSort, sortAgeDir }) {
 
     const doEdit = client => {
         setEditModalData(client)
@@ -22,14 +22,29 @@ export default function List({ data, setEditModalData, setDeleteModalData, ageSo
             <div className="card-header">
                 <h5>List of Clients</h5>
                 <div className="sf-box">
-                    <div className="sort" onClick={ageSort}>Age sort</div>
+                    <div className={'sort ' + sortAgeDir} onClick={ageSort}>Age sort</div>
+                    <div className="social-filter" onClick={socialFilter}>
+                        {
+                            filterSocialValue === 'fb' ? <div>{fb}</div> : null
+                        }
+                        {
+                            filterSocialValue === 'ig' ? <div>{ig}</div> : null
+                        }
+                        {
+                            filterSocialValue === 'tt' ? <div>{tt}</div> : null
+                        }
+                        {
+                            filterSocialValue === '' ? <div><h2>F</h2></div> : null
+                        }
+
+                    </div>
                 </div>
             </div>
 
             <div className="card-body">
                 <ul className="list-group list-group-flush">
                     {
-                        data.map(c => <li key={c.id} className="list-group-item">
+                        data.map(c => c.show ? <li key={c.id} className="list-group-item">
                             <div className="client-line">
                                 <div className="info">
                                     <div className="icon">
@@ -46,7 +61,7 @@ export default function List({ data, setEditModalData, setDeleteModalData, ageSo
                                 </div>
                             </div>
 
-                        </li>)
+                        </li> : null)
                     }
                 </ul>
             </div>
