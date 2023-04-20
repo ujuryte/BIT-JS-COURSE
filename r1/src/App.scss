@@ -281,12 +281,16 @@ input {
   font-family: monospace;
   font-size: 20px;
   outline: none;
-  border: none;
+  border: 3px dotted transparent;
   background-color: skyblue;
   padding: 5px 7px;
   border-radius: 5px;
   color: white;
   margin: 5px;
+
+  &:focus{
+    border: 3px dotted white;
+  }
 
   &[type=color] {
     width: 50px;
