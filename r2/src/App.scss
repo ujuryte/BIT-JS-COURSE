@@ -272,6 +272,10 @@ button:not(.btn) {
         margin: 0;
       }
     }
-
+  }
+  .stats {
+    span {
+      padding-right: 17px;
+    }
   }
 }

@@ -24,10 +24,11 @@ function App() {
   const [messages, setMessages] = useState([]);
 
   const [sortAgeDir, setSortAgeDir] = useState('')
-  const [filterSocialValue, setFilterSocialValue] = useState('')
+  const [filterSocialValue, setFilterSocialValue] = useState('');
+  const [stat, setStat] = useState(null);
 
   useEffect(() => {
-    setData(crudRead(key).map((c, i) => ({ ...c, row: i, show: true })))
+    setData(crudRead(key).map((c, i) => ({ ...c, row: i, show: true })));
   }, [lastUpdateTime]);
 
   useEffect(() => {
@@ -57,6 +58,20 @@ function App() {
     msg('Client was deleted', 'info');
   }, [deleteData])
 
+  useEffect(() => {
+    if (null === data) {
+      return;
+    }
+    setStat(
+      data.reduce((clients, client) => ({
+      count: clients.count + 1,
+      age: clients.age + client.age,
+      fb: client.social === 'fb' ? (clients.fb + 1) : clients.fb,
+      ig: client.social === 'ig' ? (clients.ig + 1) : clients.ig,
+      tt: client.social === 'tt' ? (clients.tt + 1) : clients.tt
+    }), ({ count: 0, age: 0, fb: 0, ig: 0, tt: 0 })))
+  }, [data]);
+
   const msg = (text, type) => {
     const id = uuidv4();
     setMessages(m => [...m, { text, type, id }])
@@ -85,19 +100,19 @@ function App() {
     switch (filterSocialValue) {
       case '':
         setFilterSocialValue('fb');
-        setData(d => d.map(c => c.social === 'fb' ? {...c, show:true} : {...c, show:false}))
+        setData(d => d.map(c => c.social === 'fb' ? { ...c, show: true } : { ...c, show: false }))
         break;
       case 'fb':
         setFilterSocialValue('ig');
-        setData(d => d.map(c => c.social === 'ig' ? {...c, show:true} : {...c, show:false}))
+        setData(d => d.map(c => c.social === 'ig' ? { ...c, show: true } : { ...c, show: false }))
         break;
       case 'ig':
         setFilterSocialValue('tt');
-        setData(d => d.map(c => c.social === 'tt' ? {...c, show:true} : {...c, show:false}))
+        setData(d => d.map(c => c.social === 'tt' ? { ...c, show: true } : { ...c, show: false }))
         break;
       default:
         setFilterSocialValue('');
-        setData(d => d.map(c => ({...c, show:true})));
+        setData(d => d.map(c => ({ ...c, show: true })));
     }
   }
 
@@ -114,7 +129,7 @@ function App() {
             <Create setCreateData={setCreateData} />
           </div>
           <div className="col-8">
-            <List socialFilter={socialFilter} filterSocialValue={filterSocialValue} data={data} setEditModalData={setEditModalData} setDeleteModalData={setDeleteModalData} ageSort={ageSort} sortAgeDir={sortAgeDir} />
+            <List stat={stat} socialFilter={socialFilter} filterSocialValue={filterSocialValue} data={data} setEditModalData={setEditModalData} setDeleteModalData={setDeleteModalData} ageSort={ageSort} sortAgeDir={sortAgeDir} />
           </div>
 
         </div>

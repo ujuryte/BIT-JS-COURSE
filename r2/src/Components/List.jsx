@@ -1,6 +1,6 @@
 
 import { fb, ig, tt } from "./Icons"
-export default function List({ socialFilter, filterSocialValue, data, setEditModalData, setDeleteModalData, ageSort, sortAgeDir }) {
+export default function List({ stat, socialFilter, filterSocialValue, data, setEditModalData, setDeleteModalData, ageSort, sortAgeDir }) {
 
     const doEdit = client => {
         setEditModalData(client)
@@ -38,6 +38,15 @@ export default function List({ socialFilter, filterSocialValue, data, setEditMod
                         }
 
                     </div>
+                    {stat ?
+                        <div className="stats">
+                        <span>Age average: {stat.count} </span>
+                        <span>Facebook: {stat.fb}</span>
+                        <span>Instagram: {stat.ig}</span>
+                        <span>TikTok: {stat.tt}</span>
+                    </div> : null
+                    }
+                    
                 </div>
             </div>
 
