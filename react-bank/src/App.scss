@@ -67,7 +67,15 @@ body {
   }
 }
 
-
+.msg-bin{
+  position: absolute;
+  .alert{
+    min-width: 30vh;
+    position: relative;
+    top: 50px;
+    left: 800px;
+  }
+}
 
 
 

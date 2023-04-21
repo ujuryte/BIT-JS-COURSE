@@ -20,7 +20,7 @@ export default function Stat({ data }) {
                     <tbody>
 
                         <tr className="cl-number">
-                            <td>{data.length ? data.length : null}</td>
+                            <td>{data.length ? data.length : 0}</td>
                             <td>{data.reduce((acc, curr) => acc + curr.balance, 0)}</td>
                         </tr>
 

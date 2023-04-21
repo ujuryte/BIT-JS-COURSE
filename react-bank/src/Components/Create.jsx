@@ -1,9 +1,6 @@
 import { useState } from 'react';
 
-
-
-
-export default function Create({setCreateData}) {
+export default function Create({setCreateData, msg}) {
 
 const [name,setName] = useState('')
 const [surname, setSurname] = useState('')
@@ -19,11 +16,18 @@ const doSurname = e => {
 
 
 const create = _ => {
-    setCreateData({
-        name,
-        surname,
-        balance
-    })
+    if(surname === '' || name === ''){
+        msg('Įveskite vartotojo duomenis.', 'alert-warning');
+        return
+    } else {
+        setCreateData({
+            name,
+            surname,
+            balance
+        })
+        msg('Naujas vartotojas sėkmingai sukurtas!', 'alert-success');
+    }
+    
     setName('');
     setSurname('');
     setBalance(0);

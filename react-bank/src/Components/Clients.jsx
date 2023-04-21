@@ -1,7 +1,7 @@
 import Edit from "./Edit"
 
 
-export default function Clients({ data, setEditData, setDeleteData }) {
+export default function Clients({ data, setEditData, setDeleteData, msg }) {
 
 
     if (null === data) {
@@ -27,13 +27,13 @@ export default function Clients({ data, setEditData, setDeleteData }) {
                     </tr>
                 </thead>
                 <tbody>
-                {data.map((c) => (
+                {data.sort((a, b) => a.surname.localeCompare(b.surname)).map((c) => (
             <tr key={c.id}>
               <td>{c.name}</td>
               <td>{c.surname}</td>
-              <td>{c.balance}</td>
-              {/* issikeliam visa ale edit forma (inputus, butonus i edit componenta ir toliau perduodam jiems setEditData*/}
-              <Edit c={c} setEditData={setEditData} setDeleteData={setDeleteData}/>
+              <td>{(c.balance).toFixed(2)}</td>
+              
+              <Edit c={c} setEditData={setEditData} setDeleteData={setDeleteData} msg={msg}/>
             </tr>
           ))}
                 </tbody>

@@ -1,7 +1,7 @@
 import { useState } from "react";
-export default function Edit({ c, setEditData, setDeleteData }) {
+export default function Edit({ c, setEditData, setDeleteData, msg }) {
  
-  const [diffBalance, setDiffBalance] = useState(0);
+  const [diffBalance, setDiffBalance] = useState('');
 
   
   const onBalanceInputChange = (e) => {
@@ -11,23 +11,30 @@ export default function Edit({ c, setEditData, setDeleteData }) {
   const addToBalance = () => {
     if (diffBalance > 0) {
       setEditData({ ...c, balance: c.balance + diffBalance });
-     
+      msg('Vartotojui sėkmingai pridėtos lėšos!', 'alert-success');
     }
+    setDiffBalance('')
   };
 
   const deductBalance = () => {
-    if (diffBalance < c.balance) {
+    if (diffBalance <= c.balance) {
         setEditData({ ...c, balance: c.balance - diffBalance });
+        msg('Vartotojui sėkmingai nuskaičiuotos lėšos!', 'alert-success');
     } else {
+        msg('Vartotojui neužtenka lėšų.', 'alert-danger');
         return
     }
+    setDiffBalance('')
   }
 
   const destroy = _ => {
     if(c.balance > 0){
+        msg('Negalima ištrinti turtingo vartotojo.', 'alert-danger');
         return
     }
-    setDeleteData(c.id)
+    
+    setDeleteData(c)
+    msg('Vartotojas sėkmingai ištrintas!', 'alert-success');
   }
 
   return (
