@@ -1,6 +1,7 @@
+import Edit from "./Edit"
 
 
-export default function Clients({ data }) {
+export default function Clients({ data, setEditData, setDeleteData }) {
 
 
     if (null === data) {
@@ -26,28 +27,15 @@ export default function Clients({ data }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        data.map(c => <tr key={c.id}>
-                            <td>{c.name}</td>
-                            <td>{c.surname}</td>
-                            <td>{c.balance}</td>
-                            <td>
-                                <div className="input-group">
-                                    <span className="input-group-text">$</span>
-                                    <input type="number" className="form-control arrows"/>
-                                </div>
-                            </td>
-                            <td>
-                                <button className="btn btn-success">Pridėti lėšas</button>
-                            </td>
-                            <td>
-                                <button className="btn btn-warning">Nuskaičiuoti lėšas</button>
-                            </td>
-                            <td>
-                                <button className="btn btn-danger">Ištrinti sąskaitą</button>
-                            </td>
-                        </tr>)
-                    }
+                {data.map((c) => (
+            <tr key={c.id}>
+              <td>{c.name}</td>
+              <td>{c.surname}</td>
+              <td>{c.balance}</td>
+              {/* issikeliam visa ale edit forma (inputus, butonus i edit componenta ir toliau perduodam jiems setEditData*/}
+              <Edit c={c} setEditData={setEditData} setDeleteData={setDeleteData}/>
+            </tr>
+          ))}
                 </tbody>
             </table>
         </div>
