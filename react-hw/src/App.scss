@@ -241,21 +241,27 @@ button {
 
   .trees {
     width: 100%;
-    height: 25vh;
+    height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 2px solid #808080;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    border-right: 2px solid #808080;
     gap: 10px;
+    
     .little {
       width: 50px;
+      margin: 10px;
       height: 50px;
       display: flex;
       background-color: #a9171770;
       border: 1px solid#a91717;
       justify-content: space-around;
+      font-size: 15px;
+      align-items: center;
   }
-  }
+}
 
   .side {
     width: 50%;

@@ -1,7 +1,9 @@
-import Little from "./Little";
 
-export default function Azuolas({tree}) {
+
+export default function Azuolas() {
     return(
-        <div className="trees"><Little tree={tree} /></div>
+        <div className="trees">
+           <div className="little">azuolas</div>
+        </div>
     ) 
 }
