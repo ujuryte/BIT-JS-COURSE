@@ -51,7 +51,9 @@ app.post('/clients', (req, res) => {
   fs.writeFileSync('./Data/clients.json', data);
 
   res.json({
-    message: ['New Client was Created', 'ok']
+    message: 'ok',
+    promiseID: req.body.promiseID,
+    id
   });
 });
 
@@ -69,7 +71,7 @@ app.delete('/clients/:id', (req, res) => {
   fs.writeFileSync('./Data/clients.json', data);
 
   res.json({
-    message: ['Client was deleted', 'info']
+    message: 'ok'
   });
 });
 
@@ -86,7 +88,8 @@ app.put('/clients/:id', (req, res) => {
   fs.writeFileSync('./Data/clients.json', data);
 
   res.json({
-    message: ['Client was updated', 'ok']
+    message: 'ok',
+    promiseID: req.body.promiseID,
   });
 });
 

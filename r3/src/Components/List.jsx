@@ -64,9 +64,10 @@ export default function List({ stat, socialFilter, filterSocialValue, data, setE
                                     <div className="name">{c.name}</div>
                                     <div className="age">{c.age}</div>
                                 </div>
+                                
                                 <div className="buttons">
-                                    <button className="yellow small" onClick={_ => doEdit(c)}>edit</button>
-                                    <button className="red small" onClick={_ => doDelete(c)}>delete</button>
+                                    <button className="yellow small" onClick={_ => doEdit(c)} disabled={!!c.pid}>edit</button>
+                                    <button className="red small" onClick={_ => doDelete(c)} disabled={!!c.pid}>delete</button>
                                 </div>
                             </div>
 

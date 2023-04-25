@@ -3,7 +3,7 @@ import './App.scss';
 import Create from './Components/Create';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { crudCreate, crudDelete, crudRead, crudUpdate } from './Utils/localStorage';
+
 import List from './Components/List';
 import Edit from './Components/Edit';
 import Delete from './Components/Delete';
@@ -11,12 +11,12 @@ import Messages from './Components/Messages';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 
-const key = 'ClientsDb';
+
 const url = 'http://localhost:3003/clients';
 
 function App() {
 
-  const [lastUpdateTime, setLastUpdateTime] = useState(Date.now());
+  
   const [data, setData] = useState(null);
   const [createData, setCreateData] = useState(null);
   const [editModalData, setEditModalData] = useState(null);
@@ -33,21 +33,31 @@ function App() {
 
     axios.get(url)
     .then(res => {
-      setData(res.data.clients.map((c, i) => ({ ...c, row: i, show: true })));
+      setData(res.data.clients.map((c, i) => ({ ...c, row: i, show: true, pid: null })));
     })
 
     
-  }, [lastUpdateTime]);
+  }, []);
 
   useEffect(() => {
     if (null === createData) {
       return;
     }
+
+    const promiseID = uuidv4();
+
+    setData(c => [...c, {
+      ...createData, 
+      show: true, 
+      row: c.length, 
+      id: promiseID, 
+      pid: promiseID}]);
+
+      msg('Client was created', 'info');
     
-    axios.post(url, {client: createData})
+    axios.post(url, {client: createData, promiseID})
     .then (res => {
-      msg(...res.data.message);
-      setLastUpdateTime(Date.now());
+      setData(c => c.map(c => c.pid === res.data.promiseID ? {...c, pid: null, id: res.data.id} : {...c}))
     });
        
   }, [createData]);
@@ -57,10 +67,14 @@ function App() {
       return;
     }
 
-    axios.put(url + '/' + editData.id, {client: editData})
+    const promiseID = uuidv4();
+    setData(c => c.map(c => c.id === editData.id ? {...c, ...editData, pid: promiseID} : {...c}))
+
+    msg('Client was updated', 'info');
+
+    axios.put(url + '/' + editData.id, {client: editData, promiseID})
     .then (res => {
-      msg(...res.data.message);
-      setLastUpdateTime(Date.now());
+      setData(c => c.map(c => c.pid === res.data.promiseID ? {...c, pid: null} : {...c}))
     });
     
   }, [editData])
@@ -70,10 +84,12 @@ function App() {
       return;
     }
 
+    setData(c => c.filter(c => c.id !== deleteData.id))
+    msg('Client was deleted', 'info')
+
     axios.delete(url + '/' + deleteData.id)
     .then (res => {
-      msg(...res.data.message);
-      setLastUpdateTime(Date.now());
+      //
     })
 
   }, [deleteData])
