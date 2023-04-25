@@ -56,9 +56,13 @@ function App() {
     if (null === editData) {
       return;
     }
-    crudUpdate(key, editData, editData.id);
-    setLastUpdateTime(Date.now());
-    msg('Client was updated', 'ok');
+
+    axios.put(url + '/' + editData.id, {client: editData})
+    .then (res => {
+      msg(...res.data.message);
+      setLastUpdateTime(Date.now());
+    });
+    
   }, [editData])
 
   useEffect(() => {
