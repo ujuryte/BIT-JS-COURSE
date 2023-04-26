@@ -1,37 +1,29 @@
 
-import { useState } from 'react';
-
 import './App.scss';
-import A from './Components/017/A';
-import { AbcdContext } from './Components/017/AbcdContext';
-import E from './Components/017/E';
+import Buttons from './Components/017/Buttons';
+import List from './Components/017/List';
+import { Code } from './Components/017/Store';
+import View from './Components/017/View';
+
 
 function App() {
 
-  const [count1, setCount1] = useState(1);
-  const [count2, setCount2] = useState(99);
+    
+    return (
+        <Code>
+            <div className="App">
+                <header className="App-header">
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>ConText</h1>
+                    <List />
 
-        <E>
-          <button className='red' onClick={_ => setCount1(c => c + 1)}>+1</button>
-        </E>
+                    <Buttons />
 
+                    <View />
 
-        <AbcdContext.Provider value={{
-          count1,
-          count2: count2,
-          setCount2
-        }}>
-          {/* <A /> */}
-        </AbcdContext.Provider>
-
-      </header>
-    </div>
-  );
+                </header>
+            </div>
+        </Code>
+    );
 }
 
 export default App;

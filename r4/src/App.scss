@@ -409,6 +409,8 @@ label {
   position: relative;
   border: 3px dashed skyblue;
   min-width: 150px;
+  display: flex;
+  justify-content: space-between;
   .name{
     position: absolute;
     top:15px;
@@ -417,5 +419,25 @@ label {
     color: white;
     background-color: skyblue;
     padding: 5px;
+  }
+  &.list{
+    
+      display: flex;
+      flex-direction: column;
+      .list{
+        display: flex;
+      }
+      h6 {
+        font-size: 20px;
+        margin: 0;
+        color: darkcyan;
+        padding: 5px;
+      }
+      p {
+        font-size: 16px;
+        color: darkgoldenrod;
+        padding: 5px;
+      }
+    
   }
 }
