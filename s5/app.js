@@ -12,73 +12,75 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.get('/clients', (req, res) => {
 
-  const data = fs.readFileSync('./Data/clients.json', 'utf8')
+app.post('/colors', (req, res) => {
 
-  res.json({
-    clients: JSON.parse(data),
-    message: 'OK'
-  });
-});
-
-app.post('/clients', (req, res) => {
-
-  let data = fs.readFileSync('./Data/clients.json', 'utf8');
+  let data = fs.readFileSync('./Data/colors.json', 'utf8');
 
   const id = uuidv4();
-  const client = { ...req.body.client, id };
+  const color = { ...req.body.color, id };
 
   data = JSON.parse(data);
 
-  data.push(client);
+  data.push(color);
 
   data = JSON.stringify(data);
 
-  fs.writeFileSync('./Data/clients.json', data);
+  fs.writeFileSync('./Data/colors.json', data);
 
   res.json({
-    message: 'ok',
-    promiseID: req.body.promiseID,
-    id
+    message: ['New color added', 'ok']
   });
 });
 
 
-app.delete('/clients/:id', (req, res) => {
+// app.get('/clients', (req, res) => {
 
-  let data = fs.readFileSync('./Data/clients.json', 'utf8');
+//   const data = fs.readFileSync('./Data/clients.json', 'utf8')
 
-  data = JSON.parse(data);
+//   res.json({
+//     clients: JSON.parse(data),
+//     message: 'OK'
+//   });
+// });
 
-  data = data.filter(c => c.id !== req.params.id);
 
-  data = JSON.stringify(data);
 
-  fs.writeFileSync('./Data/clients.json', data);
 
-  res.json({
-    message: 'ok'
-  });
-});
+// app.delete('/clients/:id', (req, res) => {
 
-app.put('/clients/:id', (req, res) => {
+//   let data = fs.readFileSync('./Data/clients.json', 'utf8');
 
-  let data = fs.readFileSync('./Data/clients.json', 'utf8');
+//   data = JSON.parse(data);
 
-  data = JSON.parse(data);
+//   data = data.filter(c => c.id !== req.params.id);
 
-  data = data.map(c => c.id === req.params.id ? {...c, ...req.body.client, id: req.params.id} : {...c})
+//   data = JSON.stringify(data);
 
-  data = JSON.stringify(data);
+//   fs.writeFileSync('./Data/clients.json', data);
 
-  fs.writeFileSync('./Data/clients.json', data);
+//   res.json({
+//     message: 'ok'
+//   });
+// });
 
-  res.json({
-    message: 'ok',
-    promiseID: req.body.promiseID,
-  });
-});
+// app.put('/clients/:id', (req, res) => {
+
+//   let data = fs.readFileSync('./Data/clients.json', 'utf8');
+
+//   data = JSON.parse(data);
+
+//   data = data.map(c => c.id === req.params.id ? {...c, ...req.body.client, id: req.params.id} : {...c})
+
+//   data = JSON.stringify(data);
+
+//   fs.writeFileSync('./Data/clients.json', data);
+
+//   res.json({
+//     message: 'ok',
+//     promiseID: req.body.promiseID,
+//   });
+// });
 
 
 
