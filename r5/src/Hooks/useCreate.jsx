@@ -10,6 +10,7 @@ export default function useCreate() {
     const [show, setShow] = useState(false);
     const [colors, setColors] = useState(null);
     const [title, setTitle] = useState('');
+    const [color, setColor] = useState(null)
 
     const showCreate = _ => {
         setShow(true);
@@ -26,7 +27,10 @@ export default function useCreate() {
             title,
             colors
         }
-        // createAddCrud(color);
+        setColor(color);
+        hideCreate();
+        setTitle('');
+        setColors(null);
     }
 
     const addColor = hex => {
@@ -49,5 +53,5 @@ export default function useCreate() {
         });
     }
 
-    return [show, showCreate, hideCreate, colors, addColor, removeColor, addTitle, doCreate];
+    return [show, showCreate, hideCreate, colors, addColor, removeColor, addTitle, doCreate, color];
 }

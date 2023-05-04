@@ -1,15 +1,33 @@
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 import useCreate from "./Hooks/useCreate";
 import useCRUD from "./Hooks/useCRUD";
+import useDelete from "./Hooks/useDelete";
 
 export const Store = createContext();
 
 export const Data = ({children}) => {
 
-    const [showHideCreateModal, showCreate, hideCreate, colors, addColor, removeAddedColor, addTitle, doCreate,] = useCreate();
-    const [crudCreate] = useCRUD();
+    const [showHideCreateModal, showCreate, hideCreate, colors, addColor, removeAddedColor, addTitle, doCreate, createColor] = useCreate();
+    const [crudCreate, readData, crudDelete] = useCRUD();
+    const [showDelete, showHideDeleteModal, hideDelete, deleteColor, doDelete, setModalDeleteId]= useDelete();
 
-    // crudCreate()
+    useEffect(() => {
+        if(null === createColor){
+            return;
+        }
+
+        crudCreate(createColor);
+
+    },[createColor])
+
+    useEffect(() => {
+        if(null === deleteColor){
+            return;
+        }
+
+        crudDelete(deleteColor);
+
+    },[deleteColor])
     
     return (
         <Store.Provider value={{
@@ -18,8 +36,13 @@ export const Data = ({children}) => {
             hideCreate,
             colors,
             addColor,
-            removeAddedColor, doCreate,
+            removeAddedColor, 
             addTitle,
+            doCreate,
+            readData,
+            showDelete, showHideDeleteModal, hideDelete,
+            doDelete,
+            setModalDeleteId
             
         }}>
             {children}
