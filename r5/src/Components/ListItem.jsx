@@ -1,4 +1,5 @@
 import DeleteButton from "./DeleteButton";
+import EditButton from "./EditButton";
 
 export default function ListItem({ color }) {
     return (
@@ -6,6 +7,7 @@ export default function ListItem({ color }) {
             <div className="header">
                 <h2>{color.title}</h2>
                 <DeleteButton colorId={color.id}/>
+                <EditButton color={color}/>
             </div>
 
             <div className="colors">

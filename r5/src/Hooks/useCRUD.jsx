@@ -1,15 +1,17 @@
-
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-
-const SERVER_URL = 'http://localhost:3003/colors';
+const SERVER_URL = 'http://localhost:3003/colors'
 
 export default function useCRUD() {
 
+    
     const [createData, setCreateData] = useState(null);
+    const [editData, setEditData] = useState(null);
     const [readData, setReadData] = useState(null);
     const [deleteData, setDeleteData] = useState(null);
+
+    const [lastUpdate, setLastUpdate] = useState(Date.now());
 
     const crudCreate = data => {
         setCreateData(data);
@@ -19,6 +21,9 @@ export default function useCRUD() {
         setDeleteData(data);
     }
 
+    const crudEdit = data => {
+        setEditData(data);
+    }
 
     useEffect(() => {
         axios.get(SERVER_URL)
@@ -27,7 +32,7 @@ export default function useCRUD() {
             setReadData(res.data.colors);
         })
 
-    }, []);
+    }, [lastUpdate]);
 
 
     useEffect(() => {
@@ -36,6 +41,7 @@ export default function useCRUD() {
         }
         axios.post(SERVER_URL, {color:createData})
         .then(res => {
+            setLastUpdate(Date.now());
             console.log(res.data);
         });
     }, [createData]);
@@ -48,8 +54,23 @@ export default function useCRUD() {
         axios.delete(SERVER_URL + '/' + deleteData.id)
         .then(res => {
             console.log(res.data);
+            setLastUpdate(Date.now());
         });
     }, [deleteData]);
 
-    return [crudCreate, readData, crudDelete];
+    useEffect(() => {
+        if (null === editData) {
+            return;
+        }
+        axios.put(SERVER_URL + '/' + editData.id, {color: editData})
+        .then(res => {
+            console.log(res.data);
+            setLastUpdate(Date.now());
+        });
+    }, [editData]);
+
+
+
+
+    return [crudCreate, readData, crudDelete, crudEdit];
 }

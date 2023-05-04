@@ -2,12 +2,18 @@ import { useContext } from 'react';
 import '../Style/create-color.scss';
 import { Store } from '../Store';
 
-export default function CreateColor({ color, title, id }) {
+export default function CreateColor({ color, title, id, parent }) {
 
-    const {removeAddedColor} = useContext(Store);
+    const {removeAddedColor, removeEditedColor} = useContext(Store);
 
     const remove = _ => {
-        removeAddedColor(id)
+        if(parent === 'create'){
+            removeAddedColor(id);
+        } 
+        if(parent === 'edit'){
+            removeEditedColor(id);
+        } 
+        
     }
 
     return (

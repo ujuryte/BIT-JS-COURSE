@@ -3,31 +3,39 @@ import '../Style/create-modal.scss';
 import CreateColor from './CreateColor';
 import { Store } from '../Store';
 
-export default function CreateModal() {
+export default function EditModal() {
 
-    const {showHideCreateModal, hideCreate, colors, addColor, addTitle, doCreate} = useContext(Store);
+    const {showHideEditModal, hideEdit, oldData, editColors, editColor, editTitle, doEdit} = useContext(Store);
 
     const [title, setTitle] = useState('');
     const [color, setColor] = useState('#000000');
 
     const done = _ => {
-        doCreate();
+        doEdit();
         setTitle('');
         setColor('#000000')
     }
 
     useEffect(() => {
+        if(null === oldData){
+            return
+        }
+        setTitle(oldData.title);
+        
+    },[oldData])
 
-        addTitle(title);
+    useEffect(() => {
 
-    }, [title, addTitle])
+        editTitle(title);
+
+    }, [title, editTitle])
 
     const add = _ => {
-        addColor(color);
+        editColor(color);
         setColor('#000000');
     }
     
-    if(!showHideCreateModal){
+    if(!showHideEditModal){
         return null;
     }
 
@@ -47,16 +55,16 @@ export default function CreateModal() {
                     </div>
                     <div className="create-modal-colors">
                         {
-                            colors === null 
+                            editColors === null 
                             ? <h3>No colors</h3>
-                            : colors.map(c => <CreateColor key={c.id} id={c.id} color={c.color} title={c.title} parent="create"/>)
+                            : editColors.map(c => <CreateColor key={c.id} id={c.id} color={c.color} title={c.title} parent="edit"/>)
                         }
                     </div>
 
                 </div>
                 <div className="create-modal-bottom">
                     <button onClick={done}>done</button>
-                    <button onClick={hideCreate}>cancel</button>
+                    <button onClick={hideEdit}>cancel</button>
                 </div>
 
             </div>

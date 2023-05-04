@@ -2,6 +2,8 @@
 import './App.scss';
 import CreateButton from './Components/CreateButton';
 import CreateModal from './Components/CreateModal';
+import DeleteModal from './Components/DeleteModal';
+import EditModal from './Components/EditModal';
 import List from './Components/List';
 import { Data } from './Store';
 
@@ -12,6 +14,8 @@ function App() {
         <List />
         <CreateButton />
         <CreateModal />
+        <DeleteModal />
+        <EditModal />
       </div>
     </Data>
   );

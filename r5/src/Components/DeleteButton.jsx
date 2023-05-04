@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import '../Style/delete-button.scss';
 import { Store } from '../Store';
 
-export default function DeleteButton({colorId}) {
+export default function DeleteButton({ colorId }) {
 
     const { showDelete, setModalDeleteId } = useContext(Store);
 
@@ -12,9 +12,8 @@ export default function DeleteButton({colorId}) {
     }
 
     return (
-        <div className="delete-button" role='button' onClick={del}>
+        <div className="delete-button" role="button" onClick={del}>
             Delete
         </div>
     );
-
 }

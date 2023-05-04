@@ -1,36 +1,54 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import '../Style/delete-modal.scss';
 import { Store } from '../Store';
+import variables from '../Style/variables.module.scss'
 
 export default function DeleteModal() {
 
-    const {showHideDeleteModal, hideDelete, doDelete} = useContext(Store);
+    const [opacity, setOpacity] = useState(0);
+    const [show, setShow] = useState(0);
 
 
-    // const done = _ => {
-    //     doCreate();
-    //     setTitle('');
-    //     setColor('#000000')
-    // }
+    const { showHideDeleteModal, hideDelete, doDelete } = useContext(Store);
 
-    
-    
-    if(!showHideDeleteModal){
+    useEffect(() => {
+        if(null === show){
+            setShow(false);
+            return;
+        }
+
+        setOpacity(showHideDeleteModal ? 1 : 0);
+
+        if (showHideDeleteModal === true) {
+            setShow(true);
+            setTimeout(_=> setOpacity(1), 50)
+        } else {
+            setOpacity(0);
+            setTimeout(_ => setShow(false), parseInt(variables.animationTime));
+           
+        }
+
+    }, [showHideDeleteModal])
+
+
+    if (!show) {
         return null;
     }
 
-    return (
-        <div className="create-modal">
-            <div className="create-modal-body">
 
-                
-                <div className="create-modal-bottom">
-                    <button onClick={_ => doDelete()}>ok</button>
+
+
+    return (
+        <div className="delete-modal" style={{opacity}}>
+            <div className="delete-modal-body">
+                <div className="delete-modal-title">
+                    Delete?
+                </div>
+                <div className="delete-modal-bottom">
+                    <button onClick={_=> doDelete()}>ok</button>
                     <button onClick={hideDelete}>cancel</button>
                 </div>
-
             </div>
-
         </div>
     );
 

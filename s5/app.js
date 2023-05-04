@@ -47,23 +47,22 @@ app.delete('/colors/:id', (req, res) => {
     });
 });
 
-// app.put('/clients/:id', (req, res) => {
+app.put('/colors/:id', (req, res) => {
 
-//   let data = fs.readFileSync('./Data/clients.json', 'utf8');
+  let data = fs.readFileSync('./Data/colors.json', 'utf8');
 
-//   data = JSON.parse(data);
+  data = JSON.parse(data);
 
-//   data = data.map(c => c.id === req.params.id ? {...c, ...req.body.client, id: req.params.id} : {...c})
+  data = data.map(c => c.id === req.params.id ? {...c, ...req.body.colors, id: req.params.id} : {...c})
 
-//   data = JSON.stringify(data);
+  data = JSON.stringify(data);
 
-//   fs.writeFileSync('./Data/clients.json', data);
+  fs.writeFileSync('./Data/colors.json', data);
 
-//   res.json({
-//     message: 'ok',
-//     promiseID: req.body.promiseID,
-//   });
-// });
+  res.json({
+    message: 'ok',
+  });
+});
 
 
 
