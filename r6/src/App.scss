@@ -1,0 +1,13 @@
+body{
+  margin:0;
+}
+
+.nav {
+  a{
+    font-size: 30px;
+    letter-spacing: 3px;
+    &.active{
+      color:crimson;
+    }
+  }
+}
