@@ -1,19 +1,35 @@
+import { useContext } from "react";
 import Link from "./Link";
+import User from "./User";
+import { Store } from "../Store";
 
 export default function Nav() {
+
+    const { user } = useContext(Store);
     return (
         <ul className="nav justify-content-center">
             <li className="nav-item">
                 <Link className="nav-link" to="home">Home</Link>
             </li>
-            <li className="nav-item">
-                <Link className="nav-link" to="profile">Profile</Link>
-            </li>
-            <li className="nav-item">
-                <Link className="nav-link" to="login">Login</Link>
-            </li>
-            <li className="nav-item">
-                <Link className="nav-link" to="admin">Admin</Link>
+
+            {
+                user
+                    ? <li className="nav-item">
+                        <Link className="nav-link" to="profile">Profile</Link>
+                    </li>
+                    : null
+            }
+
+            {
+                user && user.role === 'admin'
+                    ? <li className="nav-item">
+                        <Link className="nav-link" to="admin">Admin</Link>
+                     </li>
+                    : null
+            }
+
+            <li>
+                <User />
             </li>
         </ul>
     )

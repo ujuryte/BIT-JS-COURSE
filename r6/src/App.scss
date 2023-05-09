@@ -1,13 +1,44 @@
-body{
-  margin:0;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .nav {
-  a{
-    font-size: 30px;
-    letter-spacing: 3px;
-    &.active{
-      color:crimson;
+  .nav-item{
+    margin-top: 10px;
+  }
+  a {
+      font-size: 26px;
+      letter-spacing: 3px;
+      text-decoration: none;
+      &.active {
+          color: crimson;
+      }
+  }
+  .user {
+    padding: 10px;
+    a{
+      font-size: 20px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      color: white;
+    }
+    .user-logged{
+      padding: 10px;
+      span{
+        color: white;
+        padding: 0 5px;
+      }
+      a{
+        cursor: pointer;
+      }
+    }
+    .user-not-logged{
+      padding: 10px;
+      background-color: skyblue;
+      
     }
   }
 }
