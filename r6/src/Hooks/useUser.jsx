@@ -8,7 +8,7 @@ export default function useUser(){
        
             const lsUser = localStorage.getItem('r6User');
             if(null === lsUser){
-                return null;
+                return;
             }
             setUser(JSON.parse(lsUser));
             

@@ -1,0 +1,22 @@
+[
+    {
+        "animal": "racoon",
+        "size": "small",
+        "color": "pink"
+    },
+    {
+        "animal": "fox",
+        "size": "big",
+        "color": "brown"
+    },
+    {
+        "animal": "wolf",
+        "size": "big",
+        "color": "gray"
+    },
+    {
+        "animal": "rabbit",
+        "size": "small",
+        "color": "skyblue"
+    }
+]

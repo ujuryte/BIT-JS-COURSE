@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const LOGIN_URL = 'http://localhost:3003/login';
-const LOGOUT_URL = 'http://localhost:3003/login'
+const LOGOUT_URL = 'http://localhost:3003/logout'
 
 export default function usePageLogin() {
 
@@ -20,7 +20,7 @@ export default function usePageLogin() {
 
         } else if (data.action === 'logout') {
             validated = {
-                id: data.id || 0
+                id: data.id || 0,
 
             }
         }
@@ -34,15 +34,15 @@ export default function usePageLogin() {
             return;
         }
         if (requestData.action === 'login') {
-            axios.post(LOGIN_URL, requestData.validated)
+            axios.post(LOGIN_URL, requestData.validated, {withCredentials: true})
                 .then(res => {
-                    console.log(res.data);
+                    
                     setResponseData(res.data);
                 })
         } else if (requestData.action === 'logout') {
-            axios.post(LOGOUT_URL + '/' + requestData.validated.id)
+            axios.post(LOGOUT_URL + '/' + requestData.validated.id,{}, {withCredentials: true})
                 .then(res => {
-                    console.log(res.data);
+                   
                     setResponseData(res.data);
                 })
         }
