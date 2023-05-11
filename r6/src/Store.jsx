@@ -43,7 +43,7 @@ export const Data = ({children}) => {
             goToPage('home')
         }
 
-    },[loginResponse])
+    },[loginResponse, goToPage, addMessage, setUser])
 
 
     useEffect(() => {
@@ -59,20 +59,17 @@ export const Data = ({children}) => {
                 goToPage('error');
             }
             
-        }
+        }        
 
-        
-        
-
-    },[adminResponse])
+    },[adminResponse, goToPage])
 
     useEffect(() => {
         switch(pageSlug){
             case 'admin': adminLoad()
-
+            break;
             default: 
         }
-    }, [pageSlug])
+    }, [pageSlug, adminLoad])
 
 
 

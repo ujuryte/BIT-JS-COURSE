@@ -10,7 +10,7 @@ export default function useMessages() {
         setTimeout(() => {
           setMessages(m => m.filter(m => m.id !== id));
         }, 5000)
-    })
+    }, [])
 
     return [messages, add]
 }
