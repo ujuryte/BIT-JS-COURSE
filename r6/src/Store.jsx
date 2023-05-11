@@ -1,3 +1,4 @@
+import useMessages from "./Hooks/useMessages";
 import usePageAdmin from "./Hooks/usePageAdmin";
 import usePageLogin from "./Hooks/usePageLogin";
 import useRoute from "./Hooks/useRoute";
@@ -19,18 +20,26 @@ export const Data = ({children}) => {
 
     const [adminPageData, setAdminPageData] = useState(null);
 
+    const [messages, addMessage] = useMessages();
+
     useEffect(() => {
         if(null === loginResponse){
             return;
         }
 
         if(loginResponse?.status === 'login-ok'){
-            setUser(loginResponse.user)
+            setUser(loginResponse.user);
+            addMessage(loginResponse.message);
             goToPage('home')
+        }
+
+        if(loginResponse?.status === 'error'){
+            addMessage(loginResponse.message)
         }
 
         if(loginResponse?.status === 'logout-ok'){
             setUser(null)
+            addMessage(loginResponse.message)
             goToPage('home')
         }
 
@@ -43,6 +52,13 @@ export const Data = ({children}) => {
         }
         if(adminResponse.status === 'ok'){
             setAdminPageData(adminResponse.data)
+        } else {
+            if(adminResponse.response.status === 401){
+                goToPage(401);
+            } else {
+                goToPage('error');
+            }
+            
         }
 
         
@@ -65,6 +81,7 @@ export const Data = ({children}) => {
             displayPage, goToPage, pageSlug,
             setLoginRequest, user,
             adminPageData,
+            messages
             
         }}>
             {children}

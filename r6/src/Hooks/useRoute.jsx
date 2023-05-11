@@ -23,6 +23,9 @@ export default function useRoute() {
                 
             case 'profile': setDisplayPage(<Profile />);
                 break;
+            
+            case 401: setDisplayPage(<Error error={401} />);
+                break;  
 
             default: setDisplayPage(<Error />)
         }

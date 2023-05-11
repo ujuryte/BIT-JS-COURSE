@@ -25,8 +25,7 @@ app.use(express.json());
 
 const doAuth = function (req, res, next) {
     if (req.url.indexOf('/admin') === 0 ||
-        req.url.indexOf('/profile') === 0 ||
-        req.url.indexOf('/logout') === 0) {
+        req.url.indexOf('/profile') === 0) {
 
         let data = fs.readFileSync('./Data/users.json', 'utf8');
         data = JSON.parse(data);
@@ -79,6 +78,7 @@ app.post('/login', (req, res) => {
         });
     } else {
         res.json({
+            status: 'error',
             message: ['Invalid login', 'error'],
         });
     }

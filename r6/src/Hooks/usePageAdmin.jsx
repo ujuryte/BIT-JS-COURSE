@@ -24,7 +24,7 @@ export default function usePageAdmin() {
             setResponseData(res.data)
         })
         .catch(error => {
-            console.log(error)
+            setResponseData(error);
         })
 
     }, [loadTime])
