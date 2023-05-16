@@ -8,8 +8,7 @@ export default function List() {
 
 
     return (
-        <div className="card m-3">
-            <h2 className="card-header color-yellow">Tress list</h2>
+        
             <div className="card-body">
                 <h5 className="card-title color-gray">All planted trees</h5>
                 {
@@ -18,6 +17,6 @@ export default function List() {
                     : <h5 className="color-green">Loading...</h5>
                 }
             </div>
-        </div>
+       
     )
 }

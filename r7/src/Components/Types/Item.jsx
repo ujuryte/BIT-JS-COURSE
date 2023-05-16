@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Data } from "../../Data";
 
 export default function Item({ tree }) {
@@ -17,7 +17,8 @@ export default function Item({ tree }) {
             title: tree.title,
             height: tree.height,
             type: tree.type
-        })
+        });
+
     }, [tree]);
 
     const save = _ => {
@@ -26,14 +27,14 @@ export default function Item({ tree }) {
             height: parseFloat(input.height),
             type: parseInt(input.type),
             id: tree.id
-        })
+        });
     }
 
     const cut = _ => {
         if (delClick) {
             setDeleteTrees(tree);
         } else {
-            setDelClick(true)
+            setDelClick(true);
             setTimeout(() => setDelClick(false), 1000);
         }
 
@@ -42,9 +43,8 @@ export default function Item({ tree }) {
     const changeInput = (e, prop) => {
         let value = e.target.value;
         if (prop === 'height') {
-            value = value.replace(/[^\d\.]\]/g, '');
+            value = value.replace(/[^\d\.]/g, '');
         }
-
         setInput(i => ({ ...i, [prop]: value }));
     }
 
@@ -52,12 +52,6 @@ export default function Item({ tree }) {
         <div className="list-item">
             <div className="info">
                 <input type="text" className="title" value={input.title} onChange={e => changeInput(e, 'title')} />
-                <input type="text" className="height" value={input.height} onChange={e => changeInput(e, 'height')} />
-                <select value={input.type} onChange={e => changeInput(e, 'type')}>
-                    {
-                        treeTypes.map(t => <option key={t.id} value={t.id}>{t.title}</option>)
-                    }
-                </select>
             </div>
             <div className="buttons">
                 <button className={'small ' + (delClick ? 'yellow' : 'red')} onClick={cut}>cut</button>
@@ -65,4 +59,5 @@ export default function Item({ tree }) {
             </div>
         </div>
     );
+
 }

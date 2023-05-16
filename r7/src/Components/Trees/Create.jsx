@@ -3,7 +3,7 @@ import { Data } from "../../Data"
 
 export default function Create() {
 
-    const { treeTypes } = useContext(Data);
+    const { treeTypes, setCreateTrees } = useContext(Data);
 
     const [input, setInput] = useState({
         title: '',
@@ -19,6 +19,19 @@ export default function Create() {
 
         setInput(i => ({...i, [prop]: value}));
     } 
+
+    const create = _ => {
+        setCreateTrees({
+            title: input.title,
+            height: parseFloat(input.height),
+            type: parseInt(input.type)
+        });
+        setInput({
+            title: '',
+            height: '',
+            type: 0
+        });
+    }
 
 
     return (
@@ -52,7 +65,7 @@ export default function Create() {
                             </div>
                         </div>
                         <div className="col-12">
-                            <button type="button" className="green">plant!</button>
+                            <button type="button" className="green" onClick={create}>plant!</button>
                         </div>
                     </div>
                 </div>
