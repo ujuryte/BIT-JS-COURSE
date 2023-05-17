@@ -3,7 +3,7 @@ import { Data } from "../../Data";
 
 export default function Item({ tree }) {
 
-    const { treeTypes, setDeleteTrees, setEditTrees } = useContext(Data);
+    const { types, setDeleteTrees, setEditTrees } = useContext(Data);
     const [delClick, setDelClick] = useState(false);
 
     const [input, setInput] = useState({
@@ -54,8 +54,9 @@ export default function Item({ tree }) {
                 <input type="text" className="title" value={input.title} onChange={e => changeInput(e, 'title')} />
                 <input type="text" className="height" value={input.height} onChange={e => changeInput(e, 'height')} />
                 <select value={input.type} onChange={e => changeInput(e, 'type')}>
+                    <option key={0} value={0}>Unknown</option>
                     {
-                        treeTypes.map(t => <option key={t.id} value={t.id}>{t.title}</option>)
+                        types?.map(t => <option key={t.id} value={t.id}>{t.title}</option>)
                     }
                 </select>
             </div>

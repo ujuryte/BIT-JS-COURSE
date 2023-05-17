@@ -10,7 +10,7 @@ export default function useTypes() {
     const [editTypes, setEditTypes] = useState(null);
     const [deleteTypes, setDeleteTypes] = useState(null);
 
-    const [lastUpdate, setLastUpdate] = useState(Date.now());
+    const [lastUpdate, setLastUpdate] = useState(null);
 
 
 
@@ -50,12 +50,12 @@ export default function useTypes() {
         }
         axios.put(URL + '/' + editTypes.id, editTypes)
         .then(res => {
-            
+            setLastUpdate(Date.now());
             console.log(res.data);
         })
     }, [editTypes])
 
 
 
-    return [types, setCreateTypes, setEditTypes, setDeleteTypes];
+    return [types, setCreateTypes, setEditTypes, setDeleteTypes, lastUpdate];
 }

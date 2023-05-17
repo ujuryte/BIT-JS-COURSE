@@ -28,9 +28,9 @@ const connection = mysql.createConnection({
     user: 'root',
     password: '',
     database: 'forest'
-  })
+})
 
-  connection.connect();
+connection.connect();
 
 // SELECT column1, column2, ...
 // FROM table_name;
@@ -48,15 +48,15 @@ app.get('/trees', (req, res) => {
         SELECT id, height, type, title
         FROM trees
     `;
-    
+
     connection.query(sql, (err, result) => {
         if (err) throw err
         res.json({
             status: 'ok',
             result
         });
-      })
-   
+    })
+
 
 });
 
@@ -70,14 +70,14 @@ app.post('/trees', (req, res) => {
         INSERT INTO trees (title, height, type)
         VALUES (?, ?, ?)
     `;
-    
+
     connection.query(sql, [req.body.title, req.body.height, req.body.type], (err, result) => {
         if (err) throw err
         res.json({
             status: 'ok',
         });
-      })
-   
+    })
+
 
 });
 
@@ -89,14 +89,14 @@ app.delete('/trees/:id', (req, res) => {
         DELETE FROM trees 
         WHERE id = ?
     `;
-    
+
     connection.query(sql, [req.params.id], (err, result) => {
         if (err) throw err
         res.json({
             status: 'ok',
         });
-      })
-   
+    })
+
 
 });
 
@@ -111,14 +111,14 @@ app.put('/trees/:id', (req, res) => {
         SET title = ?, height = ?, type = ?
         WHERE id = ?
     `;
-    
+
     connection.query(sql, [req.body.title, req.body.height, req.body.type, req.params.id], (err, result) => {
         if (err) throw err
         res.json({
             status: 'ok',
         });
-      })
-   
+    })
+
 
 });
 
@@ -130,15 +130,15 @@ app.get('/types', (req, res) => {
         SELECT id, title
         FROM types
     `;
-    
+
     connection.query(sql, (err, result) => {
         if (err) throw err
         res.json({
             status: 'ok',
             result
         });
-      })
-   
+    })
+
 
 });
 
@@ -152,14 +152,14 @@ app.post('/types', (req, res) => {
         INSERT INTO types (title)
         VALUES (?)
     `;
-    
+
     connection.query(sql, [req.body.title], (err, result) => {
         if (err) throw err
         res.json({
             status: 'ok',
         });
-      })
-   
+    })
+
 
 });
 
@@ -171,14 +171,14 @@ app.delete('/types/:id', (req, res) => {
         DELETE FROM types 
         WHERE id = ?
     `;
-    
+
     connection.query(sql, [req.params.id], (err, result) => {
         if (err) throw err
         res.json({
             status: 'ok',
         });
-      })
-   
+    })
+
 
 });
 
@@ -193,14 +193,36 @@ app.put('/types/:id', (req, res) => {
         SET title = ?
         WHERE id = ?
     `;
-    
+
     connection.query(sql, [req.body.title, req.params.id], (err, result) => {
         if (err) throw err
         res.json({
             status: 'ok',
         });
+    })
+
+
+});
+
+
+app.get('/types-count', (req, res) => {
+
+    const sql = `
+        SELECT COUNT(type) AS count, type
+        FROM trees
+        GROUP BY type
+    `;
+
+    connection.query(sql, (err, result) => {
+        if (err) throw err
+        res.json({
+            status: 'ok',
+            result
+        });
       })
+
    
+
 
 });
 
