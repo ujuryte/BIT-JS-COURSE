@@ -1,9 +1,13 @@
 import { useContext, useState } from 'react';
 import { Data } from '../../Data';
+import validateSubmit from "../../Validations/typesValidation";
+
 
 export default function Create() {
 
-    const { setCreateTypes } = useContext(Data);
+    const { setCreateTypes, addMessage } = useContext(Data);
+
+    const [errors, setErrors] = useState(new Set());
 
     const [input, setInput] = useState({
         title: '',
@@ -11,16 +15,32 @@ export default function Create() {
 
     const changeInput = (e, prop) => {
         let value = e.target.value;
+        
         setInput(i => ({...i, [prop]: value}));
     }
 
     const create = _ => {
-        setCreateTypes({
+        const data = {
             title: input.title,
-        });
+           
+        };
+        if (!validateSubmit(data, setErrors, addMessage)){
+            return;
+        };
+
+        setCreateTypes(data);
         setInput({
             title: '',
         });
+        setErrors(new Set());
+    }
+
+    const remError = prop => {
+        setErrors(e => {
+            const copy = new Set([...e]);
+            copy.delete(prop)
+            return copy;
+        })
     }
 
     return (
@@ -33,7 +53,7 @@ export default function Create() {
                         <div className="col-12">
                             <div className="mb-3">
                                 <label className="form-label">Type title</label>
-                                <input type="text" className="form-control" value={input.title} onChange={e => changeInput(e, 'title')} />
+                                <input type="text" onFocus={_ => remError('title')} className={"form-control" + (errors.has('title') ? ' error' : '')} value={input.title} onChange={e => changeInput(e, 'title')} />
                             </div>
                         </div>
                         <div className="col-12">
