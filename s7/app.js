@@ -75,6 +75,12 @@ app.post('/trees', (req, res) => {
         if (err) throw err
         res.json({
             status: 'ok',
+            showMessage: {
+                type:'ok',
+                title: 'Trees',
+                text: 'New tree was planted!'
+
+            }
         });
     })
 
@@ -94,6 +100,12 @@ app.delete('/trees/:id', (req, res) => {
         if (err) throw err
         res.json({
             status: 'ok',
+            showMessage: {
+                type:'error',
+                title: 'Trees',
+                text: 'The tree was cut!'
+
+            }
         });
     })
 
@@ -116,6 +128,12 @@ app.put('/trees/:id', (req, res) => {
         if (err) throw err
         res.json({
             status: 'ok',
+            showMessage: {
+                type:'info',
+                title: 'Trees',
+                text: 'The tree was updated!'
+
+            }
         });
     })
 
@@ -157,6 +175,12 @@ app.post('/types', (req, res) => {
         if (err) throw err
         res.json({
             status: 'ok',
+            showMessage: {
+                type:'ok',
+                title: 'Types',
+                text: 'New type was created!'
+
+            }
         });
     })
 
@@ -176,6 +200,12 @@ app.delete('/types/:id', (req, res) => {
         if (err) throw err
         res.json({
             status: 'ok',
+            showMessage: {
+                type:'error',
+                title: 'Types',
+                text: 'The type was deleted!'
+
+            }
         });
     })
 
@@ -198,6 +228,12 @@ app.put('/types/:id', (req, res) => {
         if (err) throw err
         res.json({
             status: 'ok',
+            showMessage: {
+                type:'info',
+                title: 'Types',
+                text: 'The type was updated!'
+
+            }
         });
     })
 

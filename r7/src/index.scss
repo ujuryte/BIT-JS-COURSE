@@ -86,6 +86,10 @@ body {
     position: fixed;
     top: 50px;
     right: 50px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    
     .type{
         width: 30px;
         height: 30px;
@@ -101,4 +105,11 @@ body {
             background-color:skyblue;
         }
     }
+    .toast {
+        margin-bottom: 0px !important;
+    }
+}
+
+.form-control.error{
+    border-color: crimson;
 }

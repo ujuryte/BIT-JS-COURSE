@@ -48,14 +48,16 @@ export default function Item({ type }) {
             </div>
             <div className="bottom">
                 <div className="count">
+                    {typesCount.find(t => t.type === type.id)?.count || 0}
+
+
+                </div>
+                <div className="buttons">
                     {
                         typesCount.find(t => t.type === type.id)?.count
                             ? null
                             : <button className={'small ' + (delClick ? 'yellow' : 'red')} onClick={remove}>remove</button>
                     }
-                </div>
-                <div className="buttons">
-
                     <button className="small blue" onClick={save}>save</button>
                 </div>
             </div>

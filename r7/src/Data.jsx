@@ -10,7 +10,7 @@ export const Data = createContext();
 export const  DataProvider = ({children}) => {
 
     const [trees, setCreateTrees, setEditTrees, setDeleteTrees, lastUpdateTrees, treeMessage] = useTrees();
-    const [types, setCreateTypes, setEditTypes, setDeleteTypes, lastUpdateTypes] = useTypes();
+    const [types, setCreateTypes, setEditTypes, setDeleteTypes, lastUpdateTypes, typeMessage] = useTypes();
     const [tab, setTab] = useState('trees');
     const [typesCount, setLastUpdateTypesCount] = useTypesCount();
 
@@ -22,6 +22,21 @@ export const  DataProvider = ({children}) => {
         }
         addMessage(treeMessage);
     },[treeMessage])
+
+    useEffect(() => {
+        if(null === lastUpdateTrees && null === lastUpdateTypes){
+            return;
+        }
+        setLastUpdateTypesCount(Date.now())
+
+    },[lastUpdateTrees, lastUpdateTypes])
+
+    useEffect(() => {
+        if(null === typeMessage){
+            return;
+        }
+        addMessage(typeMessage);
+    },[typeMessage])
 
     useEffect(() => {
         if(null === lastUpdateTrees && null === lastUpdateTypes){

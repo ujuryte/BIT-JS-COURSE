@@ -12,7 +12,7 @@ export default function useTypes() {
 
     const [lastUpdate, setLastUpdate] = useState(null);
 
-
+    const [message, setMessage] = useState(null);
 
     useEffect(() => {
         axios.get(URL)
@@ -28,7 +28,7 @@ export default function useTypes() {
         axios.post(URL, createTypes)
         .then(res => {
             setLastUpdate(Date.now())
-            console.log(res.data);
+            setMessage(res.data.showMessage);
         })
     }, [createTypes])
 
@@ -40,7 +40,7 @@ export default function useTypes() {
         axios.delete(URL + '/' + deleteTypes.id)
         .then(res => {
             setLastUpdate(Date.now())
-            console.log(res.data);
+            setMessage(res.data.showMessage);
         })
     }, [deleteTypes]);
 
@@ -51,11 +51,11 @@ export default function useTypes() {
         axios.put(URL + '/' + editTypes.id, editTypes)
         .then(res => {
             setLastUpdate(Date.now());
-            console.log(res.data);
+            setMessage(res.data.showMessage);
         })
     }, [editTypes])
 
 
 
-    return [types, setCreateTypes, setEditTypes, setDeleteTypes, lastUpdate];
+    return [types, setCreateTypes, setEditTypes, setDeleteTypes, lastUpdate, message];
 }
