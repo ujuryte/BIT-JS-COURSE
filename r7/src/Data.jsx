@@ -3,6 +3,7 @@ import useTrees from './Hooks/useTrees';
 import useTypes from './Hooks/useTypes';
 import useTypesCount from './Hooks/useTypesCount';
 import useMessages from './Hooks/useMessages';
+import useParks from './Hooks/useParks';
 
 export const Data = createContext();
 
@@ -11,6 +12,7 @@ export const  DataProvider = ({children}) => {
 
     const [trees, setCreateTrees, setEditTrees, setDeleteTrees, lastUpdateTrees, treeMessage] = useTrees();
     const [types, setCreateTypes, setEditTypes, setDeleteTypes, lastUpdateTypes, typeMessage] = useTypes();
+    const [parks, setCreateParks, setEditParks, setDeleteParks, parkMessage] = useParks();
     const [tab, setTab] = useState('trees');
     const [typesCount, setLastUpdateTypesCount] = useTypesCount();
 
@@ -39,6 +41,13 @@ export const  DataProvider = ({children}) => {
     },[typeMessage])
 
     useEffect(() => {
+        if(null === parkMessage){
+            return;
+        }
+        addMessage(parkMessage);
+    },[parkMessage])
+
+    useEffect(() => {
         if(null === lastUpdateTrees && null === lastUpdateTypes){
             return;
         }
@@ -54,6 +63,7 @@ export const  DataProvider = ({children}) => {
 
             trees, setCreateTrees, setEditTrees, setDeleteTrees,
             types, setCreateTypes, setEditTypes, setDeleteTypes,
+            parks, setCreateParks, setEditParks, setDeleteParks,
 
             typesCount,
 

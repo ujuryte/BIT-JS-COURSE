@@ -167,11 +167,11 @@ app.get('/types', (req, res) => {
 app.post('/types', (req, res) => {
 
     const sql = `
-        INSERT INTO types (title)
-        VALUES (?)
+        INSERT INTO types (title, park)
+        VALUES (?, ?)
     `;
 
-    connection.query(sql, [req.body.title], (err, result) => {
+    connection.query(sql, [req.body.title, req.body.park], (err, result) => {
         if (err) throw err
         res.json({
             status: 'ok',
@@ -257,7 +257,95 @@ app.get('/types-count', (req, res) => {
         });
       })
 
-   
+});
+
+
+// PARKS
+
+app.get('/parks', (req, res) => {
+
+    const sql = `
+        SELECT id, title
+        FROM parks
+    `;
+
+    connection.query(sql, (err, result) => {
+        if (err) throw err
+        res.json({
+            status: 'ok',
+            result
+        });
+    })
+});
+
+app.post('/parks', (req, res) => {
+
+    const sql = `
+        INSERT INTO parks (title)
+        VALUES (?)
+    `;
+
+    connection.query(sql, [req.body.title], (err, result) => {
+        if (err) throw err
+        res.json({
+            status: 'ok',
+            showMessage: {
+                type:'ok',
+                title: 'Parks',
+                text: 'New park was created!'
+
+            }
+        });
+    })
+
+
+});
+
+
+app.delete('/parks/:id', (req, res) => {
+
+    const sql = `
+        DELETE FROM parks 
+        WHERE id = ?
+    `;
+
+    connection.query(sql, [req.params.id], (err, result) => {
+        if (err) throw err
+        res.json({
+            status: 'ok',
+            showMessage: {
+                type:'error',
+                title: 'Parks',
+                text: 'The park was deleted!'
+
+            }
+        });
+    })
+
+
+});
+
+
+app.put('/parks/:id', (req, res) => {
+
+    const sql = `
+        UPDATE parks
+        SET title = ?
+        WHERE id = ?
+    `;
+
+    connection.query(sql, [req.body.title, req.params.id], (err, result) => {
+        if (err) throw err
+        res.json({
+            status: 'ok',
+            showMessage: {
+                type:'info',
+                title: 'Parks',
+                text: 'The park was updated!'
+
+            }
+        });
+    })
 
 
 });
