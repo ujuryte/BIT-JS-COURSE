@@ -32,8 +32,8 @@ body {
             justify-content: flex-end;
         }
         .count{
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 20px;
+            color: $gray;
         }
     }
     input{
@@ -112,4 +112,8 @@ body {
 
 .form-control.error{
     border-color: crimson;
+}
+
+.list-item .info .error{
+    color: crimson;
 }

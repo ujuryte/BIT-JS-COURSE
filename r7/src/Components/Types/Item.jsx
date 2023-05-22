@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { Data } from "../../Data";
+import validateSubmit, { sanitizeInput } from "../../Validations/typesValidation";
 
 export default function Item({ type }) {
 
-    const { setDeleteTypes, setEditTypes, typesCount } = useContext(Data);
+    const { setDeleteTypes, setEditTypes, typesCount, addMessage } = useContext(Data);
     const [delClick, setDelClick] = useState(false);
+    const [errors, setErrors] = useState(new Set());
 
     const [input, setInput] = useState({
         title: '',
@@ -20,10 +22,23 @@ export default function Item({ type }) {
     }, [type]);
 
     const save = _ => {
+        const data = {title: input.title}
+        if (!validateSubmit(data, setErrors, addMessage)){
+            return;
+        };
         setEditTypes({
-            title: input.title,
+            ...data,
             id: type.id
         });
+        setErrors(new Set());
+    }
+
+    const cancel = _ => {
+        setInput({
+            title: type.title,
+           
+        })
+        setErrors(new Set())
     }
 
     const remove = _ => {
@@ -38,17 +53,18 @@ export default function Item({ type }) {
 
     const changeInput = (e, prop) => {
         let value = e.target.value;
+        value = sanitizeInput(value, prop);
         setInput(i => ({ ...i, [prop]: value }));
     }
 
     return (
         <div className="list-item">
             <div className="info">
-                <input type="text" className="title" value={input.title} onChange={e => changeInput(e, 'title')} />
+                <input type="text" className={"title" + (errors.has('title') ? ' error' : '')} value={input.title} onChange={e => changeInput(e, 'title')} />
             </div>
             <div className="bottom">
                 <div className="count">
-                    {typesCount.find(t => t.type === type.id)?.count || 0}
+                    {typesCount.find(t => t.type === type.id)?.count || 0} trees of this type
 
 
                 </div>
@@ -59,6 +75,7 @@ export default function Item({ type }) {
                             : <button className={'small ' + (delClick ? 'yellow' : 'red')} onClick={remove}>remove</button>
                     }
                     <button className="small blue" onClick={save}>save</button>
+                    <button className="small yellow" onClick={cancel}>cancel</button>
                 </div>
             </div>
         </div>

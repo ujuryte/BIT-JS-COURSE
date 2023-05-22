@@ -1,26 +1,28 @@
-export default function validateSubmit(types, setErrors, addMessage){
-    
+export default function validateSubmit(tree, setErrors, addMessage) {
     const errors = new Set;
-   
-    if(!types.hasOwnProperty('title') 
-    || typeof types.title !== 'string'
-    || types.title.length < 3
-    || types.title. length > 100
+
+    if (!tree.hasOwnProperty('title') ||
+        typeof tree.title !== 'string' ||
+        tree.title.length < 3 ||
+        tree.title.length > 100
     ) {
-        errors.add('title');
+        errors.add('title')
     }
-
-
-    if(errors.size > 0) {
+    if (errors.size > 0) {
         setErrors(errors);
         addMessage({
-            type:'error',
+            type: 'error',
             title: 'Types Create',
-            text: 'Types create has errors!'
+            text: 'Types create has errors'
         });
         return false;
     }
+    return true;
+}
 
-    
-
+export const sanitizeInput = (value, prop) => {
+    if (prop === 'title'){
+        value = value.replace(/[^A-Za-ząčęėįšųūž ]/g, '');
+    }
+    return value;
 }
