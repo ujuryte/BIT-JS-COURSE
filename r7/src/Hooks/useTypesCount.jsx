@@ -12,7 +12,6 @@ export default function useTypesCount() {
         axios.get(URL)
         .then (res => {
             setTypesCount(res.data.result);
-            console.log('COUNT-updated', res.data.result)
         });
     }, [lastUpdate])
 

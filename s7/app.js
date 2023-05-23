@@ -145,8 +145,11 @@ app.put('/trees/:id', (req, res) => {
 app.get('/types', (req, res) => {
 
     const sql = `
-        SELECT id, title
-        FROM types
+        SELECT t.id, t.title, p.id AS park, p.title AS parkTitle
+        FROM types as t
+        INNER JOIN parks as p
+        ON t.park = p.id
+        ORDER BY p.title, t.title
     `;
 
     connection.query(sql, (err, result) => {
@@ -220,11 +223,11 @@ app.put('/types/:id', (req, res) => {
 
     const sql = `
         UPDATE types
-        SET title = ?
+        SET title = ?, park = ?
         WHERE id = ?
     `;
 
-    connection.query(sql, [req.body.title, req.params.id], (err, result) => {
+    connection.query(sql, [req.body.title, req.body.park, req.params.id], (err, result) => {
         if (err) throw err
         res.json({
             status: 'ok',
@@ -262,11 +265,18 @@ app.get('/types-count', (req, res) => {
 
 // PARKS
 
+// SELECT column_name(s)
+// FROM table1
+// INNER JOIN table2
+// ON table1.column_name = table2.column_name;
+
 app.get('/parks', (req, res) => {
 
     const sql = `
-        SELECT id, title
+        SELECT parks.id, parks.title, types.title AS typeTitle
         FROM parks
+        LEFT JOIN types
+        ON types.park = parks.id
     `;
 
     connection.query(sql, (err, result) => {

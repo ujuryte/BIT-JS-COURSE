@@ -22,8 +22,8 @@ export default function Item({ parks }) {
     }, [parks]);
 
     const save = _ => {
-        const data = {title: input.title}
-        if (!validateSubmit(data, setErrors, addMessage)){
+        const data = { title: input.title }
+        if (!validateSubmit(data, setErrors, addMessage)) {
             return;
         };
         setEditParks({
@@ -36,7 +36,7 @@ export default function Item({ parks }) {
     const cancel = _ => {
         setInput({
             title: parks.title,
-           
+
         })
         setErrors(new Set())
     }
@@ -62,10 +62,27 @@ export default function Item({ parks }) {
             <div className="parks info">
                 <input parks="text" className={"title" + (errors.has('title') ? ' error' : '')} value={input.title} onChange={e => changeInput(e, 'title')} />
             </div>
+            <div className="details">
+                <div className="count">
+                    Types count: {parks.types.length}
+                </div>
+                <div className="types-list">
+                    <ul>
+                        {
+                            parks.types.map((t, i) => <li key={i}>{t}</li>)
+                        }
+                    </ul>
+                </div>
+            </div>
             <div className="bottom">
                 <div className="buttons">
-                    <button className={'small ' + (delClick ? 'yellow' : 'red')} onClick={remove}>remove</button>
                     <button className="small blue" onClick={save}>save</button>
+                    {
+                        !parks.types.length
+                            ? <button className={'small ' + (delClick ? 'yellow' : 'red')} onClick={remove}>remove</button>
+                            : null
+                    }
+
                     <button className="small yellow" onClick={cancel}>cancel</button>
                 </div>
             </div>

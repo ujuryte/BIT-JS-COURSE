@@ -18,6 +18,7 @@ export default function useTypes() {
         axios.get(URL)
         .then (res => {
             setTypes(res.data.result)
+            
         });
     }, [lastUpdate])
 

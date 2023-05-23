@@ -4,25 +4,25 @@ import validateSubmit, { sanitizeInput } from "../../Validations/typesValidation
 
 export default function Item({ type }) {
 
-    const { setDeleteTypes, setEditTypes, typesCount, addMessage } = useContext(Data);
+    const { setDeleteTypes, setEditTypes, typesCount, addMessage, parks } = useContext(Data);
     const [delClick, setDelClick] = useState(false);
     const [errors, setErrors] = useState(new Set());
 
     const [input, setInput] = useState({
         title: '',
-        height: '',
-        type: 0
+        park: 0
     });
 
     useEffect(() => {
         setInput({
-            title: type.title
+            title: type.title,
+            park: type.park
         });
 
     }, [type]);
 
     const save = _ => {
-        const data = {title: input.title}
+        const data = {title: input.title, park: parseInt(input.park)}
         if (!validateSubmit(data, setErrors, addMessage)){
             return;
         };
@@ -36,6 +36,7 @@ export default function Item({ type }) {
     const cancel = _ => {
         setInput({
             title: type.title,
+            park: type.park
            
         })
         setErrors(new Set())
@@ -61,20 +62,22 @@ export default function Item({ type }) {
         <div className="list-item">
             <div className="info">
                 <input type="text" className={"title" + (errors.has('title') ? ' error' : '')} value={input.title} onChange={e => changeInput(e, 'title')} />
+                <select className={'park' + (errors.has('park') ? ' error' : '')} value={input.park} onChange={e => changeInput(e, 'park')}>
+                    <option key={0} value={0}>Unknown</option>
+                    {
+                        parks?.map(p => <option key={p.id} value={p.id}>{p.title}</option>)
+                    }
+                </select>
             </div>
             <div className="bottom">
-                <div className="count">
-                    {typesCount.find(t => t.type === type.id)?.count || 0} trees of this type
-
-
-                </div>
+                <div className="count">{typesCount.find(t => t.type === type.id)?.count || 0} trees of this type</div>
                 <div className="buttons">
+                    <button className="small blue" onClick={save}>save</button>
                     {
                         typesCount.find(t => t.type === type.id)?.count
                             ? null
                             : <button className={'small ' + (delClick ? 'yellow' : 'red')} onClick={remove}>remove</button>
                     }
-                    <button className="small blue" onClick={save}>save</button>
                     <button className="small yellow" onClick={cancel}>cancel</button>
                 </div>
             </div>
