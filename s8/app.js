@@ -8,6 +8,7 @@ const mysql = require('mysql');
 
 const app = express();
 const port = 3003;
+app.use(express.json({limit: '10mb'}));
 // app.use(express.json({ limit: '10mb' }));
 // app.use(express.static('public'));
 
@@ -21,7 +22,7 @@ app.use(
         extended: true,
     })
 );
-app.use(express.json());
+
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -32,36 +33,27 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-// SELECT column1, column2, ...
-// FROM table_name;
-
-// <> nelygu sql'e
-
-//WHERE height <> 3
-// ORDER BY type, title
-// LIMIT 3, 3 
 
 
-// app.get('/trees', (req, res) => {
+app.get('/images', (_, res) => {
 
-//     const sql = `
-//         SELECT id, height, type, title
-//         FROM trees
-//     `;
+    const sql = `
+        SELECT *
+        FROM photos
+    `;
 
-//     connection.query(sql, (err, result) => {
-//         if (err) throw err
-//         res.json({
-//             status: 'ok',
-//             result
-//         });
-//     })
+    connection.query(sql, (err, result) => {
+        if (err) throw err
+        res.json({
+            status: 'ok',
+            result
+        });
+    })
 
 
-// });
+});
 
-// INSERT INTO table_name (column1, column2, column3, ...)
-// VALUES (value1, value2, value3, ...);
+
 
 
 app.post('/images', (req, res) => {
@@ -71,7 +63,7 @@ app.post('/images', (req, res) => {
         VALUES (?, ?)
     `;
 
-    connection.query(sql, [req.body.title, req.body.file], (err, result) => {
+    connection.query(sql, [req.body.title, req.body.file ? req.body.file : null], (err, result) => {
         if (err) throw err
         res.json({
             status: 'ok',
@@ -89,56 +81,56 @@ app.post('/images', (req, res) => {
 
 // DELETE FROM table_name WHERE condition;
 
-// app.delete('/trees/:id', (req, res) => {
+app.delete('/images/:id', (req, res) => {
 
-//     const sql = `
-//         DELETE FROM trees 
-//         WHERE id = ?
-//     `;
+    const sql = `
+        DELETE FROM photos
+        WHERE id = ?
+    `;
 
-//     connection.query(sql, [req.params.id], (err, result) => {
-//         if (err) throw err
-//         res.json({
-//             status: 'ok',
-//             showMessage: {
-//                 type:'error',
-//                 title: 'Trees',
-//                 text: 'The tree was cut!'
+    connection.query(sql, [req.params.id], (err, result) => {
+        if (err) throw err
+        res.json({
+            status: 'ok',
+            showMessage: {
+                type:'error',
+                title: 'Photos',
+                text: 'The photo was deleted!'
 
-//             }
-//         });
-//     })
+            }
+        });
+    })
 
 
-// });
+});
 
 // UPDATE table_name
 // SET column1 = value1, column2 = value2, ...
 // WHERE condition;
 
-// app.put('/trees/:id', (req, res) => {
+app.put('/images/:id', (req, res) => {
 
-//     const sql = `
-//         UPDATE trees
-//         SET title = ?, height = ?, type = ?
-//         WHERE id = ?
-//     `;
+    const sql = `
+        UPDATE photos
+        SET title = ?, file = ?
+        WHERE id = ?
+    `;
 
-//     connection.query(sql, [req.body.title, req.body.height, req.body.type, req.params.id], (err, result) => {
-//         if (err) throw err
-//         res.json({
-//             status: 'ok',
-//             showMessage: {
-//                 type:'info',
-//                 title: 'Trees',
-//                 text: 'The tree was updated!'
+    connection.query(sql, [req.body.title, req.body.file ? req.body.file : null, req.params.id], (err, result) => {
+        if (err) throw err
+        res.json({
+            status: 'ok',
+            showMessage: {
+                type:'info',
+                title: 'Photos',
+                text: 'The photo was updated!'
 
-//             }
-//         });
-//     })
+            }
+        });
+    })
 
 
-// });
+});
 
 
 

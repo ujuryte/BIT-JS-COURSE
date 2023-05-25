@@ -1,13 +1,10 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 
 export default function useFile() {
 
     const [file, setFile] = useState(null);
     const uploadInput = useRef(null);
 
-    useEffect(() => {
-        console.log(file)
-    }, [file])
 
     const fileReader = file => {
         return new Promise((resolve, reject) => {
@@ -33,5 +30,5 @@ export default function useFile() {
     }
 
 
-    return [file, readFile, removeFile]
+    return [file, readFile, removeFile, setFile]
 }

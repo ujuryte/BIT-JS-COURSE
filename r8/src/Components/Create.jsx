@@ -1,14 +1,26 @@
 import { useState } from "react"
 import useFile from "../useFile";
 import '../no.png';
-import '../buttons.scss'
+import '../buttons.scss';
+import axios from 'axios';
 
-export default function Create() {
+export default function Create({setLastUpdate}) {
 
     const [title, setTitle] = useState('');
     const [file, readFile, removeFile] = useFile();
 
-
+    const add = _ => {
+        axios.post('http://localhost:3003/images', {file,title})
+        .then(res => {
+            console.log(res.data);
+            setLastUpdate(Date.now())
+        })
+        .catch(error => {
+            console.log(error)
+        });
+        setTitle('');
+        removeFile();
+    }
 
 
     return (
@@ -17,10 +29,10 @@ export default function Create() {
             <div className="inputs">
                 <div className="input">
                     <input type="text" placeholder="image text" value={title} onChange={e => setTitle(e.target.value)}></input>
-                </div>
-                <div className="input">
+                    </div>
+                    <div className="input">
                     <input className="custom-file-input" type="file" onChange={readFile}></input>
-                </div>
+                    </div>             
             </div>
             <div className="img">
                 {
@@ -31,7 +43,7 @@ export default function Create() {
                 }
                 
             </div>
-            <button className="blue">add</button>
+            <button className="blue" onClick={add}>add</button>
         </div>
     )
 }
