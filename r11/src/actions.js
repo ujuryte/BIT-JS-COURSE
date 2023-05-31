@@ -1,38 +1,44 @@
-import { ADD_CUSTOM, ADD_ONE, REMOVE_33, REMOVE_CUSTOM, REMOVE_ONE } from './constants';
+import { ADD_ONE, ADD_SOME, REMOVE_1, REM_SOME, R_33 } from "./constants";
 
 export const addOne = _ => {
     const action = {
         type: ADD_ONE
     };
+
     return action;
 }
 
 export const remOne = _ => {
     const action = {
-        type: REMOVE_ONE
+        type: REMOVE_1
     };
+
     return action;
 }
 
 export const rem33 = _ => {
     const action = {
-        type: REMOVE_33
+        type: R_33
     };
+
     return action;
 }
 
-export const addCustom = what => {
+
+export const addCustom = addValue => {
     const action = {
-        type: ADD_CUSTOM,
-        payload: what
+        type: ADD_SOME,
+        payload: addValue
     };
+
     return action;
 }
 
-export const remCustom = what => {
+export const remCustom = remValue => {
     const action = {
-        type: REMOVE_CUSTOM,
-        payload: what
+        type: REM_SOME,
+        payload: remValue
     };
+
     return action;
 }
