@@ -12,7 +12,7 @@ export default function Book({ book }) {
                 <img src={book.img} alt={book.title} />
             </div>
             <div className="author">{book.author}</div>
-            <div className="price">{book.price} EUR</div>
+            <div className="price">{book.price.toFixed(2)} EUR</div>
             <div className="type">{types?.find(t => t.id === book.type)?.title}</div>
         </div>
 

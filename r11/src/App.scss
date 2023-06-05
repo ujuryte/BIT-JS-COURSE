@@ -63,6 +63,11 @@
           font-size: 50px;
         }
       }
+      input[type='range'] {
+        width: 100%;
+        display: block;        
+        margin: 10px 0 30px 0;
+      }
     }
   }
 
