@@ -1,4 +1,4 @@
-import { LOAD_FROM_SERVER, SORT_BOOKS } from "./constants";
+import { LOAD_FROM_SERVER, SEARCH_BOOK, SORT_BOOKS } from "./constants";
 
 export default function reducer(state, action) {
     let s = state ? [...state] : null;
@@ -8,6 +8,8 @@ export default function reducer(state, action) {
             s = action.payload.map((b, i) => ({ ...b, row: i, show: new Set() }));
             break;
         case SORT_BOOKS:
+            if (null !== s) {
+           
             switch (action.payload) {
                 case 'price_desc':
                     s.sort((a, b) => b.price - a.price);
@@ -27,7 +29,20 @@ export default function reducer(state, action) {
                     s.sort((a, b) => a.row - b.row);
                     break;
             }
+        }
             break;
+
+            case SEARCH_BOOK:
+                if (null !== s) {
+                s.forEach(b => {
+                    if (b.title.toLowerCase().includes(action.payload.toLowerCase())){
+                        b.show.delete('search')
+                    } else {
+                        b.show.add('search')
+                    }
+                })
+            }
+                break;
 
         default:
 

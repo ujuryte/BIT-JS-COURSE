@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { Store } from "../Store";
-import { sortBooks } from "../actions";
+import { searchBook, sortBooks } from "../actions";
 
 export default function Menu() {
 
@@ -9,11 +9,14 @@ export default function Menu() {
 
     const [search, setSearch] = useState('')
 
-    useEffect(() => {
+    useEffect(_ => {
+        
         dispachBooks(sortBooks(sort))
     },[sort, dispachBooks]);
 
-    
+    useEffect(_ => {
+        dispachBooks(searchBook(search))
+    }, [search, dispachBooks])
 
     const sortChange = s => {
         setSort(s);
